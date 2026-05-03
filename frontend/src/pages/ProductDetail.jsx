@@ -17,7 +17,6 @@ const ProductDetail = () => {
 
     useEffect(() => {
         const fetchProduct = async () => {
-            // First check local data (works offline, instant)
             const localProduct = localProducts.find(p => p._id === id);
             if (localProduct) {
                 setProduct(localProduct);
@@ -26,7 +25,6 @@ const ProductDetail = () => {
                 return;
             }
 
-            // Try API for products that live in the DB
             try {
                 setLoading(true);
                 const controller = new AbortController();

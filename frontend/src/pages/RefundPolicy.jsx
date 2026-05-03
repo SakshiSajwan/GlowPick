@@ -58,7 +58,7 @@ export default function RefundPolicy() {
   return (
     <div style={{ background: '#FFFBF8', minHeight: '100vh', paddingBottom: 100 }}>
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <div style={{
         background: 'linear-gradient(135deg, #0d1f1a 0%, #0a1a2e 45%, #1a0d2e 100%)',
         padding: 'clamp(52px,7vw,96px) clamp(24px,6vw,80px)',
@@ -116,7 +116,7 @@ export default function RefundPolicy() {
         </div>
       </div>
 
-      {/* ── Full-width body ── */}
+      {/* Full-width body */}
       <div style={{ padding: 'clamp(48px,5vw,80px) clamp(24px,6vw,80px)', display: 'flex', flexDirection: 'column', gap: 72 }}>
 
         {/* Timeline */}

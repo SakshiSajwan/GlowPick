@@ -22,9 +22,6 @@ const createTransporter = () => {
     });
 };
 
-// @desc    Auth user & get token
-// @route   POST /api/auth/login
-// @access  Public
 const authUser = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
@@ -41,9 +38,6 @@ const authUser = async (req, res) => {
     }
 };
 
-// @desc    Register a new user
-// @route   POST /api/auth/register
-// @access  Public
 const registerUser = async (req, res) => {
     const { name, email, password } = req.body;
     const userExists = await User.findOne({ email });
@@ -65,9 +59,6 @@ const registerUser = async (req, res) => {
     }
 };
 
-// @desc    Forgot Password - send reset email
-// @route   POST /api/auth/forgot-password
-// @access  Public
 const forgotPassword = async (req, res) => {
     const { email } = req.body;
     try {
@@ -79,7 +70,6 @@ const forgotPassword = async (req, res) => {
         // Generate a secure random token
         const resetToken = crypto.randomBytes(32).toString('hex');
 
-        // Hash the token before saving to DB
         user.resetPasswordToken = crypto
             .createHash('sha256')
             .update(resetToken)
@@ -87,7 +77,7 @@ const forgotPassword = async (req, res) => {
         user.resetPasswordExpires = Date.now() + 60 * 60 * 1000; // 1 hour
         await user.save({ validateBeforeSave: false });
 
-        // Build reset URL (using raw token in the link)
+        // Build reset URL
         const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
         const resetUrl = `${clientUrl}/reset-password/${resetToken}`;
 
@@ -120,7 +110,6 @@ const forgotPassword = async (req, res) => {
         res.json({ message: 'Password reset link has been sent to your email.' });
     } catch (error) {
         console.error('Forgot password error:', error);
-        // Clean up token if email failed
         try {
             const user = await User.findOne({ email });
             if (user) {
@@ -133,9 +122,6 @@ const forgotPassword = async (req, res) => {
     }
 };
 
-// @desc    Reset Password using token
-// @route   POST /api/auth/reset-password/:token
-// @access  Public
 const resetPassword = async (req, res) => {
     const { password } = req.body;
     const rawToken = req.params.token;
@@ -156,7 +142,7 @@ const resetPassword = async (req, res) => {
             return res.status(400).json({ message: 'Invalid or expired reset token.' });
         }
 
-        // Set new password (pre-save hook will hash it)
+        // Set new password
         user.password = password;
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;

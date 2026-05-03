@@ -76,7 +76,6 @@ export default function Header() {
         borderBottom: '3px solid transparent',
     };
 
-    // triple the items so marquee loops seamlessly
     const marqueeItems = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
 
     return (
@@ -124,7 +123,7 @@ export default function Header() {
                 }
             `}</style>
 
-            {/* ── Marquee announcement bar ── */}
+            {/* Marquee announcement bar */}
             <div style={{
                 background: 'linear-gradient(90deg, #B5006B 0%, #FC2779 50%, #FF4D6D 100%)',
                 overflow: 'hidden',
@@ -167,7 +166,7 @@ export default function Header() {
                 </div>
             </div>
 
-            {/* ── Main header ── */}
+            {/* Main header */}
             <header style={{
                 position: 'sticky', top: 0, zIndex: 1000,
                 background: 'rgba(255,255,255,.98)',
@@ -179,7 +178,7 @@ export default function Header() {
                 transition: 'box-shadow 0.3s',
             }}>
 
-                {/* ── Top row ── */}
+                {/* Top row */}
                 <div style={{
                     display: 'flex', alignItems: 'center', gap: 20, height: 80,
                     paddingLeft:  'clamp(16px, 4vw, 48px)',
@@ -413,7 +412,7 @@ export default function Header() {
                     </div>
                 </div>
 
-                {/* ── Category Navbar ── */}
+                {/* Category Navbar */}
                 <nav className="full-nav" style={{
                     borderTop: '1px solid #F5E8F0',
                     background: 'white',
@@ -462,7 +461,7 @@ export default function Header() {
                     </Link>
                 </nav>
 
-                {/* ── Mobile dropdown ── */}
+                {/* Mobile dropdown */}
                 {mobileOpen && (
                     <div style={{
                         borderTop: '1px solid #F0E0EA',

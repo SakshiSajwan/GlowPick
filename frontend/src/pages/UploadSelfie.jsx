@@ -12,7 +12,7 @@ const TIPS = [
   { icon: "🤳", title: "Only selfies accepted", desc: "Our AI requires a clear human face. Product photos, landscapes, or animals will be rejected." },
 ];
 
-/* ─── SAME StepBadge & StepLine as SkinProfile ─── */
+/* StepBadge & StepLine */
 function StepBadge({ number, label, active }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -248,7 +248,7 @@ export default function UploadSelfie() {
         .tip-row:hover { transform: translateX(8px); }
       `}</style>
 
-      {/* ── HEADER (same as SkinProfile) ── */}
+      {/* HEADER*/}
       <div style={{
         textAlign: "center", padding: "30px 24px 20px",
         background: "rgba(255,255,255,.92)",
@@ -298,15 +298,15 @@ export default function UploadSelfie() {
           <p style={{ fontSize: 16, color: "#9CA3AF", marginTop: 6 }}>Step 2 of 3</p>
         </div>
       </div>
-      {/* ── HEADER END ── */}
+      {/* HEADER END */}
 
-      {/* ── Main two-column grid ── */}
+      {/*  Main two-column grid */}
       <div style={{
         display:"grid", gridTemplateColumns:"1.2fr 1fr", gap:28,
         padding:"28px 48px 0", flex:1, position:"relative", zIndex:2,
       }}>
 
-        {/* ═══ LEFT — Camera / Upload ═══ */}
+        {/* LEFT — Camera / Upload */}
         <div style={{
           background:"rgba(255,255,255,0.88)", backdropFilter:"blur(20px)",
           borderRadius:28, border:"1px solid rgba(255,255,255,0.7)",
@@ -424,7 +424,7 @@ export default function UploadSelfie() {
                 display:"flex",alignItems:"center",gap:10,
               }}>
                 <span style={{ fontSize:28 }}>✅</span>
-                <span style={{ color:"#fff",fontWeight:700,fontSize:20 }}>Face validated — ready to analyze!</span>
+                <span style={{ color:"#fff",fontWeight:700,fontSize:20 }}>Face validated, ready to analyze!</span>
                 <button
                   onClick={() => { setPreview(null); setImageFile(null); setRejectMsg(""); }}
                   style={{ marginLeft:"auto",background:"rgba(255,255,255,0.2)",border:"none",color:"#fff",borderRadius:99,padding:"6px 14px",fontSize:13,fontWeight:600,cursor:"pointer" }}
@@ -486,9 +486,9 @@ export default function UploadSelfie() {
             </div>
           )}
         </div>
-        {/* ═══ LEFT END ═══ */}
+        {/* LEFT END */}
 
-        {/* ═══ RIGHT — Tips ═══ */}
+        {/* RIGHT — Tips */}
         <div style={{
           background:"rgba(255,255,255,0.88)", backdropFilter:"blur(20px)",
           borderRadius:28, border:"1px solid rgba(255,255,255,0.7)",
@@ -542,12 +542,12 @@ export default function UploadSelfie() {
             ))}
           </div>
         </div>
-        {/* ═══ RIGHT END ═══ */}
+        {/* RIGHT END */}
 
       </div>
-      {/* ── Main grid END ── */}
+      {/* Main grid END */}
 
-      {/* ── Analyze CTA ── */}
+      {/* Analyze CTA */}
       <div style={{ padding:"24px 48px 40px",position:"relative",zIndex:2 }}>
         <button
           onClick={handleAnalyze}

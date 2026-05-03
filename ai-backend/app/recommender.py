@@ -12,19 +12,15 @@ def normalize_image_url(url: str) -> str:
 
     url = url.strip()
 
-    # Handle Google Drive file links
     if "drive.google.com" in url and "/file/d/" in url:
         try:
             file_id = url.split("/file/d/")[1].split("/")[0]
             return f"https://drive.google.com/uc?id={file_id}"
         except Exception:
             return ""
-
-    # share.google links cannot be embedded as images
     if "share.google" in url:
         return ""
 
-    # Already a valid image URL
     return url
 
 GOOGLE_SHEET_CSV_URL = (
@@ -57,7 +53,6 @@ def recommend(skin_profile):
     recommendations = []
 
     for product in products:
-        # 🔥 support both column types
         product_concerns = [
             c.strip().lower()
             for c in (

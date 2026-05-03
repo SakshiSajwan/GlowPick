@@ -1,99 +1,304 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { FaEnvelope, FaHeart, FaRegHeart, FaArrowLeft } from 'react-icons/fa';
+import { useGlobalContext } from '../context/Context';
+import api from '../services/api';
 
-const ForgotPassword = () => {
-    const [email, setEmail] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [sent, setSent] = useState(false);
+function Spinner() {
+    return (
+        <span style={{
+            display: 'inline-block', width: 20, height: 20,
+            border: '2.5px solid rgba(255,255,255,0.4)', borderTopColor: 'white',
+            borderRadius: '50%', animation: 'gpSpin 0.7s linear infinite',
+        }} />
+    );
+}
 
-    const submitHandler = async (e) => {
+function OtpInput({ value, onChange }) {
+    const inputs = [];
+    const digits = value.split('');
+
+    const handleChange = (e, i) => {
+        const val = e.target.value.replace(/\D/g, '').slice(-1);
+        const arr = [...digits];
+        arr[i] = val;
+        onChange(arr.join(''));
+        if (val && i < 5) inputs[i + 1]?.focus();
+    };
+
+    const handleKey = (e, i) => {
+        if (e.key === 'Backspace' && !digits[i] && i > 0) inputs[i - 1]?.focus();
+    };
+
+    const handlePaste = (e) => {
+        const paste = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6);
+        onChange(paste.padEnd(6, '').slice(0, 6));
         e.preventDefault();
-        setLoading(true);
-        try {
-            const { data } = await axios.post('http://127.0.0.1:5000/api/auth/forgot-password', { email });
-            toast.success(data.message || 'Reset link sent! Check your email.');
-            setSent(true);
-        } catch (err) {
-            toast.error(err.response?.data?.message || 'Something went wrong. Please try again.');
-        } finally {
-            setLoading(false);
-        }
     };
 
     return (
-        <div className="min-h-screen flex justify-center items-center bg-[#FCE4EC] relative overflow-hidden">
-            {/* Background Decorations */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#F06292] rounded-bl-full transform rotate-12 -translate-y-16 translate-x-16 opacity-40"></div>
-            <div className="absolute top-0 right-20 w-48 h-48 bg-[#F06292] rounded-bl-full transform rotate-12 -translate-y-20 translate-x-20 opacity-20"></div>
+        <div style={{ display: 'flex', gap: 10, justifyContent: 'center' }}>
+            {[0,1,2,3,4,5].map(i => (
+                <input
+                    key={i}
+                    ref={el => inputs[i] = el}
+                    type="text" inputMode="numeric" maxLength={1}
+                    value={digits[i] || ''}
+                    onChange={e => handleChange(e, i)}
+                    onKeyDown={e => handleKey(e, i)}
+                    onPaste={handlePaste}
+                    style={{
+                        width: 52, height: 58, textAlign: 'center',
+                        fontSize: 24, fontWeight: 800, borderRadius: 14, outline: 'none',
+                        border: `2px solid ${digits[i] ? '#FC2779' : '#e5e7eb'}`,
+                        background: digits[i] ? '#FFF0F7' : '#fafafa',
+                        color: '#1a1a1a', fontFamily: 'inherit', transition: 'all 0.2s',
+                        boxShadow: digits[i] ? '0 0 0 3px rgba(252,39,121,0.15)' : 'none',
+                    }}
+                />
+            ))}
+        </div>
+    );
+}
 
-            <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden relative z-10 mx-4">
+export default function ForgotPassword() {
+    const navigate = useNavigate();
+    const { openLogin } = useGlobalContext();
+
+    const [step,        setStep]        = useState('email');
+    const [email,       setEmail]       = useState('');
+    const [otp,         setOtp]         = useState('');
+    const [password,    setPassword]    = useState('');
+    const [confirm,     setConfirm]     = useState('');
+    const [loading,     setLoading]     = useState(false);
+    const [countdown,   setCountdown]   = useState(0);
+
+    const startCountdown = () => {
+        setCountdown(60);
+        const t = setInterval(() => {
+            setCountdown(c => { if (c <= 1) { clearInterval(t); return 0; } return c - 1; });
+        }, 1000);
+    };
+
+    const handleSendOtp = async (e) => {
+        e.preventDefault();
+        if (!email) { toast.error('Please enter your email'); return; }
+        setLoading(true);
+        try {
+            await api.post('/auth/forgot-password', { email });
+            toast.success('OTP sent to your email 📧');
+            setStep('otp'); startCountdown();
+        } catch (err) {
+            toast.error(err?.response?.data?.message || 'Could not send OTP.');
+        } finally { setLoading(false); }
+    };
+
+    const handleVerifyOtp = async (e) => {
+        e.preventDefault();
+        if (otp.length < 6) { toast.error('Enter the full 6-digit OTP'); return; }
+        setLoading(true);
+        try {
+            await api.post('/auth/verify-otp', { email, otp });
+            toast.success('OTP verified ✅'); setStep('reset');
+        } catch (err) {
+            toast.error(err?.response?.data?.message || 'Invalid or expired OTP.');
+        } finally { setLoading(false); }
+    };
+
+    const handleResend = async () => {
+        if (countdown > 0) return;
+        setOtp(''); setLoading(true);
+        try {
+            await api.post('/auth/forgot-password', { email });
+            toast.success('New OTP sent 📧'); startCountdown();
+        } catch { toast.error('Could not resend OTP.'); }
+        finally { setLoading(false); }
+    };
+
+    const handleReset = async (e) => {
+        e.preventDefault();
+        if (!password || password.length < 6) { toast.error('Password must be at least 6 characters'); return; }
+        if (password !== confirm) { toast.error("Passwords don't match"); return; }
+        setLoading(true);
+        try {
+            await api.post('/auth/reset-password-otp', { email, otp, password });
+            toast.success('Password reset successfully! 🎉');
+            setStep('done');
+        } catch (err) {
+            toast.error(err?.response?.data?.message || 'Reset failed.');
+        } finally { setLoading(false); }
+    };
+
+    const btnStyle = (disabled) => ({
+        width: '100%', height: 56, borderRadius: 16, marginTop: 8,
+        background: disabled ? '#f9a8d4' : 'linear-gradient(135deg,#B5006B,#FC2779)',
+        color: 'white', border: 'none', cursor: disabled ? 'not-allowed' : 'pointer',
+        fontSize: 18, fontWeight: 800, fontFamily: 'inherit',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+        boxShadow: disabled ? 'none' : '0 8px 28px rgba(181,0,107,0.38)',
+        transition: 'all 0.2s',
+    });
+
+    const inputStyle = {
+        width: '100%', height: 52, boxSizing: 'border-box',
+        border: '2px solid #e5e7eb', borderRadius: 14,
+        padding: '0 16px', fontSize: 17, fontFamily: 'inherit',
+        background: '#fafafa', color: '#1a1a1a', outline: 'none',
+        transition: 'all 0.2s',
+    };
+
+    return (
+        <div style={{
+            minHeight: '100vh', display: 'flex', alignItems: 'center',
+            justifyContent: 'center', padding: '24px 16px',
+            background: 'linear-gradient(135deg,#FFF0F7 0%,#FFFBF8 40%,#F5F0FF 100%)',
+        }}>
+            <style>{`@keyframes gpSpin { to { transform: rotate(360deg); } }`}</style>
+
+            <div style={{
+                width: '100%', maxWidth: 480, background: 'white',
+                borderRadius: 28, overflow: 'hidden',
+                boxShadow: '0 40px 100px rgba(0,0,0,0.15)',
+            }}>
                 {/* Header */}
-                <div className="p-10 pb-6">
-                    <div className="relative inline-block mb-4">
-                        <FaRegHeart className="text-6xl text-[#F06292] opacity-30" />
-                        <FaHeart className="text-4xl text-[#F06292] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                <div style={{
+                    background: 'linear-gradient(135deg,#B5006B 0%,#FC2779 55%,#FF6BAD 100%)',
+                    padding: '36px 40px 28px', position: 'relative', overflow: 'hidden',
+                }}>
+                    <div style={{ position:'absolute',width:180,height:180,borderRadius:'50%',border:'1px solid rgba(255,255,255,0.15)',top:-50,right:-20,pointerEvents:'none' }}/>
+                    <div style={{ fontWeight:900,fontSize:36,color:'white',letterSpacing:'-0.02em',lineHeight:1,marginBottom:8 }}>
+                        GLOW<span style={{ fontStyle:'italic',opacity:0.85 }}>PICK</span>
                     </div>
-                    <h1 className="text-3xl font-bold text-[#F06292] mb-2">Forgot Password?</h1>
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                        No worries! Enter your email and we'll send you a reset link.
-                    </p>
+                    <p style={{ fontSize:20,color:'rgba(255,255,255,0.9)',fontWeight:400 }}>🔐 Reset your password</p>
+
+                    {/* Progress dots */}
+                    <div style={{ display:'flex',gap:8,marginTop:20 }}>
+                        {['email','otp','reset'].map((s,i) => {
+                            const steps = ['email','otp','reset'];
+                            const cur = steps.indexOf(step === 'done' ? 'reset' : step);
+                            const done = cur > i; const active = cur === i;
+                            return (
+                                <div key={s} style={{
+                                    height:8, borderRadius:99,
+                                    width: active ? 32 : 12,
+                                    background: done ? '#22c55e' : active ? 'white' : 'rgba(255,255,255,0.3)',
+                                    transition:'all 0.3s',
+                                }}/>
+                            );
+                        })}
+                    </div>
                 </div>
 
-                {/* Form Panel */}
-                <div className="bg-[#F06292] p-8 pb-10">
-                    {sent ? (
-                        <div className="text-center py-6">
-                            <div className="text-5xl mb-4">📧</div>
-                            <p className="text-white font-semibold text-lg mb-2">Check your inbox!</p>
-                            <p className="text-pink-100 text-sm">
-                                We sent a password reset link to <strong>{email}</strong>
-                            </p>
-                        </div>
-                    ) : (
-                        <form onSubmit={submitHandler} className="space-y-6">
-                            <div className="space-y-2">
-                                <label className="block text-white text-sm font-medium" htmlFor="email">
-                                    Email Address
-                                </label>
-                                <div className="relative">
-                                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                        <FaEnvelope />
-                                    </span>
-                                    <input
-                                        id="email"
-                                        type="email"
-                                        placeholder="Enter your registered email"
-                                        className="w-full pl-10 pr-4 py-3 rounded-md bg-white text-gray-800 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FCE4EC]"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                            </div>
+                {/* Body */}
+                <div style={{ padding:'36px 40px 40px', display:'flex', flexDirection:'column', gap:20 }}>
 
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="w-full py-4 bg-gradient-to-r from-[#FCE4EC] to-[#F48FB1] text-[#E91E63] font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform active:scale-95 disabled:opacity-60"
-                            >
-                                {loading ? 'Sending...' : 'Send Reset Link'}
+                    {/* Step 1: Email */}
+                    {step === 'email' && (
+                        <form onSubmit={handleSendOtp} style={{ display:'flex',flexDirection:'column',gap:16 }}>
+                            <div style={{ textAlign:'center' }}>
+                                <div style={{ fontSize:48,marginBottom:8 }}>🔐</div>
+                                <p style={{ fontSize:15,color:'#6b7280' }}>Enter your registered email and we'll send a 6-digit OTP.</p>
+                            </div>
+                            <div>
+                                <label style={{ display:'block',fontSize:16,fontWeight:700,color:'#444',marginBottom:8 }}>Email Address</label>
+                                <input type="email" value={email} onChange={e => setEmail(e.target.value)}
+                                    placeholder="you@example.com" required style={inputStyle}
+                                    onFocus={e => { e.target.style.borderColor='#FC2779'; e.target.style.boxShadow='0 0 0 4px rgba(252,39,121,0.1)'; }}
+                                    onBlur={e => { e.target.style.borderColor='#e5e7eb'; e.target.style.boxShadow='none'; }}
+                                />
+                            </div>
+                            <button type="submit" disabled={loading} style={btnStyle(loading)}>
+                                {loading ? <><Spinner/> Sending OTP…</> : 'Send OTP →'}
+                            </button>
+                            <div style={{ textAlign:'center' }}>
+                                <Link to="/" onClick={openLogin} style={{ color:'#FC2779',fontSize:15,fontWeight:700,textDecoration:'none' }}>
+                                    ← Back to Sign In
+                                </Link>
+                            </div>
+                        </form>
+                    )}
+
+                    {/* Step 2: OTP */}
+                    {step === 'otp' && (
+                        <form onSubmit={handleVerifyOtp} style={{ display:'flex',flexDirection:'column',gap:20 }}>
+                            <div style={{ textAlign:'center' }}>
+                                <div style={{ fontSize:48,marginBottom:8 }}>📧</div>
+                                <p style={{ fontSize:15,color:'#6b7280' }}>
+                                    We sent a 6-digit OTP to <strong style={{ color:'#FC2779' }}>{email}</strong>.<br/>Enter it below within 10 minutes.
+                                </p>
+                            </div>
+                            <OtpInput value={otp} onChange={setOtp} />
+                            <div style={{ textAlign:'center' }}>
+                                {countdown > 0
+                                    ? <span style={{ fontSize:14,color:'#9ca3af' }}>Resend in <strong style={{ color:'#FC2779' }}>{countdown}s</strong></span>
+                                    : <button type="button" onClick={handleResend} disabled={loading}
+                                        style={{ background:'none',border:'none',color:'#FC2779',fontSize:15,fontWeight:700,cursor:'pointer',textDecoration:'underline' }}>
+                                        Resend OTP
+                                    </button>
+                                }
+                            </div>
+                            <button type="submit" disabled={loading || otp.length < 6} style={btnStyle(loading || otp.length < 6)}>
+                                {loading ? <><Spinner/> Verifying…</> : 'Verify OTP →'}
+                            </button>
+                            <button type="button" onClick={() => { setStep('email'); setOtp(''); }} style={{
+                                background:'none',border:'none',color:'#9ca3af',fontSize:14,fontWeight:600,cursor:'pointer',
+                            }}>← Change email</button>
+                        </form>
+                    )}
+
+                    {/* Step 3: New password */}
+                    {step === 'reset' && (
+                        <form onSubmit={handleReset} style={{ display:'flex',flexDirection:'column',gap:16 }}>
+                            <div style={{ textAlign:'center' }}>
+                                <div style={{ fontSize:48,marginBottom:8 }}>🔑</div>
+                                <p style={{ fontSize:15,color:'#6b7280' }}>Create a new strong password for your account.</p>
+                            </div>
+                            <div>
+                                <label style={{ display:'block',fontSize:16,fontWeight:700,color:'#444',marginBottom:8 }}>New Password</label>
+                                <input type="password" value={password} onChange={e => setPassword(e.target.value)}
+                                    placeholder="Min. 6 characters" style={inputStyle}
+                                    onFocus={e => { e.target.style.borderColor='#FC2779'; e.target.style.boxShadow='0 0 0 4px rgba(252,39,121,0.1)'; }}
+                                    onBlur={e => { e.target.style.borderColor='#e5e7eb'; e.target.style.boxShadow='none'; }}
+                                />
+                            </div>
+                            <div>
+                                <label style={{ display:'block',fontSize:16,fontWeight:700,color:'#444',marginBottom:8 }}>Confirm Password</label>
+                                <input type="password" value={confirm} onChange={e => setConfirm(e.target.value)}
+                                    placeholder="Repeat your password" style={inputStyle}
+                                    onFocus={e => { e.target.style.borderColor='#FC2779'; e.target.style.boxShadow='0 0 0 4px rgba(252,39,121,0.1)'; }}
+                                    onBlur={e => { e.target.style.borderColor='#e5e7eb'; e.target.style.boxShadow='none'; }}
+                                />
+                                {confirm && confirm === password && password.length >= 6 && (
+                                    <p style={{ fontSize:14,color:'#22c55e',marginTop:6,fontWeight:700 }}>✓ Passwords match</p>
+                                )}
+                            </div>
+                            <button type="submit" disabled={loading} style={btnStyle(loading)}>
+                                {loading ? <><Spinner/> Resetting…</> : '🔐 Reset Password'}
                             </button>
                         </form>
                     )}
-                </div>
 
-                {/* Footer */}
-                <div className="p-6 text-center">
-                    <Link to="/login" className="flex items-center justify-center gap-2 text-[#F06292] font-medium hover:underline text-sm">
-                        <FaArrowLeft /> Back to Login
-                    </Link>
+                    {/* Done */}
+                    {step === 'done' && (
+                        <div style={{ textAlign:'center',padding:'16px 0',display:'flex',flexDirection:'column',gap:20 }}>
+                            <div style={{ fontSize:64 }}>🎉</div>
+                            <div>
+                                <h3 style={{ fontSize:22,fontWeight:800,color:'#1a1a1a',marginBottom:8 }}>Password Reset!</h3>
+                                <p style={{ fontSize:15,color:'#6b7280' }}>Your password has been updated. You can now sign in.</p>
+                            </div>
+                            <Link to="/" onClick={openLogin} style={{
+                                display:'flex',alignItems:'center',justifyContent:'center',
+                                height:56,borderRadius:16,textDecoration:'none',
+                                background:'linear-gradient(135deg,#B5006B,#FC2779)',
+                                color:'white',fontSize:18,fontWeight:800,
+                                boxShadow:'0 8px 28px rgba(181,0,107,0.38)',
+                            }}>
+                                Sign In →
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
     );
-};
-
-export default ForgotPassword;
+}

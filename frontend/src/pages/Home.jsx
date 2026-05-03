@@ -111,7 +111,7 @@ const VALUES = [
   { icon: '🌿', title: 'Clean & Sustainable', desc: 'Cruelty-free, ethically sourced products. No parabens, no sulfates, no compromises.' },
 ];
 
-/* ─── FLOATING AI BUTTON ─────────────────────────────────────────── */
+/* FLOATING AI BUTTON */
 function FloatingAIButton() {
   const [hovered, setHovered] = useState(false);
 
@@ -165,7 +165,7 @@ function FloatingAIButton() {
   );
 }
 
-/* ─── PRODUCT CARD ───────────────────────────────────────────────── */
+/* PRODUCT CARD */
 function ProductCard({ product, onAddToCart }) {
   const [hov, setHov] = useState(false);
   const price = product.discountPrice && product.discountPrice < product.price
@@ -290,7 +290,7 @@ function ProductCard({ product, onAddToCart }) {
   );
 }
 
-/* ─── SECTION HEADER ─────────────────────────────────────────────── */
+/* SECTION HEADER */
 function SectionHeader({ eyebrow, title, sub, linkTo, linkLabel = 'View All →' }) {
   return (
     <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 28 }}>
@@ -328,7 +328,7 @@ function SectionHeader({ eyebrow, title, sub, linkTo, linkLabel = 'View All →'
   );
 }
 
-/* ─── PRODUCT GRID ───────────────────────────────────────────────── */
+/* PRODUCT GRID  */
 function ProductGrid({ products, onAddToCart }) {
   return (
     <div style={{
@@ -341,7 +341,7 @@ function ProductGrid({ products, onAddToCart }) {
   );
 }
 
-/* ─── MAIN HOME ──────────────────────────────────────────────────── */
+/* MAIN HOME */
 export default function Home() {
   const { dispatch } = useGlobalContext();
   const navigate = useNavigate();
@@ -372,7 +372,7 @@ export default function Home() {
   return (
     <div style={{ background: '#FFFBF8', width: '100%', boxSizing: 'border-box' }}>
 
-      {/* ══ HERO BANNER ══════════════════════════════════════════════ */}
+      {/* HERO BANNER */}
       <div style={{
         position: 'relative', width: '100%',
         height: 'clamp(380px,62vw,836px)',
@@ -479,7 +479,7 @@ export default function Home() {
         ))}
       </div>
 
-      {/* ══ PERKS BAR ════════════════════════════════════════════════ */}
+      {/* PERKS BAR */}
       <div style={{ background: '#FFFBF8', padding: `20px ${PAD}`, borderBottom: '1px solid #F5E0EC' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
           {PERKS.map((p, i) => (
@@ -510,7 +510,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ══ CATEGORIES ═══════════════════════════════════════════════ */}
+      {/* CATEGORIES */}
       <div style={{ padding: `clamp(32px,4vw,60px) ${PAD}` }}>
         <SectionHeader title="Shop by Category" linkTo="/products" linkLabel="All Categories →" />
         <div style={{
@@ -553,7 +553,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ══ BEST SELLERS ═════════════════════════════════════════════ */}
+      {/* BEST SELLERS */}
       <div style={{ padding: `0 ${PAD} clamp(32px,4vw,60px)` }}>
         <SectionHeader
           eyebrow="🔥 Most Loved"
@@ -565,7 +565,7 @@ export default function Home() {
         <ProductGrid products={bestSellers} onAddToCart={addToCart} />
       </div>
 
-      {/* ══ AI BANNER ════════════════════════════════════════════════ */}
+      {/* AI BANNER */}
       <div style={{ padding: `0 ${PAD} clamp(40px,6vw,80px)` }}>
         <div style={{
           background: 'linear-gradient(135deg, #E91E63 0%, #C2185B 100%)',
@@ -623,7 +623,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ══ SKINCARE ESSENTIALS ══════════════════════════════════════ */}
+      {/* SKINCARE ESSENTIALS */}
       <div style={{ padding: `0 ${PAD} clamp(32px,4vw,60px)` }}>
         <SectionHeader
           eyebrow="🌿 Clean Beauty"
@@ -635,7 +635,7 @@ export default function Home() {
         <ProductGrid products={skincareProducts} onAddToCart={addToCart} />
       </div>
 
-      {/* ══ MAKEUP MUST-HAVES ════════════════════════════════════════ */}
+      {/* MAKEUP MUST-HAVES */}
       <div style={{ padding: `0 ${PAD} clamp(32px,4vw,60px)` }}>
         <SectionHeader
           eyebrow="💄 Trending Now"
@@ -647,7 +647,7 @@ export default function Home() {
         <ProductGrid products={makeupProducts} onAddToCart={addToCart} />
       </div>
 
-      {/* ══ HAIRCARE ════════════════════════════════════════════════ */}
+      {/* HAIRCARE */}
       <div style={{ padding: `0 ${PAD} clamp(32px,4vw,60px)` }}>
         <SectionHeader
           eyebrow="💆 Top Picks"
@@ -659,7 +659,7 @@ export default function Home() {
         <ProductGrid products={haircareProducts} onAddToCart={addToCart} />
       </div>
 
-      {/* ══ GLOWPICK PROMISE ═════════════════════════════════════════ */}
+      {/* GLOWPICK PROMISE */}
       <div style={{ padding: `0 ${PAD} clamp(32px,4vw,60px)` }}>
         <div style={{
           background: '#fff', borderRadius: 24,
@@ -693,7 +693,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ══ NEWSLETTER ══════════════════════════════════════════════ */}
+      {/* NEWSLETTER */}
       <div style={{ padding: `0 ${PAD} clamp(40px,5vw,80px)` }}>
         <div style={{
           background: '#1C1C1E', borderRadius: 24,
@@ -740,7 +740,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ══ FLOATING AI BUTTON ══════════════════════════════════════ */}
+      {/* FLOATING AI BUTTON */}
       <FloatingAIButton />
 
     </div>

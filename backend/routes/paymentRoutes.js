@@ -1,6 +1,6 @@
 const express = require('express');
 const Razorpay = require('razorpay');
-const crypto = require('crypto'); // built-in, no install needed
+const crypto = require('crypto'); 
 const router = express.Router();
 
 const razorpay = new Razorpay({
@@ -10,10 +10,10 @@ const razorpay = new Razorpay({
 
 // Route 1: Create Order
 router.post('/create-order', async (req, res) => {
-  const { amount } = req.body; // amount in ₹, we convert to paise below
+  const { amount } = req.body; 
 
   const options = {
-    amount: amount * 100, // paise
+    amount: amount * 100, 
     currency: 'INR',
     receipt: `receipt_${Date.now()}`,
   };
@@ -37,7 +37,6 @@ router.post('/verify', (req, res) => {
     .digest('hex');
 
   if (expectedSignature === razorpay_signature) {
-    // ✅ Payment is genuine — save your order to DB here
     res.json({ success: true, message: 'Payment verified' });
   } else {
     res.status(400).json({ success: false, message: 'Invalid signature' });

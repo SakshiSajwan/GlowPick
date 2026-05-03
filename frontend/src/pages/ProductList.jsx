@@ -38,7 +38,7 @@ const ProductList = () => {
         })();
     }, []);
 
-    /* ── Cart helpers ── */
+    /* Cart helpers */
     const getCartItem = (id) => cartItems.find(i => i._id === id);
     const addToCart   = (product) => {
         dispatch({ type: 'ADD_TO_CART', payload: { ...product, qty: 1 } });
@@ -49,7 +49,7 @@ const ProductList = () => {
         dispatch({ type: 'ADD_TO_CART', payload: { ...product, qty } });
     };
 
-    /* ── Filter / sort logic ── */
+    /* Filter / sort logic */
     const brands = [...new Set(products
         .filter(p => !categoryQuery || p.category?.toLowerCase() === categoryQuery.toLowerCase())
         .map(p => p.brand)
@@ -80,7 +80,7 @@ const ProductList = () => {
     const activeFilterCount = selectedBrands.length + (priceRange < 5000 ? 1 : 0);
     const clearFilters = () => { setSelectedBrands([]); setPriceRange(5000); setSortBy('popularity'); };
 
-    /* ── Filter panel ── */
+    /* Filter panel */
     const FilterPanel = () => (
         <div style={{ background: 'white', borderRadius: 18, border: '1.5px solid #F0E0EA', padding: '28px 24px' }}>
             {/* Header */}
@@ -148,7 +148,7 @@ const ProductList = () => {
     return (
         <div style={{ display: 'flex', gap: 32, paddingTop: 32, paddingBottom: 64, alignItems: 'flex-start' }}>
 
-            {/* ── Sidebar — wider ── */}
+            {/* Sidebar — wider */}
             <div className="sidebar-desktop" style={{ width: 290, flexShrink: 0 }}>
                 <div style={{ position: 'sticky', top: 108 }}>
                     <FilterPanel />
@@ -162,7 +162,7 @@ const ProductList = () => {
                 @media(min-width: 768px) { .mobile-filter-btn { display: none !important; } }
             `}</style>
 
-            {/* ── Main ── */}
+            {/* Main */}
             <div style={{ flex: 1, minWidth: 0 }}>
 
                 {/* Topbar */}
@@ -228,7 +228,7 @@ const ProductList = () => {
                         </button>
                     </div>
                 ) : (
-                    /* ── Product Grid — 3-4 per row max, bigger cards ── */
+                    /* Product Grid — 3-4 per row max, bigger cards */
                     <div style={{
                         display: 'grid',
                         gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',

@@ -217,7 +217,7 @@ export default function CheckoutScreen() {
   const [codHover, setCodHover] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('razorpay'); // 'razorpay' | 'cod'
   const [loading, setLoading] = useState(false);
-  // ── Modal state ───────────────────────────────────────────────
+  // Modal state
   const [modalOpen, setModalOpen] = useState(false);
   const [placedOrderId, setPlacedOrderId] = useState(null);
 
@@ -227,7 +227,7 @@ export default function CheckoutScreen() {
   const totalPrice = itemsPrice - discountAmount + shippingPrice;
   const freeShipping = shippingPrice === 0;
 
-  // ── Validation ────────────────────────────────────────────────
+  // Validation
   const validate = () => {
     const e = {};
     if (!address.fullName.trim()) e.fullName = 'Full name is required';
@@ -240,7 +240,7 @@ export default function CheckoutScreen() {
     return Object.keys(e).length === 0;
   };
 
-  // ── Razorpay Payment ──────────────────────────────────────────
+  // Razorpay Payment
   const handleRazorpay = async () => {
     if (!validate()) return;
     setLoading(true);
@@ -298,8 +298,7 @@ export default function CheckoutScreen() {
     }
   };
 
-  // ── Cash on Delivery ──────────────────────────────────────────
-  // ── Cash on Delivery ────────────────────────────────────────────
+  // Cash on Delivery
   const handleCOD = () => {
     if (!validate()) return;
     const codOrderId = 'COD-' + Date.now().toString().slice(-6);
@@ -315,7 +314,7 @@ export default function CheckoutScreen() {
   return (
     <div style={styles.page}>
       <div style={styles.container}>
-        {/* ── LEFT: Shipping + Review ── */}
+        {/* LEFT: Shipping + Review */}
         <div style={styles.leftCol}>
 
           {/* Shipping Address */}
@@ -463,7 +462,7 @@ export default function CheckoutScreen() {
           </div>
         </div>
 
-        {/* ── RIGHT: Order Summary ── */}
+        {/* RIGHT: Order Summary */}
         <div>
           <div style={styles.summaryCard}>
             <h3 style={styles.summaryTitle}>Order Summary</h3>
@@ -570,7 +569,7 @@ export default function CheckoutScreen() {
         </div>
       </div>
 
-      {/* ── Order Success Modal ── */}
+      {/* Order Success Modal */}
       <OrderSuccessModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

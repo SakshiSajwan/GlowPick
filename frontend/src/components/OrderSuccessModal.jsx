@@ -14,10 +14,8 @@ const OrderSuccessModal = ({ isOpen, onClose, orderId }) => {
   const [shopHover, setShopHover]       = useState(false);
   const [cancelHover, setCancelHover]   = useState(false);
 
-  // cancel flow: 'idle' | 'confirm' | 'cancelling' | 'cancelled'
   const [cancelStage, setCancelStage]   = useState('idle');
 
-  // Animate in + confetti
   useEffect(() => {
     if (isOpen) {
       setCancelStage('idle');
@@ -54,7 +52,7 @@ const OrderSuccessModal = ({ isOpen, onClose, orderId }) => {
 
   if (!isOpen) return null;
 
-  // ── Cancelled screen ──────────────────────────────────────────
+  // Cancelled screen
   if (cancelStage === 'cancelled') {
     return (
       <div style={overlay}>
@@ -78,7 +76,7 @@ const OrderSuccessModal = ({ isOpen, onClose, orderId }) => {
     );
   }
 
-  // ── Cancelling (loading) screen ───────────────────────────────
+  // Cancelling (loading) screen
   if (cancelStage === 'cancelling') {
     return (
       <div style={overlay}>
@@ -110,7 +108,7 @@ const OrderSuccessModal = ({ isOpen, onClose, orderId }) => {
     );
   }
 
-  // ── Confirm cancel screen ─────────────────────────────────────
+  // Confirm cancel screen
   if (cancelStage === 'confirm') {
     return (
       <div style={overlay}>
@@ -144,7 +142,7 @@ const OrderSuccessModal = ({ isOpen, onClose, orderId }) => {
     );
   }
 
-  // ── Default: Success screen ───────────────────────────────────
+  // Default: Success screen
   return (
     <div style={overlay}>
       <div style={{ ...card, transform: visible ? 'scale(1)' : 'scale(0.85)', opacity: visible ? 1 : 0, transition: 'transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s ease' }}>
@@ -190,7 +188,7 @@ const OrderSuccessModal = ({ isOpen, onClose, orderId }) => {
   );
 };
 
-// ── Shared styles ─────────────────────────────────────────────
+// Shared styles
 const overlay = {
   position: 'fixed', inset: 0, zIndex: 10000,
   display: 'flex', alignItems: 'center', justifyContent: 'center',

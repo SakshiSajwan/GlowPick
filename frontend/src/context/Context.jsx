@@ -28,7 +28,7 @@ const initialState = {
 const reducer = (state, action) => {
     switch (action.type) {
         case 'USER_LOGIN':
-            localStorage.setItem('userInfo', JSON.stringify(action.payload)); // ← FIX: also persist here
+            localStorage.setItem('userInfo', JSON.stringify(action.payload));
             return { ...state, userInfo: action.payload };
 
         case 'USER_LOGOUT':
@@ -71,28 +71,28 @@ const reducer = (state, action) => {
 };
 
 export const Provider = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch]     = useReducer(reducer, initialState);
     const [authModal, setAuthModal] = useState(false);
-    const [authTab, setAuthTab]     = useState('login');
+    const [authTab,   setAuthTab]   = useState('login');
 
-    const openLogin    = () => { setAuthTab('login');    setAuthModal(true); };
-    const openRegister = () => { setAuthTab('register'); setAuthModal(true); };
-    const closeAuthModal = () => setAuthModal(false);
+    const openLogin       = () => { setAuthTab('login');          setAuthModal(true); };
+    const openRegister    = () => { setAuthTab('register');        setAuthModal(true); };
+    const openForgotPassword = () => { setAuthTab('forgot');      setAuthModal(true); };
+    const closeAuthModal  = () => setAuthModal(false);
 
     return (
         <Context.Provider value={{
-            /* ── state shortcuts (so components don't need state.userInfo) ── */
             userInfo:  state.userInfo,
             cartItems: state.cartItems,
-            /* ── full state + dispatch for anything else ── */
             state,
             dispatch,
-            /* ── auth modal ── */
+            /* auth modal */
             authModal,
             authTab,
             setAuthTab,
             openLogin,
             openRegister,
+            openForgotPassword,
             closeAuthModal,
         }}>
             {children}

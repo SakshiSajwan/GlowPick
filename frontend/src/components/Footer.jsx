@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     const transition = 'all 0.2s ease-in-out';
 
-    // State for the Join button logic
     const [email, setEmail] = useState('');
     const [isSubscribed, setIsSubscribed] = useState(false);
 
@@ -12,14 +11,12 @@ const Footer = () => {
         if (email.includes('@')) {
             setIsSubscribed(true);
             setEmail('');
-            // Reset message after 3 seconds
             setTimeout(() => setIsSubscribed(false), 3000);
         } else {
             alert("Please enter a valid email address!");
         }
     };
 
-    // Social Media Links - Replace '#' with your actual URLs
     const socialLinks = [
         { icon: '📸', url: 'https://instagram.com/glowpick', label: 'Instagram' },
         { icon: '🐦', url: 'https://twitter.com/glowpick', label: 'Twitter' },
@@ -35,7 +32,7 @@ const Footer = () => {
             borderTop: '1px solid #1E293B'
         }}>
 
-            {/* ── Main grid ── */}
+            {/* Main grid */}
             <div style={{
                 width: '100%',
                 padding: 'clamp(60px, 8vw, 100px) clamp(24px, 6vw, 80px)', 
@@ -209,7 +206,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* ── Bottom bar ── */}
+            {/* Bottom bar */}
             <div style={{ borderTop: '1px solid #1E293B', background: '#0B1120' }}>
                 <div style={{
                     width: '100%',

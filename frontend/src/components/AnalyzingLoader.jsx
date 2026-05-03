@@ -20,7 +20,6 @@ export default function AnalyzingLoader() {
     return () => clearInterval(interval);
   }, []);
 
-  // Animate scan line with requestAnimationFrame
   useEffect(() => {
     let start = null;
     const duration = 1800;

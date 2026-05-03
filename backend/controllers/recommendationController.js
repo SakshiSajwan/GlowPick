@@ -15,7 +15,6 @@ const getRecommendations = async (req, res) => {
 
         const formData = new FormData();
 
-        // ✅ IMPORTANT FIX
         formData.append("profile", profile);
         formData.append("selfie", image.buffer, {
             filename: image.originalname,

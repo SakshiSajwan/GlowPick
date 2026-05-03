@@ -91,7 +91,7 @@ export default function PrivacyPolicy() {
   return (
     <div style={{ background: '#FFFBF8', minHeight: '100vh', paddingBottom: 100 }}>
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <div style={{
         background: 'linear-gradient(135deg, #1C1C1E 0%, #2d1a24 55%, #3d1030 100%)',
         padding: 'clamp(52px,7vw,96px) clamp(24px,6vw,80px)',
@@ -131,7 +131,7 @@ export default function PrivacyPolicy() {
         </div>
       </div>
 
-      {/* ── Body — full width with sidebar ── */}
+      {/* Body — full width with sidebar */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: '260px 1fr',
@@ -140,7 +140,7 @@ export default function PrivacyPolicy() {
         minHeight: '70vh',
       }}>
 
-        {/* ── Sticky Sidebar ── */}
+        {/* Sticky Sidebar */}
         <aside style={{
           position: 'sticky', top: 0,
           height: '100vh',
@@ -169,7 +169,7 @@ export default function PrivacyPolicy() {
           ))}
         </aside>
 
-        {/* ── Main content — full remaining width ── */}
+        {/* Main content */}
         <div style={{ padding: 'clamp(40px,5vw,72px) clamp(32px,5vw,80px)', display: 'flex', flexDirection: 'column', gap: 56 }}>
 
           {/* Intro card */}

@@ -25,10 +25,9 @@ function AppContent() {
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Header />
 
-            {/* LoginModal is mounted globally — triggered via context */}
+            {/* LoginModal is mounted globally*/}
             <LoginModal />
 
-            {/* ⚠️ NO container/padding here — pages control their own width */}
             <main style={{ flex: 1 }}>
                 <Routes>
                     <Route path="/"                     element={<Home />} />

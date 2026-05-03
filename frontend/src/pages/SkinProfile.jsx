@@ -242,7 +242,7 @@ export default function SkinProfile() {
         }
       `}</style>
 
-      {/* ── HEADER ── */}
+      {/* HEADER */}
       <div style={{
         textAlign: "center", padding: "30px 24px 20px",
         background: "rgba(255,255,255,.92)",
@@ -292,7 +292,7 @@ export default function SkinProfile() {
         </div>
       </div>
 
-      {/* ── TWO COLUMN BODY ── */}
+      {/* TWO COLUMN BODY */}
       <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr" }}>
 
         {/* LEFT — Concerns */}
@@ -408,7 +408,7 @@ export default function SkinProfile() {
           )}
         </div>
 
-        {/* RIGHT — Allergies only (NO continue here) */}
+        {/* RIGHT — Allergies only */}
         <div style={{
           padding: "32px 40px 32px",
           background: "rgba(255,255,255,.5)",
@@ -416,7 +416,6 @@ export default function SkinProfile() {
           display: "flex", flexDirection: "column",
         }}>
 
-          {/* Invisible spacer to align with left heading */}
           <div style={{ marginBottom: 28 }}>
             <h2 style={{ fontSize: 35, fontWeight: 900, opacity: 0, userSelect: "none", marginBottom: 4 }}>·</h2>
             <p style={{ fontSize: 20, opacity: 0, userSelect: "none" }}>·</p>
@@ -537,7 +536,6 @@ export default function SkinProfile() {
         </div>
       </div>
 
-      {/* ── FULL WIDTH CONTINUE BUTTON AT BOTTOM ── */}
       <div style={{
         padding: "20px 40px 24px",
         background: "rgba(255,255,255,.95)",

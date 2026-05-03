@@ -26,7 +26,7 @@ const Cart = () => {
 
     const PAD = 'clamp(16px,5vw,60px)';
 
-    /* ── Empty state ── */
+    /* Empty state */
     if (cartItems.length === 0) return (
         <div style={{ padding: `60px ${PAD}`, textAlign: 'center', background: '#FFFBF8', minHeight: '60vh' }}>
             <div style={{ fontSize: 100, marginBottom: 20 }}>🛍️</div>
@@ -58,7 +58,7 @@ const Cart = () => {
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 28, alignItems: 'start' }}>
 
-                {/* ── LEFT — Cart items ── */}
+                {/* LEFT — Cart items */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                     {cartItems.map(item => {
                         const ep         = getEffectivePrice(item);
@@ -201,7 +201,7 @@ const Cart = () => {
                     </Link>
                 </div>
 
-                {/* ── RIGHT — Order summary ── */}
+                {/* RIGHT — Order summary */}
                 <div style={{ position: 'sticky', top: 100 }}>
                     <div style={{
                         background: '#fff',

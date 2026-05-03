@@ -84,7 +84,7 @@ export default function TermsOfUse() {
   return (
     <div style={{ background: '#FFFBF8', minHeight: '100vh', paddingBottom: 100 }}>
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <div style={{
         background: 'linear-gradient(135deg, #0f1923 0%, #1a0a2e 50%, #2d0a1e 100%)',
         padding: 'clamp(52px,7vw,96px) clamp(24px,6vw,80px)',
@@ -123,7 +123,7 @@ export default function TermsOfUse() {
         </div>
       </div>
 
-      {/* ── Body — full width with sidebar ── */}
+      {/* Body — full width with sidebar */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: '260px 1fr',
@@ -132,7 +132,7 @@ export default function TermsOfUse() {
         minHeight: '70vh',
       }}>
 
-        {/* ── Sticky Sidebar ── */}
+        {/* Sticky Sidebar */}
         <aside style={{
           position: 'sticky', top: 0,
           height: '100vh',
@@ -161,7 +161,7 @@ export default function TermsOfUse() {
           ))}
         </aside>
 
-        {/* ── Main content ── */}
+        {/* Main content */}
         <div style={{ padding: 'clamp(40px,5vw,72px) clamp(32px,5vw,80px)', display: 'flex', flexDirection: 'column', gap: 56 }}>
 
           {/* Warning banner */}
