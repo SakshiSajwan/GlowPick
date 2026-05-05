@@ -69,7 +69,7 @@ const CATEGORIES = [
 const PERKS = [
   {
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="#FC2779" xmlns="http://www.w3.org/2000/svg">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="#FC2779" xmlns="http://www.w3.org/2000/svg">
         <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5S5.17 15.5 6 15.5s1.5.67 1.5 1.5S6.83 18.5 6 18.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
       </svg>
     ),
@@ -78,7 +78,7 @@ const PERKS = [
   },
   {
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="#FC2779" xmlns="http://www.w3.org/2000/svg">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="#FC2779" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
       </svg>
     ),
@@ -87,7 +87,7 @@ const PERKS = [
   },
   {
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="#FC2779" xmlns="http://www.w3.org/2000/svg">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="#FC2779" xmlns="http://www.w3.org/2000/svg">
         <path d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46C8.97 19.54 10.43 20 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46C15.03 4.46 13.57 4 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z"/>
       </svg>
     ),
@@ -96,7 +96,7 @@ const PERKS = [
   },
   {
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="#FC2779" xmlns="http://www.w3.org/2000/svg">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="#FC2779" xmlns="http://www.w3.org/2000/svg">
         <path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
       </svg>
     ),
@@ -122,10 +122,10 @@ function FloatingAIButton() {
       onMouseLeave={() => setHovered(false)}
       style={{
         position: 'fixed',
-        bottom: 36,
-        right: 36,
-        width: 110,
-        height: 110,
+        bottom: 28,
+        right: 28,
+        width: 72,
+        height: 72,
         borderRadius: '50%',
         background: hovered
           ? 'linear-gradient(135deg, #B5006B, #D91A66)'
@@ -139,14 +139,14 @@ function FloatingAIButton() {
         transform: hovered ? 'scale(1.1) translateY(-3px)' : 'scale(1)',
         transition: 'all .3s ease',
         boxShadow: hovered
-          ? '0 16px 48px rgba(252,39,121,.6)'
-          : '0 8px 28px rgba(252,39,121,.42)',
-        border: '3px solid rgba(255,255,255,.3)',
+          ? '0 12px 36px rgba(252,39,121,.6)'
+          : '0 6px 20px rgba(252,39,121,.42)',
+        border: '2px solid rgba(255,255,255,.3)',
       }}
     >
       <svg
-        width="62"
-        height="62"
+        width="40"
+        height="40"
         viewBox="0 0 64 64"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -179,23 +179,23 @@ function ProductCard({ product, onAddToCart }) {
       onMouseLeave={() => setHov(false)}
       style={{
         background: '#fff',
-        borderRadius: 18,
+        borderRadius: 14,
         border: `1.5px solid ${hov ? '#FC2779' : '#F0E0EA'}`,
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         transition: 'box-shadow .25s, transform .25s, border-color .25s',
-        boxShadow: hov ? '0 14px 44px rgba(252,39,121,.18)' : '0 2px 12px rgba(0,0,0,.05)',
-        transform: hov ? 'translateY(-5px)' : 'none',
+        boxShadow: hov ? '0 10px 32px rgba(252,39,121,.15)' : '0 2px 8px rgba(0,0,0,.05)',
+        transform: hov ? 'translateY(-4px)' : 'none',
         cursor: 'pointer',
         width: '100%',
-        minHeight: '480px',
-        padding: '12px',
+        minHeight: '360px',
+        padding: '10px',
         justifyContent: 'space-between',
       }}
     >
       <Link to={`/product/${product._id}`} style={{ textDecoration: 'none' }}>
-        <div style={{ position: 'relative', aspectRatio: '1', background: '#FFF5FA', overflow: 'hidden', borderRadius: 12 }}>
+        <div style={{ position: 'relative', aspectRatio: '1', background: '#FFF5FA', overflow: 'hidden', borderRadius: 10 }}>
           <img
             src={product.image}
             alt={product.name}
@@ -208,11 +208,11 @@ function ProductCard({ product, onAddToCart }) {
           />
           {pct > 0 && (
             <div style={{
-              position: 'absolute', top: 12, left: 12,
+              position: 'absolute', top: 10, left: 10,
               background: '#FC2779', color: '#fff',
-              fontSize: 13, fontWeight: 900,
-              padding: '6px 12px', borderRadius: 6, zIndex: 10,
-              boxShadow: '0 4px 10px rgba(252,39,121,.4)',
+              fontSize: 11, fontWeight: 900,
+              padding: '4px 10px', borderRadius: 5, zIndex: 10,
+              boxShadow: '0 3px 8px rgba(252,39,121,.4)',
               letterSpacing: '.02em',
             }}>
               {pct}% OFF
@@ -220,10 +220,10 @@ function ProductCard({ product, onAddToCart }) {
           )}
           {product.rating >= 4.7 && (
             <div style={{
-              position: 'absolute', top: 12, right: 12,
+              position: 'absolute', top: 10, right: 10,
               background: 'rgba(255,255,255,.94)', color: '#1C1C1E',
-              fontSize: 12, fontWeight: 800,
-              padding: '6px 10px', borderRadius: 8,
+              fontSize: 11, fontWeight: 800,
+              padding: '4px 8px', borderRadius: 6,
               backdropFilter: 'blur(4px)',
             }}>
               ⭐ {product.rating}
@@ -231,39 +231,39 @@ function ProductCard({ product, onAddToCart }) {
           )}
         </div>
 
-        <div style={{ padding: '16px 8px 6px' }}>
+        <div style={{ padding: '12px 6px 4px' }}>
           <div style={{
-            fontSize: 13, fontWeight: 800, color: '#FC2779',
-            textTransform: 'uppercase', letterSpacing: '.1em', marginBottom: 8,
+            fontSize: 11, fontWeight: 800, color: '#FC2779',
+            textTransform: 'uppercase', letterSpacing: '.1em', marginBottom: 6,
           }}>
             {product.brand}
           </div>
           <div style={{
-            fontSize: 16, fontWeight: 700, color: '#1C1C1E',
-            lineHeight: 1.4, marginBottom: 10,
+            fontSize: 13, fontWeight: 700, color: '#1C1C1E',
+            lineHeight: 1.4, marginBottom: 8,
             display: '-webkit-box', WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical', overflow: 'hidden', height: '45px',
+            WebkitBoxOrient: 'vertical', overflow: 'hidden', height: '37px',
           }}>
             {product.name}
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 2, marginBottom: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 2, marginBottom: 8 }}>
             {[1, 2, 3, 4, 5].map(i => (
               <span key={i} style={{
-                fontSize: 16,
+                fontSize: 13,
                 color: i <= Math.round(product.rating || 4) ? '#F59E0B' : '#E5E7EB',
                 lineHeight: 1,
               }}>★</span>
             ))}
-            <span style={{ fontSize: 12, color: '#9CA3AF', marginLeft: 5, fontWeight: 600 }}>
+            <span style={{ fontSize: 11, color: '#9CA3AF', marginLeft: 4, fontWeight: 600 }}>
               ({(product.numReviews || 0).toLocaleString()})
             </span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-            <span style={{ fontSize: 22, fontWeight: 900, color: '#1C1C1E' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+            <span style={{ fontSize: 16, fontWeight: 900, color: '#1C1C1E' }}>
               ₹{price.toLocaleString('en-IN')}
             </span>
             {pct > 0 && (
-              <span style={{ fontSize: 15, color: '#B0B0B0', textDecoration: 'line-through', fontWeight: 500 }}>
+              <span style={{ fontSize: 12, color: '#B0B0B0', textDecoration: 'line-through', fontWeight: 500 }}>
                 ₹{product.price.toLocaleString('en-IN')}
               </span>
             )}
@@ -271,15 +271,15 @@ function ProductCard({ product, onAddToCart }) {
         </div>
       </Link>
 
-      <div style={{ padding: '0 8px 12px', marginTop: 'auto' }}>
+      <div style={{ padding: '0 6px 8px', marginTop: 'auto' }}>
         <button
           onClick={() => onAddToCart(product)}
           style={{
-            width: '100%', height: 48,
-            border: '2px solid #FC2779', borderRadius: 12,
+            width: '100%', height: 38,
+            border: '2px solid #FC2779', borderRadius: 10,
             background: hov ? '#FC2779' : '#fff',
             color: hov ? '#fff' : '#FC2779',
-            fontSize: 15, fontWeight: 800, cursor: 'pointer',
+            fontSize: 12, fontWeight: 800, cursor: 'pointer',
             transition: 'all .2s', letterSpacing: '.06em',
           }}
         >
@@ -293,33 +293,33 @@ function ProductCard({ product, onAddToCart }) {
 /* SECTION HEADER */
 function SectionHeader({ eyebrow, title, sub, linkTo, linkLabel = 'View All →' }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 28 }}>
+    <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 20 }}>
       <div>
         {eyebrow && (
           <div style={{
-            fontSize: 13, fontWeight: 800, color: '#FC2779',
-            textTransform: 'uppercase', letterSpacing: '.14em', marginBottom: 8,
+            fontSize: 11, fontWeight: 800, color: '#FC2779',
+            textTransform: 'uppercase', letterSpacing: '.14em', marginBottom: 6,
           }}>
             {eyebrow}
           </div>
         )}
         <h2 style={{
-          fontSize: 'clamp(24px,2.8vw,36px)',
+          fontSize: 'clamp(18px,2vw,26px)',
           fontWeight: 900, color: '#1C1C1E',
           letterSpacing: '-.02em', lineHeight: 1.1,
-          marginBottom: sub ? 8 : 0,
+          marginBottom: sub ? 6 : 0,
         }}>
           {title}
         </h2>
         {sub && (
-          <p style={{ fontSize: 15, color: '#6E6E73', fontWeight: 400, marginTop: 4 }}>{sub}</p>
+          <p style={{ fontSize: 13, color: '#6E6E73', fontWeight: 400, marginTop: 3 }}>{sub}</p>
         )}
       </div>
       {linkTo && (
         <Link to={linkTo} style={{
-          fontSize: 18, fontWeight: 800, color: '#FC2779',
+          fontSize: 13, fontWeight: 800, color: '#FC2779',
           textDecoration: 'none', whiteSpace: 'nowrap',
-          letterSpacing: '.02em', flexShrink: 0, marginLeft: 24,
+          letterSpacing: '.02em', flexShrink: 0, marginLeft: 20,
         }}>
           {linkLabel}
         </Link>
@@ -334,7 +334,7 @@ function ProductGrid({ products, onAddToCart }) {
     <div style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(5, 1fr)',
-      gap: 24,
+      gap: 16,
     }}>
       {products.map(p => <ProductCard key={p._id} product={p} onAddToCart={onAddToCart} />)}
     </div>
@@ -367,7 +367,7 @@ export default function Home() {
   };
 
   const s = HERO_SLIDES[slide];
-  const PAD = 'clamp(20px,5vw,64px)';
+  const PAD = 'clamp(16px,4vw,52px)';
 
   return (
     <div style={{ background: '#FFFBF8', width: '100%', boxSizing: 'border-box' }}>
@@ -375,7 +375,7 @@ export default function Home() {
       {/* HERO BANNER */}
       <div style={{
         position: 'relative', width: '100%',
-        height: 'clamp(380px,62vw,836px)',
+        height: 'clamp(280px,45vw,560px)',
         overflow: 'hidden', background: '#111',
       }}>
         {HERO_SLIDES.map((sl, i) => (
@@ -400,36 +400,36 @@ export default function Home() {
         <div style={{
           position: 'absolute', inset: 0,
           display: 'flex', flexDirection: 'column', justifyContent: 'center',
-          padding: `0 ${PAD}`, maxWidth: 560,
+          padding: `0 ${PAD}`, maxWidth: 480,
         }}>
           <span style={{
             display: 'inline-block',
             background: 'rgba(252,39,121,.92)', color: '#fff',
-            fontSize: 13, fontWeight: 800, letterSpacing: '.16em',
-            textTransform: 'uppercase', padding: '5px 16px',
-            borderRadius: 99, width: 'fit-content', marginBottom: 20,
+            fontSize: 11, fontWeight: 800, letterSpacing: '.16em',
+            textTransform: 'uppercase', padding: '4px 12px',
+            borderRadius: 99, width: 'fit-content', marginBottom: 14,
           }}>{s.tag}</span>
 
           <h1 style={{
-            fontSize: 'clamp(38px,4.5vw,64px)',
+            fontSize: 'clamp(26px,3.2vw,46px)',
             fontWeight: 900, color: '#fff', lineHeight: 1.05,
             letterSpacing: '-.03em', whiteSpace: 'pre-line',
-            marginBottom: 18, textShadow: '0 2px 20px rgba(0,0,0,.4)',
+            marginBottom: 12, textShadow: '0 2px 20px rgba(0,0,0,.4)',
           }}>{s.heading}</h1>
 
           <p style={{
-            fontSize: 'clamp(15px,1.4vw,18px)',
-            color: 'rgba(255,255,255,.88)', lineHeight: 1.7,
-            marginBottom: 34, maxWidth: 480, fontWeight: 400,
+            fontSize: 'clamp(13px,1.1vw,15px)',
+            color: 'rgba(255,255,255,.88)', lineHeight: 1.6,
+            marginBottom: 24, maxWidth: 400, fontWeight: 400,
           }}>{s.sub}</p>
 
           <button
             onClick={() => navigate(s.to)}
             style={{
-              display: 'inline-flex', alignItems: 'center', gap: 10,
-              border: '2.5px solid #fff', background: 'transparent',
-              color: '#fff', fontSize: 14, fontWeight: 800,
-              letterSpacing: '.14em', padding: '14px 36px',
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              border: '2px solid #fff', background: 'transparent',
+              color: '#fff', fontSize: 12, fontWeight: 800,
+              letterSpacing: '.14em', padding: '11px 28px',
               borderRadius: 99, cursor: 'pointer', width: 'fit-content',
               transition: 'all .25s',
             }}
@@ -437,18 +437,18 @@ export default function Home() {
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#fff'; }}
           >
             {s.cta}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>
         </div>
 
-        <div style={{ position: 'absolute', bottom: 24, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 8, zIndex: 10 }}>
+        <div style={{ position: 'absolute', bottom: 18, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 6, zIndex: 10 }}>
           {HERO_SLIDES.map((_, i) => (
             <button key={i} onClick={() => goSlide(i)} style={{
               border: 'none', cursor: 'pointer', borderRadius: 99, padding: 0,
               background: i === slide ? '#fff' : 'rgba(255,255,255,.38)',
-              width: i === slide ? 28 : 8, height: 8,
+              width: i === slide ? 22 : 7, height: 7,
               transition: 'all .35s',
             }} />
           ))}
@@ -462,11 +462,11 @@ export default function Home() {
             )}
             style={{
               position: 'absolute', top: '50%', transform: 'translateY(-50%)',
-              [dir === 'next' ? 'right' : 'left']: 'clamp(10px,2vw,28px)',
-              width: 52, height: 52, borderRadius: '50%',
+              [dir === 'next' ? 'right' : 'left']: 'clamp(8px,1.5vw,20px)',
+              width: 40, height: 40, borderRadius: '50%',
               background: 'rgba(255,255,255,.18)',
               border: '1.5px solid rgba(255,255,255,.4)',
-              color: '#fff', fontSize: 26, cursor: 'pointer',
+              color: '#fff', fontSize: 20, cursor: 'pointer',
               backdropFilter: 'blur(8px)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               transition: 'background .2s',
@@ -480,17 +480,17 @@ export default function Home() {
       </div>
 
       {/* PERKS BAR */}
-      <div style={{ background: '#FFFBF8', padding: `20px ${PAD}`, borderBottom: '1px solid #F5E0EC' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+      <div style={{ background: '#FFFBF8', padding: `14px ${PAD}`, borderBottom: '1px solid #F5E0EC' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
           {PERKS.map((p, i) => (
             <div key={i} style={{
-              display: 'flex', alignItems: 'center', gap: 14,
-              padding: '18px 24px', background: '#fff',
-              borderRadius: 16, border: '1.5px solid #F5E0EC',
-              boxShadow: '0 2px 12px rgba(252,39,121,.06)',
+              display: 'flex', alignItems: 'center', gap: 10,
+              padding: '12px 16px', background: '#fff',
+              borderRadius: 12, border: '1.5px solid #F5E0EC',
+              boxShadow: '0 2px 8px rgba(252,39,121,.05)',
             }}>
               <div style={{
-                width: 58, height: 58, borderRadius: '50%',
+                width: 42, height: 42, borderRadius: '50%',
                 background: 'linear-gradient(135deg, #FFF0F7, #FFE0EF)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 flexShrink: 0, border: '1.5px solid #FFD6EA',
@@ -498,10 +498,10 @@ export default function Home() {
                 {p.icon}
               </div>
               <div>
-                <div style={{ fontSize: 22, fontWeight: 800, color: '#1C1C1E', marginBottom: 3, letterSpacing: '-.01em' }}>
+                <div style={{ fontSize: 13, fontWeight: 800, color: '#1C1C1E', marginBottom: 2, letterSpacing: '-.01em' }}>
                   {p.label}
                 </div>
-                <div style={{ fontSize: 18, color: '#6E6E73', lineHeight: 1.5 }}>
+                <div style={{ fontSize: 12, color: '#6E6E73', lineHeight: 1.4 }}>
                   {p.sub}
                 </div>
               </div>
@@ -511,19 +511,19 @@ export default function Home() {
       </div>
 
       {/* CATEGORIES */}
-      <div style={{ padding: `clamp(32px,4vw,60px) ${PAD}` }}>
+      <div style={{ padding: `clamp(24px,3vw,48px) ${PAD}` }}>
         <SectionHeader title="Shop by Category" linkTo="/products" linkLabel="All Categories →" />
         <div style={{
           display: 'grid',
           gridTemplateColumns: '2fr 1fr 1fr',
-          gridTemplateRows: '260px 260px',
-          gap: 16,
+          gridTemplateRows: '200px 200px',
+          gap: 12,
         }}>
           {CATEGORIES.map((cat, i) => (
             <Link key={cat.name} to={cat.to} style={{
               gridColumn: i === 0 ? '1' : 'auto',
               gridRow: i === 0 ? '1 / 3' : 'auto',
-              position: 'relative', borderRadius: 20,
+              position: 'relative', borderRadius: 16,
               overflow: 'hidden', textDecoration: 'none', display: 'block',
             }}>
               <div style={{ width: '100%', height: '100%', position: 'relative' }}
@@ -535,15 +535,15 @@ export default function Home() {
                   onError={e => { e.target.onerror = null; e.target.src = 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900&q=80'; }}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.1) 55%, transparent 100%)' }} />
-                <div style={{ position: 'absolute', bottom: 24, left: 24 }}>
+                <div style={{ position: 'absolute', bottom: 18, left: 18 }}>
                   <div style={{
                     color: '#fff', fontWeight: 900, letterSpacing: '-.01em',
-                    fontSize: i === 0 ? 'clamp(28px,3.5vw,48px)' : 'clamp(22px,2.5vw,32px)',
-                    marginBottom: 8,
+                    fontSize: i === 0 ? 'clamp(20px,2.5vw,32px)' : 'clamp(16px,1.8vw,22px)',
+                    marginBottom: 6,
                   }}>{cat.name}</div>
                   <div style={{
-                    color: '#fff', fontSize: 15, fontWeight: 700,
-                    background: '#FC2779', padding: '7px 16px',
+                    color: '#fff', fontSize: 12, fontWeight: 700,
+                    background: '#FC2779', padding: '5px 12px',
                     borderRadius: 99, display: 'inline-block', letterSpacing: '.02em',
                   }}>{cat.desc}</div>
                 </div>
@@ -554,7 +554,7 @@ export default function Home() {
       </div>
 
       {/* BEST SELLERS */}
-      <div style={{ padding: `0 ${PAD} clamp(32px,4vw,60px)` }}>
+      <div style={{ padding: `0 ${PAD} clamp(24px,3vw,48px)` }}>
         <SectionHeader
           eyebrow="🔥 Most Loved"
           title="Best Sellers"
@@ -566,43 +566,43 @@ export default function Home() {
       </div>
 
       {/* AI BANNER */}
-      <div style={{ padding: `0 ${PAD} clamp(40px,6vw,80px)` }}>
+      <div style={{ padding: `0 ${PAD} clamp(32px,5vw,64px)` }}>
         <div style={{
           background: 'linear-gradient(135deg, #E91E63 0%, #C2185B 100%)',
-          borderRadius: 32, padding: 'clamp(48px,8vw,80px) clamp(40px,6vw,100px)',
+          borderRadius: 24, padding: 'clamp(32px,5vw,56px) clamp(28px,4vw,72px)',
           position: 'relative', overflow: 'hidden',
           display: 'grid', gridTemplateColumns: '1.2fr 0.8fr',
-          alignItems: 'center', gap: 40,
-          boxShadow: '0 20px 50px rgba(233,30,99,.25)',
+          alignItems: 'center', gap: 32,
+          boxShadow: '0 16px 40px rgba(233,30,99,.22)',
         }}>
-          <div style={{ position: 'absolute', right: '-5%', top: '-20%', width: 500, height: 500, borderRadius: '50%', background: 'rgba(255,255,255,.05)', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', right: '15%', bottom: '-30%', width: 400, height: 400, borderRadius: '50%', background: 'rgba(255,255,255,.03)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', right: '-5%', top: '-20%', width: 360, height: 360, borderRadius: '50%', background: 'rgba(255,255,255,.05)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', right: '15%', bottom: '-30%', width: 280, height: 280, borderRadius: '50%', background: 'rgba(255,255,255,.03)', pointerEvents: 'none' }} />
 
           <div style={{ position: 'relative', zIndex: 2 }}>
             <h2 style={{
-              fontSize: 'clamp(32px,5vw,62px)', fontWeight: 900, color: '#fff',
-              lineHeight: 1.1, letterSpacing: '-.03em', marginBottom: 24,
+              fontSize: 'clamp(22px,3.2vw,42px)', fontWeight: 900, color: '#fff',
+              lineHeight: 1.1, letterSpacing: '-.03em', marginBottom: 16,
             }}>
               Your Perfect Routine,<br />
               <span style={{ opacity: .9 }}>Defined by AI.</span>
             </h2>
             <p style={{
-              fontSize: 'clamp(16px,1.6vw,20px)',
+              fontSize: 'clamp(13px,1.2vw,15px)',
               color: 'rgba(255,255,255,.9)', lineHeight: 1.6,
-              marginBottom: 40, maxWidth: 520, fontWeight: 400,
+              marginBottom: 28, maxWidth: 440, fontWeight: 400,
             }}>
               Our algorithm analyzes your skin texture, concerns, and environment to recommend a personalized GlowPick regimen in seconds.
             </p>
             <Link to="/recommend" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12,
+              display: 'inline-flex', alignItems: 'center', gap: 10,
               background: '#fff', color: '#C2185B',
-              fontSize: 15, fontWeight: 800, letterSpacing: '.05em',
-              padding: '18px 42px', borderRadius: 16,
-              textDecoration: 'none', boxShadow: '0 10px 30px rgba(0,0,0,.15)',
+              fontSize: 13, fontWeight: 800, letterSpacing: '.05em',
+              padding: '14px 32px', borderRadius: 12,
+              textDecoration: 'none', boxShadow: '0 8px 24px rgba(0,0,0,.12)',
               transition: 'all .3s',
             }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,.2)'; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,.15)'; }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 16px 32px rgba(0,0,0,.18)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,.12)'; }}
             >
               ✦ TRY AI SKIN ANALYSIS
             </Link>
@@ -610,21 +610,21 @@ export default function Home() {
 
           <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', zIndex: 1 }}>
             <div style={{
-              width: 'clamp(180px,20vw,280px)', height: 'clamp(180px,20vw,280px)',
+              width: 'clamp(120px,14vw,200px)', height: 'clamp(120px,14vw,200px)',
               borderRadius: '50%',
               background: 'rgba(255,255,255,.1)', backdropFilter: 'blur(10px)',
               border: '1px solid rgba(255,255,255,.2)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 'clamp(60px,8vw,100px)', color: '#fff',
+              fontSize: 'clamp(40px,5.5vw,72px)', color: '#fff',
             }}>✦</div>
-            <div style={{ position: 'absolute', inset: -20, borderRadius: '50%', border: '1px solid rgba(255,255,255,.1)' }} />
-            <div style={{ position: 'absolute', inset: -50, borderRadius: '50%', border: '1px dashed rgba(255,255,255,.05)' }} />
+            <div style={{ position: 'absolute', inset: -16, borderRadius: '50%', border: '1px solid rgba(255,255,255,.1)' }} />
+            <div style={{ position: 'absolute', inset: -36, borderRadius: '50%', border: '1px dashed rgba(255,255,255,.05)' }} />
           </div>
         </div>
       </div>
 
       {/* SKINCARE ESSENTIALS */}
-      <div style={{ padding: `0 ${PAD} clamp(32px,4vw,60px)` }}>
+      <div style={{ padding: `0 ${PAD} clamp(24px,3vw,48px)` }}>
         <SectionHeader
           eyebrow="🌿 Clean Beauty"
           title="Skincare Essentials"
@@ -636,7 +636,7 @@ export default function Home() {
       </div>
 
       {/* MAKEUP MUST-HAVES */}
-      <div style={{ padding: `0 ${PAD} clamp(32px,4vw,60px)` }}>
+      <div style={{ padding: `0 ${PAD} clamp(24px,3vw,48px)` }}>
         <SectionHeader
           eyebrow="💄 Trending Now"
           title="Makeup Must-Haves"
@@ -648,7 +648,7 @@ export default function Home() {
       </div>
 
       {/* HAIRCARE */}
-      <div style={{ padding: `0 ${PAD} clamp(32px,4vw,60px)` }}>
+      <div style={{ padding: `0 ${PAD} clamp(24px,3vw,48px)` }}>
         <SectionHeader
           eyebrow="💆 Top Picks"
           title="Haircare Favorites"
@@ -660,33 +660,33 @@ export default function Home() {
       </div>
 
       {/* GLOWPICK PROMISE */}
-      <div style={{ padding: `0 ${PAD} clamp(32px,4vw,60px)` }}>
+      <div style={{ padding: `0 ${PAD} clamp(24px,3vw,48px)` }}>
         <div style={{
-          background: '#fff', borderRadius: 24,
-          padding: 'clamp(36px,5vw,64px) clamp(28px,4vw,64px)',
+          background: '#fff', borderRadius: 20,
+          padding: 'clamp(28px,4vw,48px) clamp(24px,3vw,52px)',
           border: '1.5px solid #F0E0EA',
         }}>
-          <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <h2 style={{ fontSize: 'clamp(24px,3vw,38px)', fontWeight: 900, color: '#1C1C1E', letterSpacing: '-.02em', marginBottom: 10 }}>
+          <div style={{ textAlign: 'center', marginBottom: 36 }}>
+            <h2 style={{ fontSize: 'clamp(18px,2.2vw,28px)', fontWeight: 900, color: '#1C1C1E', letterSpacing: '-.02em', marginBottom: 8 }}>
               The GlowPick Promise
             </h2>
-            <p style={{ fontSize: 20, color: '#6E6E73' }}>Why 2 million+ customers trust us</p>
+            <p style={{ fontSize: 14, color: '#6E6E73' }}>Why 2 million+ customers trust us</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 'clamp(24px,4vw,56px)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 'clamp(20px,3vw,44px)' }}>
             {VALUES.map(v => (
-              <div key={v.title} style={{ textAlign: 'center', padding: '0 12px' }}>
+              <div key={v.title} style={{ textAlign: 'center', padding: '0 10px' }}>
                 <div style={{
-                  width: 72, height: 72, borderRadius: '50%',
+                  width: 56, height: 56, borderRadius: '50%',
                   background: 'linear-gradient(135deg,#FFF0F7,#FFE0EF)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  margin: '0 auto 20px', fontSize: 30, border: '1.5px solid #F0E0EA',
+                  margin: '0 auto 16px', fontSize: 22, border: '1.5px solid #F0E0EA',
                 }}>
                   {v.icon}
                 </div>
-                <h3 style={{ fontSize: 22, fontWeight: 800, color: '#1C1C1E', marginBottom: 12, letterSpacing: '-.01em' }}>
+                <h3 style={{ fontSize: 15, fontWeight: 800, color: '#1C1C1E', marginBottom: 8, letterSpacing: '-.01em' }}>
                   {v.title}
                 </h3>
-                <p style={{ fontSize: 20, color: '#6E6E73', lineHeight: 1.75 }}>{v.desc}</p>
+                <p style={{ fontSize: 13, color: '#6E6E73', lineHeight: 1.65 }}>{v.desc}</p>
               </div>
             ))}
           </div>
@@ -694,18 +694,18 @@ export default function Home() {
       </div>
 
       {/* NEWSLETTER */}
-      <div style={{ padding: `0 ${PAD} clamp(40px,5vw,80px)` }}>
+      <div style={{ padding: `0 ${PAD} clamp(32px,4vw,64px)` }}>
         <div style={{
-          background: '#1C1C1E', borderRadius: 24,
-          padding: 'clamp(32px,4vw,56px) clamp(36px,5vw,72px)',
+          background: '#1C1C1E', borderRadius: 20,
+          padding: 'clamp(24px,3vw,44px) clamp(28px,4vw,56px)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          gap: 32, flexWrap: 'wrap',
+          gap: 24, flexWrap: 'wrap',
         }}>
           <div>
-            <h2 style={{ fontSize: 'clamp(20px,2.5vw,32px)', fontWeight: 900, color: '#fff', letterSpacing: '-.02em', marginBottom: 8 }}>
+            <h2 style={{ fontSize: 'clamp(16px,1.8vw,24px)', fontWeight: 900, color: '#fff', letterSpacing: '-.02em', marginBottom: 6 }}>
               Get 10% off your first order
             </h2>
-            <p style={{ fontSize: 20, color: 'rgba(255,255,255,.55)' }}>
+            <p style={{ fontSize: 13, color: 'rgba(255,255,255,.55)' }}>
               Join 2M+ beauty lovers. Unsubscribe anytime.
             </p>
           </div>
@@ -714,9 +714,9 @@ export default function Home() {
               type="email" placeholder="Your email address"
               value={email} onChange={e => setEmail(e.target.value)}
               style={{
-                height: 52, padding: '0 20px', minWidth: 260,
-                border: 'none', borderRadius: '12px 0 0 12px',
-                fontSize: 18, fontFamily: 'inherit',
+                height: 42, padding: '0 16px', minWidth: 220,
+                border: 'none', borderRadius: '10px 0 0 10px',
+                fontSize: 13, fontFamily: 'inherit',
                 background: 'rgba(255,255,255,.1)', color: '#fff', outline: 'none',
               }}
               onFocus={e => e.target.style.background = 'rgba(255,255,255,.18)'}
@@ -725,10 +725,10 @@ export default function Home() {
             <button
               onClick={() => { if (email) { toast.success('Subscribed! 10% code sent ✨'); setEmail(''); } }}
               style={{
-                height: 52, padding: '0 28px',
+                height: 42, padding: '0 20px',
                 background: '#FC2779', border: 'none',
-                borderRadius: '0 12px 12px 0',
-                color: '#fff', fontSize: 18, fontWeight: 700,
+                borderRadius: '0 10px 10px 0',
+                color: '#fff', fontSize: 13, fontWeight: 700,
                 cursor: 'pointer', transition: 'background .2s', whiteSpace: 'nowrap',
               }}
               onMouseEnter={e => e.currentTarget.style.background = '#D91A66'}

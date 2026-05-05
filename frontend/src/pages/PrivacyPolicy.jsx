@@ -82,7 +82,7 @@ const SECTIONS = [
     id: 'contact',
     title: '8. Contact Us',
     content: [
-      { sub: 'Privacy Team', text: 'For any questions, requests, or concerns about your privacy, please contact our dedicated privacy team at privacy@glowpick.in or write to us at: GlowPick Beauty Technologies Pvt. Ltd., New Delhi, India.' },
+      { sub: 'Privacy Team', text: 'For any questions, requests, or concerns about your privacy, please contact our dedicated privacy team at glowpick04@gmail.com or write to us at: GlowPick Beauty Technologies Pvt. Ltd., New Delhi, India.' },
     ],
   },
 ];
@@ -149,12 +149,12 @@ export default function PrivacyPolicy() {
           overflowY: 'auto',
           padding: '36px 0 40px',
         }}>
-          <p style={{ fontSize: 32, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', padding: '0 28px', marginBottom: 16 }}>Contents</p>
+          <p style={{ fontSize: 16, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', padding: '0 28px', marginBottom: 16 }}>Contents</p>
           {SECTIONS.map(s => (
             <a key={s.id} href={`#${s.id}`} style={{
               display: 'block',
               padding: '11px 28px',
-              fontSize: 20, fontWeight: 500,
+              fontSize: 15, fontWeight: 500,
               color: '#444',
               textDecoration: 'none',
               borderLeft: '3px solid transparent',
@@ -178,7 +178,7 @@ export default function PrivacyPolicy() {
             border: '1.5px solid #F0E0EA',
             borderRadius: 16, padding: '28px 36px',
           }}>
-            <p style={{ fontSize: 24, color: '#333', lineHeight: 1.85, margin: 0 }}>
+            <p style={{ fontSize: 17, color: '#333', lineHeight: 1.85, margin: 0 }}>
               This Privacy Policy describes how <strong style={{ color: '#FC2779' }}>GlowPick Beauty Technologies Pvt. Ltd.</strong> ("GlowPick", "we", "us", or "our") collects, uses, and shares information when you use our website, mobile applications, and services. By using GlowPick, you agree to the practices described in this policy.
             </p>
           </div>
@@ -212,7 +212,7 @@ export default function PrivacyPolicy() {
                     <p style={{ fontSize: 16, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
                       {item.sub}
                     </p>
-                    <p style={{ fontSize: 20, color: '#333', lineHeight: 1.85, margin: 0 }}>
+                    <p style={{ fontSize: 16, color: '#333', lineHeight: 1.85, margin: 0 }}>
                       {item.text}
                     </p>
                   </div>
@@ -229,8 +229,8 @@ export default function PrivacyPolicy() {
             flexWrap: 'wrap', gap: 20,
           }}>
             <div>
-              <p style={{ color: '#fff', fontWeight: 700, fontSize: 24, marginBottom: 5 }}>Related Policies</p>
-              <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 18 }}>Read our other legal documents</p>
+              <p style={{ color: '#fff', fontWeight: 700, fontSize: 20, marginBottom: 5 }}>Related Policies</p>
+              <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 15 }}>Read our other legal documents</p>
             </div>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               {[{ label: 'Terms of Use', to: '/terms' }, { label: 'Refund Policy', to: '/refund-policy' }].map(l => (
@@ -238,7 +238,7 @@ export default function PrivacyPolicy() {
                   background: 'rgba(252,39,121,0.15)', color: '#FF6BAD',
                   border: '1px solid rgba(252,39,121,0.3)',
                   borderRadius: 99, padding: '10px 22px',
-                  fontSize: 18, fontWeight: 700, textDecoration: 'none',
+                  fontSize: 15, fontWeight: 700, textDecoration: 'none',
                   transition: 'all 0.2s',
                 }}
                   onMouseEnter={e => { e.currentTarget.style.background = '#FC2779'; e.currentTarget.style.color = '#fff'; }}

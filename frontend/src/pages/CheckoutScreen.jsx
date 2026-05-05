@@ -37,7 +37,7 @@ const styles = {
     border: '1.5px solid #e0e0e0',
   },
   sectionTitle: {
-    fontSize: '2.5rem',
+    fontSize: '1.5rem',
     fontWeight: '700',
     marginBottom: '1.75rem',
     display: 'flex',
@@ -54,7 +54,7 @@ const styles = {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '2rem',
+    fontSize: '1rem',
     fontWeight: '700',
     flexShrink: 0,
   },
@@ -68,7 +68,7 @@ const styles = {
     padding: '1rem 1.25rem',
     borderRadius: '0.6rem',
     border: '1.5px solid #d1d5db',
-    fontSize: '1.25rem',
+    fontSize: '1rem',
     outline: 'none',
     transition: 'border-color 0.2s',
     width: '100%',
@@ -79,7 +79,7 @@ const styles = {
     padding: '1rem 1.25rem',
     borderRadius: '0.6rem',
     border: '1.5px solid #d1d5db',
-    fontSize: '1.25rem',
+    fontSize: '1rem',
     outline: 'none',
     transition: 'border-color 0.2s',
     width: '100%',
@@ -109,7 +109,7 @@ const styles = {
   itemName: {
     fontWeight: '600',
     color: '#1f2937',
-    fontSize: '1.25rem',
+    fontSize: '1rem',
     marginBottom: '0.3rem',
   },
   itemQty: {
@@ -119,7 +119,7 @@ const styles = {
   itemPrice: {
     fontWeight: '700',
     color: '#111827',
-    fontSize: '1.25rem',
+    fontSize: '1rem',
   },
   summaryCard: {
     backgroundColor: '#ffffff',
@@ -131,7 +131,7 @@ const styles = {
     top: '8rem',
   },
   summaryTitle: {
-    fontSize: '1.75rem',
+    fontSize: '1.35rem',
     fontWeight: '700',
     marginBottom: '1.5rem',
     color: '#1f2937',
@@ -141,21 +141,21 @@ const styles = {
   summaryRow: {
     display: 'flex',
     justifyContent: 'space-between',
-    fontSize: '1.5rem',
+    fontSize: '1rem',
     color: '#6b7280',
     marginBottom: '1rem',
   },
   summaryRowGreen: {
     display: 'flex',
     justifyContent: 'space-between',
-    fontSize: '1.35rem',
+    fontSize: '1rem',
     color: '#16a34a',
     marginBottom: '1rem',
   },
   summaryRowTotal: {
     display: 'flex',
     justifyContent: 'space-between',
-    fontSize: '1.5rem',
+    fontSize: '1.15rem',
     fontWeight: '900',
     color: '#111827',
     marginTop: '0.5rem',
@@ -172,7 +172,7 @@ const styles = {
     background: 'linear-gradient(to right, #ec4899, #e11d48)',
     color: '#ffffff',
     fontWeight: '700',
-    fontSize: '1.25rem',
+    fontSize: '1rem',
     letterSpacing: '0.06em',
     borderRadius: '0.75rem',
     border: 'none',
@@ -300,11 +300,12 @@ export default function CheckoutScreen() {
 
   // Cash on Delivery
   const handleCOD = () => {
-    if (!validate()) return;
-    const codOrderId = 'COD-' + Date.now().toString().slice(-6);
-    setPlacedOrderId(codOrderId);
-    setModalOpen(true);
-  };
+        if (!validate()) return;
+        const codOrderId = 'COD-' + Date.now().toString().slice(-6);
+        dispatch({ type: 'CLEAR_CART' });
+        setPlacedOrderId(codOrderId);
+        setModalOpen(true);
+    };
 
     const handlePlaceOrder = () => {
     if (paymentMethod === 'razorpay') handleRazorpay();
@@ -508,8 +509,8 @@ export default function CheckoutScreen() {
                     transition: 'all 0.2s',
                   }}
                 >
-                  <div style={{ fontSize: '1.5rem' }}>💳</div>
-                  <div style={{ fontSize: '1rem', fontWeight: '600', color: paymentMethod === 'razorpay' ? '#db2777' : '#6b7280', marginTop: '0.25rem' }}>
+                  <div style={{ fontSize: '1.25rem' }}>💳</div>
+                  <div style={{ fontSize: '0.9rem', fontWeight: '600', color: paymentMethod === 'razorpay' ? '#db2777' : '#6b7280', marginTop: '0.25rem' }}>
                     Razorpay
                   </div>
                 </div>
@@ -526,8 +527,8 @@ export default function CheckoutScreen() {
                     transition: 'all 0.2s',
                   }}
                 >
-                  <div style={{ fontSize: '1.5rem' }}>💵</div>
-                  <div style={{ fontSize: '1rem', fontWeight: '600', color: paymentMethod === 'cod' ? '#db2777' : '#6b7280', marginTop: '0.25rem' }}>
+                  <div style={{ fontSize: '1.25rem' }}>💵</div>
+                  <div style={{ fontSize: '0.9rem', fontWeight: '600', color: paymentMethod === 'cod' ? '#db2777' : '#6b7280', marginTop: '0.25rem' }}>
                     Cash on Delivery
                   </div>
                 </div>

@@ -35,31 +35,31 @@ const Footer = () => {
             {/* Main grid */}
             <div style={{
                 width: '100%',
-                padding: 'clamp(60px, 8vw, 100px) clamp(24px, 6vw, 80px)', 
+                padding: 'clamp(40px, 6vw, 72px) clamp(20px, 5vw, 64px)', 
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-                gap: '48px',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '36px',
                 boxSizing: 'border-box',
             }}>
 
                 {/* Brand col */}
                 <div style={{ gridColumn: 'span 1' }}>
-                    <div style={{ marginBottom: 24 }}>
-                        <span style={{ fontSize: 40, fontWeight: 900, color: '#F472B6', letterSpacing: '-0.02em' }}>GLOW</span>
-                        <span style={{ fontSize: 40, fontWeight: 900, color: '#FDA4AF', letterSpacing: '-0.02em' }}>PICK</span>
+                    <div style={{ marginBottom: 16 }}>
+                        <span style={{ fontSize: 28, fontWeight: 900, color: '#F472B6', letterSpacing: '-0.02em' }}>GLOW</span>
+                        <span style={{ fontSize: 28, fontWeight: 900, color: '#FDA4AF', letterSpacing: '-0.02em' }}>PICK</span>
                     </div>
                     <p style={{ 
-                        fontSize: 20, 
+                        fontSize: 14, 
                         color: '#94A3B8', 
-                        lineHeight: 1.8, 
-                        marginBottom: 30, 
-                        maxWidth: 300 
+                        lineHeight: 1.7, 
+                        marginBottom: 20, 
+                        maxWidth: 260 
                     }}>
                         India's smartest beauty shopping experience powered by AI skin analysis.
                     </p>
                     
                     {/* SOCIAL LINKS (Functional anchors) */}
-                    <div style={{ display: 'flex', gap: 14 }}>
+                    <div style={{ display: 'flex', gap: 10 }}>
                         {socialLinks.map((item, i) => (
                             <a 
                                 key={i} 
@@ -68,18 +68,18 @@ const Footer = () => {
                                 rel="noopener noreferrer"
                                 title={item.label}
                                 style={{
-                                    width: 44, height: 44,
+                                    width: 36, height: 36,
                                     background: '#1E293B',
                                     border: '1px solid #334155',
-                                    borderRadius: 12,
-                                    fontSize: 18,
+                                    borderRadius: 10,
+                                    fontSize: 14,
                                     textDecoration: 'none',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                     transition,
                                 }}
                                 onMouseEnter={e => {
                                     e.currentTarget.style.background = '#F472B6';
-                                    e.currentTarget.style.transform = 'translateY(-4px)';
+                                    e.currentTarget.style.transform = 'translateY(-3px)';
                                 }}
                                 onMouseLeave={e => {
                                     e.currentTarget.style.background = '#1E293B';
@@ -94,8 +94,8 @@ const Footer = () => {
 
                 {/* Shop col */}
                 <div>
-                    <h4 style={{ color: '#F472B6', fontWeight: 800, fontSize: 26, marginBottom: 28, textTransform: 'uppercase' }}>Shop</h4>
-                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 16 }}>
+                    <h4 style={{ color: '#F472B6', fontWeight: 800, fontSize: 13, marginBottom: 18, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Shop</h4>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
                         {[
                             { label: 'Makeup',       path: '/products?category=Makeup' },
                             { label: 'Skincare',     path: '/products?category=Skincare' },
@@ -107,7 +107,7 @@ const Footer = () => {
                                 <Link to={item.path} style={{
                                     color: '#E2E8F0', 
                                     textDecoration: 'none',
-                                    fontSize: 20, 
+                                    fontSize: 14, 
                                     fontWeight: 500,
                                     transition,
                                 }}
@@ -123,8 +123,8 @@ const Footer = () => {
 
                 {/* Features col */}
                 <div>
-                    <h4 style={{ color: '#F472B6', fontWeight: 800, fontSize: 26, marginBottom: 28, textTransform: 'uppercase' }}>Features</h4>
-                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 16 }}>
+                    <h4 style={{ color: '#F472B6', fontWeight: 800, fontSize: 13, marginBottom: 18, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Features</h4>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
                         {[
                             { label: '✨ AI Skin Analysis', path: '/recommend' },
                             { label: 'My Cart',             path: '/cart' },
@@ -135,7 +135,7 @@ const Footer = () => {
                                 <Link to={item.path} style={{
                                     color: '#E2E8F0',
                                     textDecoration: 'none',
-                                    fontSize: 20,
+                                    fontSize: 14,
                                     fontWeight: 500,
                                     transition,
                                 }}
@@ -151,22 +151,22 @@ const Footer = () => {
 
                 {/* Support col */}
                 <div>
-                    <h4 style={{ color: '#F472B6', fontWeight: 800, fontSize: 26, marginBottom: 28, textTransform: 'uppercase' }}>Support</h4>
-                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 18, marginBottom: 32 }}>
-                        <li style={{ fontSize: 20, color: '#E2E8F0', display: 'flex', alignItems: 'center', gap: 10 }}>
-                            <span style={{ fontSize: 20 }}>📧</span> hello@glowpick.in
+                    <h4 style={{ color: '#F472B6', fontWeight: 800, fontSize: 13, marginBottom: 18, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Support</h4>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 24 }}>
+                        <li style={{ fontSize: 14, color: '#E2E8F0', display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <span style={{ fontSize: 14 }}>📧</span> glowpick04@gmail.com
                         </li>
-                        <li style={{ fontSize: 20, color: '#E2E8F0', display: 'flex', alignItems: 'center', gap: 10 }}>
-                            <span style={{ fontSize: 20 }}>📞</span> 1800-XXX-XXXX
+                        <li style={{ fontSize: 14, color: '#E2E8F0', display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <span style={{ fontSize: 14 }}>📞</span> 1800-XXX-XXXX
                         </li>
                     </ul>
 
                     {/* Newsletter */}
-                    <div style={{ background: '#1E293B', borderRadius: 20, padding: 24, border: '1px solid #334155' }}>
-                        <p style={{ fontSize: 18, color: 'white', fontWeight: 700, marginBottom: 16 }}>
+                    <div style={{ background: '#1E293B', borderRadius: 14, padding: 18, border: '1px solid #334155' }}>
+                        <p style={{ fontSize: 13, color: 'white', fontWeight: 700, marginBottom: 12 }}>
                             {isSubscribed ? "🎉 You're on the list!" : "Get deals in your inbox"}
                         </p>
-                        <div style={{ display: 'flex', gap: 10 }}>
+                        <div style={{ display: 'flex', gap: 8 }}>
                             <input
                                 type="email"
                                 value={email}
@@ -174,12 +174,12 @@ const Footer = () => {
                                 placeholder="Email address"
                                 style={{
                                     flex: 1,
-                                    fontSize: 16,
+                                    fontSize: 13,
                                     background: '#0F172A',
                                     color: 'white',
                                     border: '1px solid #475569',
-                                    borderRadius: 12,
-                                    padding: '12px 16px',
+                                    borderRadius: 8,
+                                    padding: '9px 12px',
                                     outline: 'none',
                                 }}
                             />
@@ -189,9 +189,9 @@ const Footer = () => {
                                     background: '#F472B6',
                                     color: 'white',
                                     border: 'none',
-                                    borderRadius: 12,
-                                    padding: '0 20px',
-                                    fontSize: 16,
+                                    borderRadius: 8,
+                                    padding: '0 14px',
+                                    fontSize: 13,
                                     fontWeight: 800,
                                     cursor: 'pointer',
                                     transition,
@@ -210,26 +210,26 @@ const Footer = () => {
             <div style={{ borderTop: '1px solid #1E293B', background: '#0B1120' }}>
                 <div style={{
                     width: '100%',
-                    padding: '30px clamp(24px, 6vw, 80px)',
+                    padding: '20px clamp(20px, 5vw, 64px)',
                     display: 'flex',
                     flexWrap: 'wrap',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    gap: 20,
+                    gap: 16,
                 }}>
-                    <p style={{ fontSize: 18, color: '#94A3B8' }}>
+                    <p style={{ fontSize: 13, color: '#94A3B8' }}>
                         © {new Date().getFullYear()}{' '}
                         <span style={{ color: '#F472B6', fontWeight: 700 }}>GlowPick</span>
                         . All rights reserved.
                     </p>
-                    <div style={{ display: 'flex', gap: 32 }}>
+                    <div style={{ display: 'flex', gap: 24 }}>
                         {[
                             { label: 'Privacy Policy', to: '/privacy' },
                             { label: 'Terms of Use',   to: '/terms' },
                             { label: 'Refund Policy',  to: '/refund-policy' },
                         ].map(item => (
                             <Link key={item.label} to={item.to} style={{
-                                fontSize: 18, color: '#94A3B8',
+                                fontSize: 13, color: '#94A3B8',
                                 textDecoration: 'none',
                                 transition, fontWeight: 500
                             }}

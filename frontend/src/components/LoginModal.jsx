@@ -35,13 +35,13 @@ function PasswordStrength({ password }) {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                     {[{label:'6+ chars',ok:checks[0]},{label:'Uppercase',ok:checks[1]},{label:'Number',ok:checks[2]},{label:'Symbol',ok:checks[3]}].map(({label,ok}) => (
-                        <span key={label} style={{ fontSize: 16, fontWeight: 600, color: ok ? '#22c55e' : '#9ca3af', display: 'flex', alignItems: 'center', gap: 4 }}>
-                            <span style={{ width: 16, height: 16, borderRadius: '50%', background: ok ? '#22c55e' : '#e5e7eb', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, color: 'white', flexShrink: 0 }}>{ok ? '✓' : ''}</span>
+                        <span key={label} style={{ fontSize: 14, fontWeight: 600, color: ok ? '#22c55e' : '#9ca3af', display: 'flex', alignItems: 'center', gap: 4 }}>
+                            <span style={{ width: 16, height: 16, borderRadius: '50%', background: ok ? '#22c55e' : '#e5e7eb', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, color: 'white', flexShrink: 0 }}>{ok ? '✓' : ''}</span>
                             {label}
                         </span>
                     ))}
                 </div>
-                {strength > 0 && <span style={{ fontSize: 16, fontWeight: 700, color: colors[strength] }}>{labels[strength]}</span>}
+                {strength > 0 && <span style={{ fontSize: 14, fontWeight: 700, color: colors[strength] }}>{labels[strength]}</span>}
             </div>
         </div>
     );
@@ -57,7 +57,7 @@ function InputField({ label, type='text', value, onChange, placeholder, autoComp
     const [focused, setFocused] = useState(false);
     return (
         <div>
-            {label && <label style={{ display: 'block', fontSize: 17, fontWeight: 700, color: '#444', marginBottom: 8 }}>{label}</label>}
+            {label && <label style={{ display: 'block', fontSize: 14, fontWeight: 700, color: '#444', marginBottom: 8 }}>{label}</label>}
             <div style={{ position: 'relative' }}>
                 <input
                     type={type} value={value} onChange={onChange}
@@ -66,7 +66,7 @@ function InputField({ label, type='text', value, onChange, placeholder, autoComp
                         width: '100%', height: 52, boxSizing: 'border-box',
                         border: `2px solid ${error ? '#ef4444' : focused ? '#FC2779' : '#e5e7eb'}`,
                         borderRadius: 14, padding: rightSlot ? '0 52px 0 16px' : '0 16px',
-                        fontSize: 19, fontFamily: 'inherit',
+                        fontSize: 16, fontFamily: 'inherit',
                         background: focused ? '#fff' : '#fafafa', color: '#1a1a1a',
                         outline: 'none', transition: 'all 0.2s',
                         boxShadow: focused ? '0 0 0 4px rgba(252,39,121,0.1)' : 'none',
@@ -76,7 +76,7 @@ function InputField({ label, type='text', value, onChange, placeholder, autoComp
                 />
                 {rightSlot && <div style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)' }}>{rightSlot}</div>}
             </div>
-            {error && <p style={{ fontSize: 16, color: '#ef4444', marginTop: 5, fontWeight: 600 }}>{error}</p>}
+            {error && <p style={{ fontSize: 14, color: '#ef4444', marginTop: 5, fontWeight: 600 }}>{error}</p>}
         </div>
     );
 }
@@ -121,7 +121,7 @@ function OtpInput({ value, onChange }) {
                     onPaste={handlePaste}
                     style={{
                         width: 52, height: 58, textAlign: 'center',
-                        fontSize: 24, fontWeight: 800,
+                        fontSize: 20, fontWeight: 800,
                         border: `2px solid ${digits[i] ? '#FC2779' : '#e5e7eb'}`,
                         borderRadius: 14, outline: 'none',
                         background: digits[i] ? '#FFF0F7' : '#fafafa',
@@ -147,6 +147,7 @@ function ForgotPasswordFlow({ onBack }) {
     const [showConfirm, setShowConfirm] = useState(false);
     const [loading,     setLoading]     = useState(false);
     const [errors,      setErrors]      = useState({});
+    const [resetToken,  setResetToken]  = useState('');
     const [countdown,   setCountdown]   = useState(0);
     const timerRef = useRef(null);
 
@@ -185,7 +186,8 @@ function ForgotPasswordFlow({ onBack }) {
         setErrors({});
         setLoading(true);
         try {
-            await api.post('/auth/verify-otp', { email, otp });
+            const { data } = await api.post('/auth/verify-otp', { email, otp });
+            setResetToken(data.resetToken);  // ← ADD THIS
             toast.success('OTP verified ✅');
             setStep('reset');
         } catch (err) {
@@ -218,7 +220,7 @@ function ForgotPasswordFlow({ onBack }) {
         setErrors({});
         setLoading(true);
         try {
-            await api.post('/auth/reset-password-otp', { email, otp, password });
+            await api.post('/auth/reset-password-otp', { email, otp, resetToken, password });
             toast.success('Password reset successfully! 🎉');
             setStep('done');
         } catch (err) {
@@ -258,8 +260,8 @@ function ForgotPasswordFlow({ onBack }) {
             {step === 'email' && (
                 <form onSubmit={handleSendOtp} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
                     <div style={{ textAlign: 'center', marginBottom: 4 }}>
-                        <div style={{ fontSize: 44, marginBottom: 8 }}>🔐</div>
-                        <p style={{ fontSize: 15, color: '#6b7280' }}>
+                        <div style={{ fontSize: 40, marginBottom: 8 }}>🔐</div>
+                        <p style={{ fontSize: 12, color: '#6b7280' }}>
                             Enter your registered email and we'll send you a 6-digit OTP.
                         </p>
                     </div>
@@ -278,7 +280,7 @@ function ForgotPasswordFlow({ onBack }) {
                         width: '100%', height: 56, borderRadius: 16,
                         background: loading ? '#f9a8d4' : 'linear-gradient(135deg, #B5006B, #FC2779)',
                         color: 'white', border: 'none', cursor: loading ? 'not-allowed' : 'pointer',
-                        fontSize: 18, fontWeight: 800, fontFamily: 'inherit',
+                        fontSize: 16, fontWeight: 800, fontFamily: 'inherit',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                         boxShadow: loading ? 'none' : '0 8px 28px rgba(181,0,107,0.38)',
                         transition: 'opacity 0.2s, transform 0.2s',
@@ -291,7 +293,7 @@ function ForgotPasswordFlow({ onBack }) {
 
                     <button type="button" onClick={onBack} style={{
                         background: 'none', border: 'none', color: '#FC2779',
-                        fontSize: 16, fontWeight: 700, cursor: 'pointer',
+                        fontSize: 14, fontWeight: 700, cursor: 'pointer',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                     }}>
                         ← Back to Sign In
@@ -303,26 +305,26 @@ function ForgotPasswordFlow({ onBack }) {
             {step === 'otp' && (
                 <form onSubmit={handleVerifyOtp} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
                     <div style={{ textAlign: 'center', marginBottom: 4 }}>
-                        <div style={{ fontSize: 44, marginBottom: 8 }}>📧</div>
-                        <p style={{ fontSize: 15, color: '#6b7280' }}>
+                        <div style={{ fontSize: 40, marginBottom: 8 }}>📧</div>
+                        <p style={{ fontSize: 12, color: '#6b7280' }}>
                             We sent a 6-digit OTP to <strong style={{ color: '#FC2779' }}>{email}</strong>.<br />
                             Enter it below within 10 minutes.
                         </p>
                     </div>
 
                     <OtpInput value={otp} onChange={setOtp} />
-                    {errors.otp && <p style={{ textAlign: 'center', fontSize: 15, color: '#ef4444', fontWeight: 600, marginTop: -8 }}>{errors.otp}</p>}
+                    {errors.otp && <p style={{ textAlign: 'center', fontSize: 14, color: '#ef4444', fontWeight: 600, marginTop: -8 }}>{errors.otp}</p>}
 
                     {/* Resend */}
                     <div style={{ textAlign: 'center' }}>
                         {countdown > 0 ? (
-                            <span style={{ fontSize: 14, color: '#9ca3af' }}>
+                            <span style={{ fontSize: 12, color: '#9ca3af' }}>
                                 Resend OTP in <strong style={{ color: '#FC2779' }}>{countdown}s</strong>
                             </span>
                         ) : (
                             <button type="button" onClick={handleResend} disabled={loading} style={{
                                 background: 'none', border: 'none', color: '#FC2779',
-                                fontSize: 15, fontWeight: 700, cursor: 'pointer', textDecoration: 'underline',
+                                fontSize: 14, fontWeight: 700, cursor: 'pointer', textDecoration: 'underline',
                             }}>
                                 Resend OTP
                             </button>
@@ -334,7 +336,7 @@ function ForgotPasswordFlow({ onBack }) {
                         background: otp.length === 6 && !loading ? 'linear-gradient(135deg, #B5006B, #FC2779)' : '#f9a8d4',
                         color: 'white', border: 'none',
                         cursor: otp.length === 6 && !loading ? 'pointer' : 'not-allowed',
-                        fontSize: 18, fontWeight: 800, fontFamily: 'inherit',
+                        fontSize: 16, fontWeight: 800, fontFamily: 'inherit',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                         boxShadow: otp.length === 6 ? '0 8px 28px rgba(181,0,107,0.38)' : 'none',
                         transition: 'all 0.2s',
@@ -344,7 +346,7 @@ function ForgotPasswordFlow({ onBack }) {
 
                     <button type="button" onClick={() => { setStep('email'); setOtp(''); }} style={{
                         background: 'none', border: 'none', color: '#9ca3af',
-                        fontSize: 15, fontWeight: 600, cursor: 'pointer',
+                        fontSize: 14, fontWeight: 600, cursor: 'pointer',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                     }}>
                         ← Change email
@@ -356,8 +358,8 @@ function ForgotPasswordFlow({ onBack }) {
             {step === 'reset' && (
                 <form onSubmit={handleReset} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                     <div style={{ textAlign: 'center', marginBottom: 4 }}>
-                        <div style={{ fontSize: 44, marginBottom: 8 }}>🔑</div>
-                        <p style={{ fontSize: 15, color: '#6b7280' }}>
+                        <div style={{ fontSize: 40, marginBottom: 8 }}>🔑</div>
+                        <p style={{ fontSize: 14, color: '#6b7280' }}>
                             Create a new strong password for your account.
                         </p>
                     </div>
@@ -388,7 +390,7 @@ function ForgotPasswordFlow({ onBack }) {
                             rightSlot={eyeBtn(showConfirm, () => setShowConfirm(v => !v))}
                         />
                         {confirm && !errors.confirm && confirm === password && password.length >= 6 && (
-                            <p style={{ fontSize: 15, color: '#22c55e', marginTop: 6, fontWeight: 700 }}>✓ Passwords match</p>
+                            <p style={{ fontSize: 14, color: '#22c55e', marginTop: 6, fontWeight: 700 }}>✓ Passwords match</p>
                         )}
                     </div>
 
@@ -396,7 +398,7 @@ function ForgotPasswordFlow({ onBack }) {
                         width: '100%', height: 56, borderRadius: 16, marginTop: 4,
                         background: loading ? '#f9a8d4' : 'linear-gradient(135deg, #B5006B, #FC2779)',
                         color: 'white', border: 'none', cursor: loading ? 'not-allowed' : 'pointer',
-                        fontSize: 18, fontWeight: 800, fontFamily: 'inherit',
+                        fontSize: 16, fontWeight: 800, fontFamily: 'inherit',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                         boxShadow: loading ? 'none' : '0 8px 28px rgba(181,0,107,0.38)',
                         transition: 'all 0.2s',
@@ -412,12 +414,12 @@ function ForgotPasswordFlow({ onBack }) {
             {/* Step 4: Done */}
             {step === 'done' && (
                 <div style={{ textAlign: 'center', padding: '16px 0', display: 'flex', flexDirection: 'column', gap: 20 }}>
-                    <div style={{ fontSize: 64 }}>🎉</div>
+                    <div style={{ fontSize: 60 }}>🎉</div>
                     <div>
-                        <h3 style={{ fontSize: 22, fontWeight: 800, color: '#1a1a1a', marginBottom: 8 }}>
+                        <h3 style={{ fontSize: 19, fontWeight: 800, color: '#1a1a1a', marginBottom: 8 }}>
                             Password Reset!
                         </h3>
-                        <p style={{ fontSize: 16, color: '#6b7280' }}>
+                        <p style={{ fontSize: 14, color: '#6b7280' }}>
                             Your password has been updated successfully. You can now sign in with your new password.
                         </p>
                     </div>
@@ -425,7 +427,7 @@ function ForgotPasswordFlow({ onBack }) {
                         width: '100%', height: 56, borderRadius: 16,
                         background: 'linear-gradient(135deg, #B5006B, #FC2779)',
                         color: 'white', border: 'none', cursor: 'pointer',
-                        fontSize: 18, fontWeight: 800, fontFamily: 'inherit',
+                        fontSize: 16, fontWeight: 800, fontFamily: 'inherit',
                         boxShadow: '0 8px 28px rgba(181,0,107,0.38)',
                         transition: 'all 0.2s',
                     }}
@@ -557,7 +559,7 @@ export default function LoginModal() {
                             width: 38, height: 38, borderRadius: '50%',
                             background: 'rgba(255,255,255,0.22)', border: 'none', cursor: 'pointer',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            color: 'white', fontSize: 24, transition: 'background 0.2s',
+                            color: 'white', fontSize: 20, transition: 'background 0.2s',
                         }}
                             onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.4)'}
                             onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.22)'}
@@ -565,10 +567,10 @@ export default function LoginModal() {
 
                         {/* Brand */}
                         <div style={{ position: 'relative', marginBottom: 24 }}>
-                            <div style={{ fontWeight: 900, fontSize: 40, color: 'white', letterSpacing: '-0.02em', lineHeight: 1, marginBottom: 8 }}>
+                            <div style={{ fontWeight: 900, fontSize: 36, color: 'white', letterSpacing: '-0.02em', lineHeight: 1, marginBottom: 8 }}>
                                 GLOW<span style={{ fontStyle: 'italic', opacity: 0.85 }}>PICK</span>
                             </div>
-                            <p style={{ fontSize: 22, color: 'rgba(255,255,255,0.9)', fontWeight: 400 }}>
+                            <p style={{ fontSize: 20, color: 'rgba(255,255,255,0.9)', fontWeight: 400 }}>
                                 {authTab === 'login'    ? '✨ Welcome back, gorgeous!'
                                : authTab === 'register' ? '💖 Join the glow community'
                                :                         '🔐 Reset your password'}
@@ -582,7 +584,7 @@ export default function LoginModal() {
                                     <button key={tab} onClick={() => setAuthTab(tab)} style={{
                                         flex: 1, height: 46, borderRadius: 99,
                                         border: 'none', cursor: 'pointer',
-                                        fontSize: 20, fontWeight: 700, fontFamily: 'inherit',
+                                        fontSize: 18, fontWeight: 700, fontFamily: 'inherit',
                                         transition: 'all 0.25s',
                                         background: authTab === tab ? 'white' : 'rgba(255,255,255,0.18)',
                                         color: authTab === tab ? '#FC2779' : 'rgba(255,255,255,0.92)',
@@ -612,10 +614,10 @@ export default function LoginModal() {
 
                                 <div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                                        <span style={{ fontSize: 17, fontWeight: 700, color: '#444' }}>Password</span>
+                                        <span style={{ fontSize: 14, fontWeight: 700, color: '#444' }}>Password</span>
                                         {/* Forgot password now opens inside modal */}
                                         <button type="button" onClick={() => setAuthTab('forgot')} style={{
-                                            fontSize: 17, color: '#FC2779', background: 'none', border: 'none',
+                                            fontSize: 14, color: '#FC2779', background: 'none', border: 'none',
                                             cursor: 'pointer', fontWeight: 700, padding: 0, textDecoration: 'underline',
                                         }}>Forgot password?</button>
                                     </div>
@@ -629,7 +631,7 @@ export default function LoginModal() {
                                     width: '100%', height: 56, borderRadius: 16, marginTop: 4,
                                     background: loading ? '#f9a8d4' : 'linear-gradient(135deg, #B5006B, #FC2779)',
                                     color: 'white', border: 'none', cursor: loading ? 'not-allowed' : 'pointer',
-                                    fontSize: 22, fontWeight: 800, fontFamily: 'inherit',
+                                    fontSize: 20, fontWeight: 800, fontFamily: 'inherit',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                                     boxShadow: loading ? 'none' : '0 8px 28px rgba(181,0,107,0.38)',
                                     transition: 'opacity 0.2s, transform 0.2s',
@@ -642,14 +644,14 @@ export default function LoginModal() {
 
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                                     <div style={{ flex: 1, height: 1, background: '#f0f0f0' }} />
-                                    <span style={{ fontSize: 17, color: '#9ca3af', whiteSpace: 'nowrap' }}>New to GlowPick?</span>
+                                    <span style={{ fontSize: 14, color: '#9ca3af', whiteSpace: 'nowrap' }}>New to GlowPick?</span>
                                     <div style={{ flex: 1, height: 1, background: '#f0f0f0' }} />
                                 </div>
 
                                 <button type="button" onClick={() => setAuthTab('register')} style={{
                                     width: '100%', height: 52, borderRadius: 16,
                                     border: '2px solid #FC2779', background: 'white',
-                                    color: '#FC2779', fontSize: 20, fontWeight: 700,
+                                    color: '#FC2779', fontSize: 18, fontWeight: 700,
                                     fontFamily: 'inherit', cursor: 'pointer', transition: 'all 0.2s',
                                 }}
                                     onMouseEnter={e => { e.currentTarget.style.background='#FFF0F7'; e.currentTarget.style.transform='translateY(-1px)'; }}
@@ -685,7 +687,7 @@ export default function LoginModal() {
                                         placeholder="Repeat your password" autoComplete="new-password" error={errors.confirm}
                                         rightSlot={eyeBtn(showConfirm, () => setShowConfirm(v => !v))} />
                                     {regForm.confirm && !errors.confirm && regForm.confirm === regForm.password && regForm.password.length >= 6 && (
-                                        <p style={{ fontSize: 17, color: '#22c55e', marginTop: 6, fontWeight: 700 }}>✓ Passwords match</p>
+                                        <p style={{ fontSize: 14, color: '#22c55e', marginTop: 6, fontWeight: 700 }}>✓ Passwords match</p>
                                     )}
                                 </div>
 
@@ -693,7 +695,7 @@ export default function LoginModal() {
                                     width: '100%', height: 56, borderRadius: 16, marginTop: 4,
                                     background: loading ? '#f9a8d4' : 'linear-gradient(135deg, #B5006B, #FC2779)',
                                     color: 'white', border: 'none', cursor: loading ? 'not-allowed' : 'pointer',
-                                    fontSize: 22, fontWeight: 800, fontFamily: 'inherit',
+                                    fontSize: 20, fontWeight: 800, fontFamily: 'inherit',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                                     boxShadow: loading ? 'none' : '0 8px 28px rgba(181,0,107,0.38)',
                                     transition: 'opacity 0.2s, transform 0.2s',
@@ -704,12 +706,12 @@ export default function LoginModal() {
                                     {loading ? <><Spinner /> Creating account...</> : '✨ Create My Account'}
                                 </button>
 
-                                <p style={{ textAlign: 'center', fontSize: 18, color: '#9ca3af' }}>
+                                <p style={{ textAlign: 'center', fontSize: 16, color: '#9ca3af' }}>
                                     Already have an account?{' '}
                                     <button type="button" onClick={() => setAuthTab('login')} style={{
                                         color: '#FC2779', fontWeight: 700, background: 'none',
                                         border: 'none', cursor: 'pointer', padding: 0,
-                                        fontSize: 18, textDecoration: 'underline',
+                                        fontSize: 16, textDecoration: 'underline',
                                     }}>Sign in</button>
                                 </p>
                             </form>
@@ -723,7 +725,7 @@ export default function LoginModal() {
                                 borderTop: '1.5px solid #f3f4f6',
                             }}>
                                 {['🔒 Secure', '🌸 100% Free', '✨ No spam'].map(badge => (
-                                    <span key={badge} style={{ fontSize: 17, color: '#9ca3af', fontWeight: 600 }}>{badge}</span>
+                                    <span key={badge} style={{ fontSize: 14, color: '#9ca3af', fontWeight: 600 }}>{badge}</span>
                                 ))}
                             </div>
                         )}

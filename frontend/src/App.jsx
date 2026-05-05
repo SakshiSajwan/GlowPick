@@ -7,7 +7,6 @@ import ProductList from './pages/ProductList';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword';
 import SkinProfile from './pages/SkinProfile';
 import UploadSelfie from './pages/UploadSelfie';
 import Results from './pages/Results';
@@ -35,7 +34,6 @@ function AppContent() {
                     <Route path="/product/:id"          element={<ProductDetail />} />
                     <Route path="/cart"                 element={<Cart />} />
                     <Route path="/forgot-password"      element={<ForgotPassword />} />
-                    <Route path="/reset-password/:token" element={<ResetPassword />} />
                     <Route path="/recommend"            element={<SkinProfile />} />
                     <Route path="/upload-selfie"        element={<UploadSelfie />} />
                     <Route path="/results"              element={<Results />} />

@@ -10,14 +10,14 @@ function StepBadge({ number, label, active }) {
       <div style={{
         width: 40, height: 40, borderRadius: "50%",
         display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 22, fontWeight: 800, flexShrink: 0,
+        fontSize: 14, fontWeight: 800, flexShrink: 0,
         background: active ? "linear-gradient(135deg,#FC2779,#F43F5E)" : "#fff",
         color: active ? "#fff" : "#9CA3AF",
         border: active ? "none" : "2px solid #E5E7EB",
         boxShadow: active ? "0 4px 14px rgba(252,39,121,.35)" : "none",
         transition: "all .3s",
       }}>{number}</div>
-      <span style={{ fontSize: 20, fontWeight: 700, color: active ? "#FC2779" : "#9CA3AF" }}>
+      <span style={{ fontSize: 14, fontWeight: 700, color: active ? "#FC2779" : "#9CA3AF" }}>
         {label}
       </span>
     </div>
@@ -40,14 +40,14 @@ function RoutineStep({ number, label, name, sub, color = "#FC2779" }) {
       <div style={{
         width: 36, height: 36, borderRadius: 10,
         background: color === "#7C3AED" ? "#EDE9FE" : "#FEE2E2",
-        color: color, fontSize: 19, fontWeight: 900,
+        color: color, fontSize: 14, fontWeight: 900,
         display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
       }}>{number}</div>
       <div>
-        <p style={{ margin: 0, fontSize: 20, fontWeight: 700, color: "#374151" }}>
+        <p style={{ margin: 0, fontSize: 15, fontWeight: 700, color: "#374151" }}>
           <span style={{ color: "#9CA3AF", fontWeight: 500 }}>{label}: </span>{name}
         </p>
-        {sub && <p style={{ margin: "5px 0 0", fontSize: 18, color: "#9CA3AF" }}>{sub}</p>}
+        {sub && <p style={{ margin: "5px 0 0", fontSize: 13, color: "#9CA3AF" }}>{sub}</p>}
       </div>
     </div>
   );
@@ -88,24 +88,24 @@ function ProductCard({ product, onAddToCart, added }) {
         <div style={{
           display: product.image ? "none" : "flex",
           alignItems: "center", justifyContent: "center",
-          fontSize: 56, width: "100%", height: "100%",
+          fontSize: 36, width: "100%", height: "100%",
         }}>✨</div>
       </div>
 
       {/* Info */}
-      <p style={{ margin: "0 0 6px", fontSize: 22, fontWeight: 800, color: "#1F2937", lineHeight: 1.35 }}>
+      <p style={{ margin: "0 0 6px", fontSize: 15, fontWeight: 800, color: "#1F2937", lineHeight: 1.35 }}>
         {product.name}
       </p>
       {product.brand && (
-        <p style={{ margin: "0 0 10px", fontSize: 18, fontWeight: 700, color: "#FC2779", textTransform: "uppercase", letterSpacing: ".06em" }}>
+        <p style={{ margin: "0 0 10px", fontSize: 12, fontWeight: 700, color: "#FC2779", textTransform: "uppercase", letterSpacing: ".06em" }}>
           {product.brand}
         </p>
       )}
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16, marginTop: "auto" }}>
-        <span style={{ fontWeight: 900, fontSize: 24, color: "#1C1C1E" }}>₹{product.price}</span>
+        <span style={{ fontWeight: 900, fontSize: 16, color: "#1C1C1E" }}>₹{product.price}</span>
         {product.rating && (
           <span style={{
-            fontSize: 18, color: "#15803D", fontWeight: 800,
+            fontSize: 12, color: "#15803D", fontWeight: 800,
             background: "#F0FDF4", padding: "4px 10px", borderRadius: 8,
           }}>⭐ {product.rating}</span>
         )}
@@ -116,7 +116,7 @@ function ProductCard({ product, onAddToCart, added }) {
         <div style={{
           background: "#FFF0F7", borderRadius: 12,
           padding: "10px 14px", marginBottom: 14,
-          fontSize: 16, color: "#6B7280", lineHeight: 1.6,
+          fontSize: 12, color: "#6B7280", lineHeight: 1.6,
         }}>
           {product.reasons.slice(0, 2).map((r, i) => r.trim() && (
             <p key={i} style={{ margin: 0 }}>• {r.trim()}</p>
@@ -129,7 +129,7 @@ function ProductCard({ product, onAddToCart, added }) {
         style={{
           width: "100%", height: 46, borderRadius: 12, border: "none",
           background: added ? "linear-gradient(135deg,#10B981,#059669)" : "#FC2779",
-          color: "#fff", fontSize: 18, fontWeight: 800,
+          color: "#fff", fontSize: 13, fontWeight: 800,
           cursor: "pointer", transition: "all .3s",
           boxShadow: added ? "0 4px 14px rgba(16,185,129,.3)" : "0 4px 14px rgba(252,39,121,.25)",
         }}
@@ -216,19 +216,19 @@ export default function Results() {
           background: "#FFF0F7", border: "1.5px solid #FCE7F3",
           boxShadow: "0 2px 12px rgba(252,39,121,.08)",
         }}>
-          <span style={{ fontSize: 18, fontWeight: 700, color: "#FC2779", letterSpacing: ".06em" }}>
+          <span style={{ fontSize: 13, fontWeight: 700, color: "#FC2779", letterSpacing: ".06em" }}>
             ✨ AI-Powered Skincare
           </span>
         </div>
 
         <h1 style={{
-          fontSize: "clamp(36px,5vw,54px)", fontWeight: 900, marginBottom: 6,
+          fontSize: "clamp(28px,4vw,40px)", fontWeight: 900, marginBottom: 6,
           background: "linear-gradient(135deg,#FC2779,#F43F5E,#A855F7)",
           WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
           letterSpacing: "-.03em", lineHeight: 1.1,
         }}>GlowBot</h1>
 
-        <p style={{ fontSize: 20, color: "#6B7280", marginBottom: 22 }}>
+        <p style={{ fontSize: 15, color: "#6B7280", marginBottom: 22 }}>
           Your personalised skincare recommendation system
         </p>
 
@@ -248,7 +248,7 @@ export default function Results() {
               borderRadius: 99,
             }} />
           </div>
-          <p style={{ fontSize: 17, color: "#9CA3AF", marginTop: 6 }}>Step 3 of 3</p>
+          <p style={{ fontSize: 13, color: "#9CA3AF", marginTop: 6 }}>Step 3 of 3</p>
         </div>
       </div>
 
@@ -258,14 +258,14 @@ export default function Results() {
         {/* SKIN ANALYSIS BANNER */}
         <div style={{ ...cardStyle, display: "flex", gap: 40, alignItems: "center", marginBottom: 30, overflow: "hidden" }}>
           <div style={{ flex: 1 }}>
-            <h2 style={{ fontSize: 40, fontWeight: 900, marginBottom: 22, color: "#111827", letterSpacing: "-.02em" }}>
+            <h2 style={{ fontSize: 28, fontWeight: 900, marginBottom: 22, color: "#111827", letterSpacing: "-.02em" }}>
               Your Skin Analysis
             </h2>
             <div style={{ display: "flex", gap: 14, marginBottom: 22, flexWrap: "wrap" }}>
               <span style={{
                 background: "linear-gradient(135deg,#FEE2E2,#FFF0F7)",
                 color: "#FC2779", padding: "10px 24px",
-                borderRadius: 99, fontSize: 22, fontWeight: 800,
+                borderRadius: 99, fontSize: 16, fontWeight: 800,
                 border: "1.5px solid #FCE7F3",
                 boxShadow: "0 2px 12px rgba(252,39,121,.12)",
               }}>
@@ -273,11 +273,11 @@ export default function Results() {
               </span>
             </div>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 12, flexWrap: "wrap" }}>
-              <span style={{ fontSize: 22, fontWeight: 700, color: "#374151" }}>Detected Concerns:</span>
+              <span style={{ fontSize: 16, fontWeight: 700, color: "#374151" }}>Detected Concerns:</span>
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                 {concerns.map(c => (
                   <span key={c} style={{
-                    color: "#fff", fontWeight: 700, fontSize: 18,
+                    color: "#fff", fontWeight: 700, fontSize: 13,
                     background: "linear-gradient(135deg,#FC2779,#F43F5E)",
                     padding: "5px 16px", borderRadius: 99,
                     boxShadow: "0 2px 8px rgba(252,39,121,.22)",
@@ -302,8 +302,8 @@ export default function Results() {
               background: "rgba(255,255,255,.92)", backdropFilter: "blur(8px)",
               borderRadius: 12, padding: "8px 16px",
             }}>
-              <p style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#FC2779" }}>✦ AI Analysis Complete</p>
-              <p style={{ margin: 0, fontSize: 14, color: "#6B7280" }}>{allProducts.length} products matched</p>
+              <p style={{ margin: 0, fontSize: 13, fontWeight: 800, color: "#FC2779" }}>✦ AI Analysis Complete</p>
+              <p style={{ margin: 0, fontSize: 11, color: "#6B7280" }}>{allProducts.length} products matched</p>
             </div>
           </div>
         </div>
@@ -313,10 +313,10 @@ export default function Results() {
 
           {/* LEFT: Routines */}
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            <h3 style={{ fontSize: 30, fontWeight: 900, color: "#374151", margin: 0 }}>Your Routine</h3>
+            <h3 style={{ fontSize: 22, fontWeight: 900, color: "#374151", margin: 0 }}>Your Routine</h3>
 
             <div style={cardStyle}>
-              <h4 style={{ margin: "0 0 20px", fontSize: 24, fontWeight: 900, color: "#FC2779" }}>
+              <h4 style={{ margin: "0 0 20px", fontSize: 18, fontWeight: 900, color: "#FC2779" }}>
                 Morning Routine ☀️
               </h4>
               <RoutineStep number="1" label="Cleanser"    name="Gentle Foam Cleanser"       sub="Removes impurities without dryness" />
@@ -325,7 +325,7 @@ export default function Results() {
             </div>
 
             <div style={cardStyle}>
-              <h4 style={{ margin: "0 0 20px", fontSize: 24, fontWeight: 900, color: "#7C3AED" }}>
+              <h4 style={{ margin: "0 0 20px", fontSize: 18, fontWeight: 900, color: "#7C3AED" }}>
                 Night Routine 🌙
               </h4>
               <RoutineStep number="1" label="Double Cleanse" name="Cleansing Oil + Gentle Foam"  sub="Deeply cleanses pores"                color="#7C3AED" />
@@ -340,9 +340,9 @@ export default function Results() {
             {/* WHY card */}
             <div style={{ ...cardStyle, border: "2px solid #FCE7F3", background: "#FFFBFD" }}>
               <div style={{ display: "flex", gap: 22, alignItems: "flex-start" }}>
-                <span style={{ fontSize: 54, flexShrink: 0 }}>🤖</span>
+                <span style={{ fontSize: 36, flexShrink: 0 }}>🤖</span>
                 <div style={{ flex: 1 }}>
-                  <h4 style={{ margin: "0 0 18px", fontSize: 24, fontWeight: 900, color: "#111827" }}>
+                  <h4 style={{ margin: "0 0 18px", fontSize: 18, fontWeight: 900, color: "#111827" }}>
                     Why we recommended this routine for you
                   </h4>
                   <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 14 }}>
@@ -351,10 +351,10 @@ export default function Results() {
                         <span style={{
                           width: 26, height: 26, borderRadius: "50%", flexShrink: 0, marginTop: 2,
                           background: "linear-gradient(135deg,#FC2779,#F43F5E)",
-                          color: "#fff", fontSize: 16, fontWeight: 900,
+                          color: "#fff", fontSize: 12, fontWeight: 900,
                           display: "flex", alignItems: "center", justifyContent: "center",
                         }}>{i + 1}</span>
-                        <p style={{ margin: 0, fontSize: 20, color: "#4B5563", lineHeight: 1.75 }}
+                        <p style={{ margin: 0, fontSize: 15, color: "#4B5563", lineHeight: 1.75 }}
                           dangerouslySetInnerHTML={{ __html: point }} />
                       </li>
                     ))}
@@ -365,10 +365,10 @@ export default function Results() {
 
             {/* Products heading + count */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <h3 style={{ fontSize: 28, fontWeight: 900, color: "#374151", margin: 0 }}>
+              <h3 style={{ fontSize: 20, fontWeight: 900, color: "#374151", margin: 0 }}>
                 Recommended Products
                 <span style={{
-                  marginLeft: 12, fontSize: 18, fontWeight: 700,
+                  marginLeft: 12, fontSize: 13, fontWeight: 700,
                   color: "#FC2779", background: "#FFF0F7",
                   padding: "4px 14px", borderRadius: 99,
                   border: "1.5px solid #FCE7F3",
@@ -377,7 +377,7 @@ export default function Results() {
                 </span>
               </h3>
               <Link to="/cart" style={{
-                fontSize: 18, fontWeight: 800, color: "#FC2779",
+                fontSize: 13, fontWeight: 800, color: "#FC2779",
                 textDecoration: "none", display: "flex", alignItems: "center", gap: 6,
                 background: "#FFF0F7", padding: "9px 20px", borderRadius: 99,
                 border: "1.5px solid #FCE7F3",
@@ -422,7 +422,7 @@ export default function Results() {
               }} />
             </div>
 
-            <p style={{ fontSize: 16, color: "#9CA3AF", textAlign: "center" }}>
+            <p style={{ fontSize: 12, color: "#9CA3AF", textAlign: "center" }}>
               ← Scroll to see all {allProducts.length} recommended products →
             </p>
           </div>
@@ -436,7 +436,7 @@ export default function Results() {
           <Link to="/cart" style={{
             display: "inline-flex", alignItems: "center", gap: 10,
             background: "linear-gradient(135deg,#FC2779,#F43F5E)",
-            color: "#fff", fontWeight: 900, fontSize: 20,
+            color: "#fff", fontWeight: 900, fontSize: 15,
             padding: "16px 40px", borderRadius: 99,
             textDecoration: "none",
             boxShadow: "0 8px 28px rgba(252,39,121,.35)",
@@ -452,7 +452,7 @@ export default function Results() {
             onClick={() => { localStorage.removeItem("skinProfile"); navigate("/recommend"); }}
             style={{
               display: "inline-flex", alignItems: "center", gap: 10,
-              background: "#fff", color: "#6B7280", fontWeight: 700, fontSize: 18,
+              background: "#fff", color: "#6B7280", fontWeight: 700, fontSize: 14,
               padding: "16px 36px", borderRadius: 99,
               border: "1.5px solid #E5E7EB", cursor: "pointer",
               transition: "all .2s",

@@ -82,42 +82,42 @@ const ProductList = () => {
 
     /* Filter panel */
     const FilterPanel = () => (
-        <div style={{ background: 'white', borderRadius: 18, border: '1.5px solid #F0E0EA', padding: '28px 24px' }}>
+        <div style={{ background: 'white', borderRadius: 14, border: '1.5px solid #F0E0EA', padding: '18px 14px' }}>
             {/* Header */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <FaFilter size={17} style={{ color: '#FC2779' }} />
-                    <span style={{ fontWeight: 900, fontSize: 22, color: '#1C1C1E', letterSpacing: '-.01em' }}>Filters</span>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <FaFilter size={13} style={{ color: '#FC2779' }} />
+                    <span style={{ fontWeight: 900, fontSize: 15, color: '#1C1C1E', letterSpacing: '-.01em' }}>Filters</span>
                     {activeFilterCount > 0 && (
-                        <span style={{ background: '#FC2779', color: 'white', fontSize: 14, fontWeight: 800, padding: '3px 11px', borderRadius: 99 }}>
+                        <span style={{ background: '#FC2779', color: 'white', fontSize: 11, fontWeight: 800, padding: '2px 8px', borderRadius: 99 }}>
                             {activeFilterCount}
                         </span>
                     )}
                 </div>
                 {activeFilterCount > 0 && (
-                    <button onClick={clearFilters} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#FC2779', fontSize: 16, fontWeight: 700, display: 'flex', alignItems: 'center', gap: 5 }}>
-                        <FaTimes size={13} /> Clear
+                    <button onClick={clearFilters} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#FC2779', fontSize: 12, fontWeight: 700, display: 'flex', alignItems: 'center', gap: 5 }}>
+                        <FaTimes size={10} /> Clear
                     </button>
                 )}
             </div>
 
             {/* Category tag */}
             {categoryQuery && (
-                <div style={{ marginBottom: 28 }}>
-                    <p style={{ fontSize: 14, fontWeight: 800, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>Category</p>
-                    <span style={{ background: '#FFF0F7', color: '#FC2779', fontSize: 17, fontWeight: 700, padding: '8px 18px', borderRadius: 99, border: '1px solid #FCCDE3', display: 'inline-block' }}>
+                <div style={{ marginBottom: 20 }}>
+                    <p style={{ fontSize: 11, fontWeight: 800, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>Category</p>
+                    <span style={{ background: '#FFF0F7', color: '#FC2779', fontSize: 12, fontWeight: 700, padding: '6px 12px', borderRadius: 99, border: '1px solid #FCCDE3', display: 'inline-block' }}>
                         {categoryQuery}
                     </span>
                 </div>
             )}
 
             {/* Price Range */}
-            <div style={{ marginBottom: 32 }}>
-                <p style={{ fontSize: 14, fontWeight: 800, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 16 }}>Price Range</p>
+            <div style={{ marginBottom: 22 }}>
+                <p style={{ fontSize: 11, fontWeight: 800, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>Price Range</p>
                 <input type="range" min="0" max="5000" step="50" value={priceRange}
                     onChange={e => setPriceRange(Number(e.target.value))}
                     style={{ width: '100%', accentColor: '#FC2779', cursor: 'pointer', height: 5 }} />
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 17, fontWeight: 700, marginTop: 10, color: '#6B7280' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, fontWeight: 700, marginTop: 8, color: '#6B7280' }}>
                     <span>₹0</span>
                     <span style={{ color: '#FC2779' }}>₹{priceRange.toLocaleString()}</span>
                 </div>
@@ -125,16 +125,16 @@ const ProductList = () => {
 
             {/* Brands */}
             <div>
-                <p style={{ fontSize: 14, fontWeight: 800, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 16 }}>Brands</p>
-                <div style={{ maxHeight: 300, overflowY: 'auto' }}>
+                <p style={{ fontSize: 11, fontWeight: 800, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>Brands</p>
+                <div style={{ maxHeight: 250, overflowY: 'auto' }}>
                     {brands.map(brand => (
-                        <label key={brand} style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14, cursor: 'pointer' }}>
+                        <label key={brand} style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 10, cursor: 'pointer' }}>
                             <input type="checkbox" checked={selectedBrands.includes(brand)}
                                 onChange={() => setSelectedBrands(prev =>
                                     prev.includes(brand) ? prev.filter(b => b !== brand) : [...prev, brand]
                                 )}
-                                style={{ accentColor: '#FC2779', width: 20, height: 20, cursor: 'pointer' }} />
-                            <span style={{ fontSize: 17, color: '#374151', fontWeight: 500 }}>{brand}</span>
+                                style={{ accentColor: '#FC2779', width: 14, height: 14, cursor: 'pointer' }} />
+                            <span style={{ fontSize: 12, color: '#374151', fontWeight: 500 }}>{brand}</span>
                         </label>
                     ))}
                 </div>
@@ -146,10 +146,10 @@ const ProductList = () => {
     const fallback  = 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=400';
 
     return (
-        <div style={{ display: 'flex', gap: 32, paddingTop: 32, paddingBottom: 64, alignItems: 'flex-start' }}>
+        <div style={{ display: 'flex', gap: 20, paddingTop: 24, paddingBottom: 64, alignItems: 'flex-start' }}>
 
             {/* Sidebar — wider */}
-            <div className="sidebar-desktop" style={{ width: 290, flexShrink: 0 }}>
+            <div className="sidebar-desktop" style={{ width: 180, flexShrink: 0 }}>
                 <div style={{ position: 'sticky', top: 108 }}>
                     <FilterPanel />
                 </div>
@@ -167,16 +167,16 @@ const ProductList = () => {
 
                 {/* Topbar */}
                 <div style={{
-                    background: 'white', borderRadius: 18, border: '1.5px solid #F0E0EA',
-                    padding: '22px 28px', marginBottom: 28,
+                    background: 'white', borderRadius: 14, border: '1.5px solid #F0E0EA',
+                    padding: '16px 20px', marginBottom: 18,
                     display: 'flex', flexWrap: 'wrap',
                     justifyContent: 'space-between', alignItems: 'center', gap: 14,
                 }}>
                     <div>
-                        <h1 style={{ fontSize: 28, fontWeight: 900, color: '#1C1C1E', marginBottom: 5, letterSpacing: '-.01em' }}>
+                        <h1 style={{ fontSize: 20, fontWeight: 900, color: '#1C1C1E', marginBottom: 4, letterSpacing: '-.01em' }}>
                             {pageTitle}
                         </h1>
-                        <p style={{ fontSize: 17, color: '#9CA3AF', fontWeight: 500 }}>
+                        <p style={{ fontSize: 13, color: '#9CA3AF', fontWeight: 500 }}>
                             {sorted.length} product{sorted.length !== 1 ? 's' : ''} found
                         </p>
                     </div>
@@ -185,9 +185,9 @@ const ProductList = () => {
                         <button onClick={() => setShowMobileFilters(v => !v)}
                             className="mobile-filter-btn"
                             style={{
-                                alignItems: 'center', gap: 8, padding: '12px 20px',
-                                border: '1.5px solid #F0E0EA', borderRadius: 12,
-                                fontSize: 17, fontWeight: 700, color: '#374151',
+                                alignItems: 'center', gap: 8, padding: '10px 16px',
+                                border: '1.5px solid #F0E0EA', borderRadius: 10,
+                                fontSize: 13, fontWeight: 700, color: '#374151',
                                 background: showMobileFilters ? '#FFF0F7' : 'white', cursor: 'pointer',
                             }}>
                             <FaFilter size={14} /> Filters {activeFilterCount > 0 && `(${activeFilterCount})`}
@@ -198,9 +198,9 @@ const ProductList = () => {
                             <select value={sortBy} onChange={e => setSortBy(e.target.value)}
                                 style={{
                                     appearance: 'none', background: '#FAFAFA',
-                                    border: '1.5px solid #F0E0EA', borderRadius: 12,
-                                    paddingLeft: 18, paddingRight: 42, paddingTop: 12, paddingBottom: 12,
-                                    fontSize: 17, fontWeight: 600, color: '#374151',
+                                    border: '1.5px solid #F0E0EA', borderRadius: 10,
+                                    paddingLeft: 14, paddingRight: 34, paddingTop: 10, paddingBottom: 10,
+                                    fontSize: 13, fontWeight: 600, color: '#374151',
                                     cursor: 'pointer', outline: 'none',
                                 }}>
                                 <option value="popularity">Most Popular</option>
@@ -221,9 +221,9 @@ const ProductList = () => {
                 {sorted.length === 0 ? (
                     <div style={{ background: 'white', borderRadius: 20, border: '2px dashed #F0E0EA', padding: '80px 24px', textAlign: 'center' }}>
                         <FaSearch size={48} style={{ color: '#E5E7EB', margin: '0 auto 20px' }} />
-                        <h3 style={{ fontWeight: 800, color: '#9CA3AF', marginBottom: 12, fontSize: 26 }}>No products found</h3>
-                        <p style={{ color: '#9CA3AF', fontSize: 18, marginBottom: 32 }}>Try adjusting your filters or search term.</p>
-                        <button onClick={clearFilters} style={{ background: '#FC2779', color: 'white', border: 'none', borderRadius: 99, padding: '15px 36px', fontWeight: 800, fontSize: 18, cursor: 'pointer' }}>
+                        <h3 style={{ fontWeight: 800, color: '#9CA3AF', marginBottom: 12, fontSize: 20 }}>No products found</h3>
+                        <p style={{ color: '#9CA3AF', fontSize: 14, marginBottom: 32 }}>Try adjusting your filters or search term.</p>
+                        <button onClick={clearFilters} style={{ background: '#FC2779', color: 'white', border: 'none', borderRadius: 99, padding: '12px 28px', fontWeight: 800, fontSize: 14, cursor: 'pointer' }}>
                             Clear Filters
                         </button>
                     </div>
@@ -231,8 +231,8 @@ const ProductList = () => {
                     /* Product Grid — 3-4 per row max, bigger cards */
                     <div style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
-                        gap: 24,
+                        gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+                        gap: 12,
                     }}>
                         {sorted.map(product => {
                             const display  = product.discountPrice && product.discountPrice < product.price ? product.discountPrice : product.price;
@@ -242,12 +242,12 @@ const ProductList = () => {
 
                             return (
                                 <div key={product._id} style={{
-                                    background: 'white', borderRadius: 20,
+                                    background: 'white', borderRadius: 12,
                                     border: '1.5px solid #F0E0EA',
                                     overflow: 'hidden', display: 'flex', flexDirection: 'column',
                                     transition: 'box-shadow .25s, transform .25s',
                                 }}
-                                    onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 12px 36px rgba(252,39,121,.18)'; e.currentTarget.style.transform = 'translateY(-5px)'; }}
+                                    onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(252,39,121,.14)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
                                     onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'none'; }}
                                 >
                                     {/* Image */}
@@ -263,9 +263,9 @@ const ProductList = () => {
                                             />
                                             {pct > 0 && (
                                                 <span style={{
-                                                    position: 'absolute', top: 12, left: 12,
+                                                    position: 'absolute', top: 7, left: 7,
                                                     background: '#FC2779', color: 'white',
-                                                    fontSize: 14, fontWeight: 900, padding: '5px 13px', borderRadius: 99,
+                                                    fontSize: 9, fontWeight: 900, padding: '3px 7px', borderRadius: 99,
                                                     boxShadow: '0 2px 8px rgba(252,39,121,.4)',
                                                 }}>
                                                     {pct}% OFF
@@ -273,9 +273,9 @@ const ProductList = () => {
                                             )}
                                             {product.rating >= 4.7 && (
                                                 <span style={{
-                                                    position: 'absolute', top: 12, right: 12,
+                                                    position: 'absolute', top: 7, right: 7,
                                                     background: 'rgba(255,255,255,.95)', color: '#1C1C1E',
-                                                    fontSize: 13, fontWeight: 800, padding: '5px 11px', borderRadius: 9,
+                                                    fontSize: 9, fontWeight: 800, padding: '3px 6px', borderRadius: 7,
                                                 }}>
                                                     ⭐ {product.rating}
                                                 </span>
@@ -284,17 +284,17 @@ const ProductList = () => {
                                     </Link>
 
                                     {/* Body */}
-                                    <div style={{ padding: '18px 20px 20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                                    <div style={{ padding: '10px 10px 12px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                                         {/* Brand */}
-                                        <p style={{ fontSize: 15, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '.09em', marginBottom: 6 }}>
+                                        <p style={{ fontSize: 9, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '.09em', marginBottom: 4 }}>
                                             {product.brand}
                                         </p>
 
                                         {/* Name */}
                                         <Link to={`/product/${product._id}`} style={{ textDecoration: 'none' }}>
                                             <p style={{
-                                                fontSize: 19, fontWeight: 700, color: '#1C1C1E',
-                                                lineHeight: 1.4, marginBottom: 10,
+                                                fontSize: 12, fontWeight: 700, color: '#1C1C1E',
+                                                lineHeight: 1.35, marginBottom: 7,
                                                 display: '-webkit-box', WebkitLineClamp: 2,
                                                 WebkitBoxOrient: 'vertical', overflow: 'hidden',
                                             }}>
@@ -304,25 +304,25 @@ const ProductList = () => {
 
                                         {/* Rating */}
                                         {product.rating && (
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 8 }}>
                                                 <span style={{
                                                     background: '#F0FDF4', color: '#15803D',
-                                                    fontSize: 16, fontWeight: 800, padding: '4px 10px',
-                                                    borderRadius: 8, display: 'flex', alignItems: 'center', gap: 5,
+                                                    fontSize: 10, fontWeight: 800, padding: '3px 6px',
+                                                    borderRadius: 6, display: 'flex', alignItems: 'center', gap: 3,
                                                 }}>
-                                                    {product.rating} <FaStar size={11} />
+                                                    {product.rating} <FaStar size={8} />
                                                 </span>
                                                 {product.numReviews && (
-                                                    <span style={{ fontSize: 15, color: '#9CA3AF' }}>({product.numReviews.toLocaleString()})</span>
+                                                    <span style={{ fontSize: 9, color: '#9CA3AF' }}>({product.numReviews.toLocaleString()})</span>
                                                 )}
                                             </div>
                                         )}
 
                                         {/* Price */}
-                                        <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 16, marginTop: 'auto' }}>
-                                            <span style={{ fontSize: 26, fontWeight: 900, color: '#1C1C1E' }}>₹{display.toLocaleString('en-IN')}</span>
+                                        <div style={{ display: 'flex', alignItems: 'baseline', gap: 5, marginBottom: 10, marginTop: 'auto' }}>
+                                            <span style={{ fontSize: 16, fontWeight: 900, color: '#1C1C1E' }}>₹{display.toLocaleString('en-IN')}</span>
                                             {pct > 0 && (
-                                                <span style={{ fontSize: 17, color: '#B0B0B0', textDecoration: 'line-through' }}>₹{product.price.toLocaleString('en-IN')}</span>
+                                                <span style={{ fontSize: 10, color: '#B0B0B0', textDecoration: 'line-through' }}>₹{product.price.toLocaleString('en-IN')}</span>
                                             )}
                                         </div>
 
@@ -331,10 +331,10 @@ const ProductList = () => {
                                             <button
                                                 onClick={() => addToCart(product)}
                                                 style={{
-                                                    width: '100%', height: 56,
-                                                    border: '2px solid #FC2779',
-                                                    borderRadius: 14, background: 'white',
-                                                    color: '#FC2779', fontSize: 18, fontWeight: 800,
+                                                    width: '100%', height: 34,
+                                                    border: '1.5px solid #FC2779',
+                                                    borderRadius: 8, background: 'white',
+                                                    color: '#FC2779', fontSize: 11, fontWeight: 800,
                                                     cursor: 'pointer', transition: 'all .2s', letterSpacing: '.04em',
                                                 }}
                                                 onMouseEnter={e => { e.currentTarget.style.background = '#FC2779'; e.currentTarget.style.color = 'white'; }}
@@ -345,14 +345,14 @@ const ProductList = () => {
                                         ) : (
                                             <div style={{
                                                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                                                background: '#FC2779', borderRadius: 14, overflow: 'hidden', height: 56,
+                                                background: '#FC2779', borderRadius: 8, overflow: 'hidden', height: 34,
                                             }}>
                                                 <button
                                                     onClick={() => updateQty(product, cartItem.qty - 1)}
                                                     style={{
-                                                        width: 56, height: 56, border: 'none',
+                                                        width: 34, height: 34, border: 'none',
                                                         background: 'rgba(0,0,0,.15)',
-                                                        color: 'white', fontSize: 26, fontWeight: 700,
+                                                        color: 'white', fontSize: 16, fontWeight: 700,
                                                         cursor: 'pointer', display: 'flex',
                                                         alignItems: 'center', justifyContent: 'center',
                                                         transition: 'background .15s', flexShrink: 0,
@@ -363,7 +363,7 @@ const ProductList = () => {
 
                                                 <span style={{
                                                     flex: 1, textAlign: 'center',
-                                                    color: 'white', fontSize: 20, fontWeight: 900,
+                                                    color: 'white', fontSize: 13, fontWeight: 900,
                                                     userSelect: 'none',
                                                 }}>
                                                     {cartItem.qty}
@@ -372,9 +372,9 @@ const ProductList = () => {
                                                 <button
                                                     onClick={() => updateQty(product, cartItem.qty + 1)}
                                                     style={{
-                                                        width: 56, height: 56, border: 'none',
+                                                        width: 34, height: 34, border: 'none',
                                                         background: 'rgba(0,0,0,.15)',
-                                                        color: 'white', fontSize: 26, fontWeight: 700,
+                                                        color: 'white', fontSize: 16, fontWeight: 700,
                                                         cursor: 'pointer', display: 'flex',
                                                         alignItems: 'center', justifyContent: 'center',
                                                         transition: 'background .15s', flexShrink: 0,

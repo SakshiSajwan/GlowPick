@@ -62,16 +62,17 @@ function OtpInput({ value, onChange }) {
 }
 
 export default function ForgotPassword() {
-    const navigate = useNavigate();
+    const navigate  = useNavigate();
     const { openLogin } = useGlobalContext();
 
-    const [step,        setStep]        = useState('email');
-    const [email,       setEmail]       = useState('');
-    const [otp,         setOtp]         = useState('');
-    const [password,    setPassword]    = useState('');
-    const [confirm,     setConfirm]     = useState('');
-    const [loading,     setLoading]     = useState(false);
-    const [countdown,   setCountdown]   = useState(0);
+    const [step,       setStep]       = useState('email');
+    const [email,      setEmail]      = useState('');
+    const [otp,        setOtp]        = useState('');
+    const [resetToken, setResetToken] = useState(''); // ← FIX 1: store resetToken
+    const [password,   setPassword]   = useState('');
+    const [confirm,    setConfirm]    = useState('');
+    const [loading,    setLoading]    = useState(false);
+    const [countdown,  setCountdown]  = useState(0);
 
     const startCountdown = () => {
         setCountdown(60);
@@ -80,6 +81,7 @@ export default function ForgotPassword() {
         }, 1000);
     };
 
+    /* ── Step 1: Send OTP ── */
     const handleSendOtp = async (e) => {
         e.preventDefault();
         if (!email) { toast.error('Please enter your email'); return; }
@@ -87,41 +89,50 @@ export default function ForgotPassword() {
         try {
             await api.post('/auth/forgot-password', { email });
             toast.success('OTP sent to your email 📧');
-            setStep('otp'); startCountdown();
+            setStep('otp');
+            startCountdown();
         } catch (err) {
             toast.error(err?.response?.data?.message || 'Could not send OTP.');
         } finally { setLoading(false); }
     };
 
+    /* ── Step 2: Verify OTP ── */
     const handleVerifyOtp = async (e) => {
         e.preventDefault();
         if (otp.length < 6) { toast.error('Enter the full 6-digit OTP'); return; }
         setLoading(true);
         try {
-            await api.post('/auth/verify-otp', { email, otp });
-            toast.success('OTP verified ✅'); setStep('reset');
+            const { data } = await api.post('/auth/verify-otp', { email, otp });
+            setResetToken(data.resetToken); // ← FIX 2: save resetToken from response
+            toast.success('OTP verified ✅');
+            setStep('reset');
         } catch (err) {
             toast.error(err?.response?.data?.message || 'Invalid or expired OTP.');
         } finally { setLoading(false); }
     };
 
+    /* ── Resend OTP ── */
     const handleResend = async () => {
         if (countdown > 0) return;
-        setOtp(''); setLoading(true);
+        setOtp('');
+        setLoading(true);
         try {
             await api.post('/auth/forgot-password', { email });
-            toast.success('New OTP sent 📧'); startCountdown();
+            toast.success('New OTP sent 📧');
+            startCountdown();
         } catch { toast.error('Could not resend OTP.'); }
         finally { setLoading(false); }
     };
 
+    /* ── Step 3: Reset Password ── */
     const handleReset = async (e) => {
         e.preventDefault();
         if (!password || password.length < 6) { toast.error('Password must be at least 6 characters'); return; }
         if (password !== confirm) { toast.error("Passwords don't match"); return; }
         setLoading(true);
         try {
-            await api.post('/auth/reset-password-otp', { email, otp, password });
+            // ← FIX 3: include resetToken in the request body
+            await api.post('/auth/reset-password-otp', { email, otp, resetToken, password });
             toast.success('Password reset successfully! 🎉');
             setStep('done');
         } catch (err) {
@@ -129,6 +140,7 @@ export default function ForgotPassword() {
         } finally { setLoading(false); }
     };
 
+    /* ── Styles ── */
     const btnStyle = (disabled) => ({
         width: '100%', height: 56, borderRadius: 16, marginTop: 8,
         background: disabled ? '#f9a8d4' : 'linear-gradient(135deg,#B5006B,#FC2779)',
@@ -192,16 +204,22 @@ export default function ForgotPassword() {
                 {/* Body */}
                 <div style={{ padding:'36px 40px 40px', display:'flex', flexDirection:'column', gap:20 }}>
 
-                    {/* Step 1: Email */}
+                    {/* Step 1 — Email */}
                     {step === 'email' && (
                         <form onSubmit={handleSendOtp} style={{ display:'flex',flexDirection:'column',gap:16 }}>
                             <div style={{ textAlign:'center' }}>
                                 <div style={{ fontSize:48,marginBottom:8 }}>🔐</div>
-                                <p style={{ fontSize:15,color:'#6b7280' }}>Enter your registered email and we'll send a 6-digit OTP.</p>
+                                <p style={{ fontSize:15,color:'#6b7280' }}>
+                                    Enter your registered email and we'll send a 6-digit OTP.
+                                </p>
                             </div>
                             <div>
-                                <label style={{ display:'block',fontSize:16,fontWeight:700,color:'#444',marginBottom:8 }}>Email Address</label>
-                                <input type="email" value={email} onChange={e => setEmail(e.target.value)}
+                                <label style={{ display:'block',fontSize:16,fontWeight:700,color:'#444',marginBottom:8 }}>
+                                    Email Address
+                                </label>
+                                <input
+                                    type="email" value={email}
+                                    onChange={e => setEmail(e.target.value)}
                                     placeholder="you@example.com" required style={inputStyle}
                                     onFocus={e => { e.target.style.borderColor='#FC2779'; e.target.style.boxShadow='0 0 0 4px rgba(252,39,121,0.1)'; }}
                                     onBlur={e => { e.target.style.borderColor='#e5e7eb'; e.target.style.boxShadow='none'; }}
@@ -211,59 +229,75 @@ export default function ForgotPassword() {
                                 {loading ? <><Spinner/> Sending OTP…</> : 'Send OTP →'}
                             </button>
                             <div style={{ textAlign:'center' }}>
-                                <Link to="/" onClick={openLogin} style={{ color:'#FC2779',fontSize:15,fontWeight:700,textDecoration:'none' }}>
+                                <Link to="/" onClick={openLogin}
+                                    style={{ color:'#FC2779',fontSize:15,fontWeight:700,textDecoration:'none' }}>
                                     ← Back to Sign In
                                 </Link>
                             </div>
                         </form>
                     )}
 
-                    {/* Step 2: OTP */}
+                    {/* Step 2 — OTP */}
                     {step === 'otp' && (
                         <form onSubmit={handleVerifyOtp} style={{ display:'flex',flexDirection:'column',gap:20 }}>
                             <div style={{ textAlign:'center' }}>
                                 <div style={{ fontSize:48,marginBottom:8 }}>📧</div>
                                 <p style={{ fontSize:15,color:'#6b7280' }}>
-                                    We sent a 6-digit OTP to <strong style={{ color:'#FC2779' }}>{email}</strong>.<br/>Enter it below within 10 minutes.
+                                    We sent a 6-digit OTP to{' '}
+                                    <strong style={{ color:'#FC2779' }}>{email}</strong>.<br/>
+                                    Enter it below within 10 minutes.
                                 </p>
                             </div>
                             <OtpInput value={otp} onChange={setOtp} />
                             <div style={{ textAlign:'center' }}>
                                 {countdown > 0
-                                    ? <span style={{ fontSize:14,color:'#9ca3af' }}>Resend in <strong style={{ color:'#FC2779' }}>{countdown}s</strong></span>
+                                    ? <span style={{ fontSize:14,color:'#9ca3af' }}>
+                                        Resend in <strong style={{ color:'#FC2779' }}>{countdown}s</strong>
+                                      </span>
                                     : <button type="button" onClick={handleResend} disabled={loading}
                                         style={{ background:'none',border:'none',color:'#FC2779',fontSize:15,fontWeight:700,cursor:'pointer',textDecoration:'underline' }}>
                                         Resend OTP
-                                    </button>
+                                      </button>
                                 }
                             </div>
                             <button type="submit" disabled={loading || otp.length < 6} style={btnStyle(loading || otp.length < 6)}>
                                 {loading ? <><Spinner/> Verifying…</> : 'Verify OTP →'}
                             </button>
-                            <button type="button" onClick={() => { setStep('email'); setOtp(''); }} style={{
-                                background:'none',border:'none',color:'#9ca3af',fontSize:14,fontWeight:600,cursor:'pointer',
-                            }}>← Change email</button>
+                            <button type="button" onClick={() => { setStep('email'); setOtp(''); setResetToken(''); }}
+                                style={{ background:'none',border:'none',color:'#9ca3af',fontSize:14,fontWeight:600,cursor:'pointer' }}>
+                                ← Change email
+                            </button>
                         </form>
                     )}
 
-                    {/* Step 3: New password */}
+                    {/* Step 3 — New password */}
                     {step === 'reset' && (
                         <form onSubmit={handleReset} style={{ display:'flex',flexDirection:'column',gap:16 }}>
                             <div style={{ textAlign:'center' }}>
                                 <div style={{ fontSize:48,marginBottom:8 }}>🔑</div>
-                                <p style={{ fontSize:15,color:'#6b7280' }}>Create a new strong password for your account.</p>
+                                <p style={{ fontSize:15,color:'#6b7280' }}>
+                                    Create a new strong password for your account.
+                                </p>
                             </div>
                             <div>
-                                <label style={{ display:'block',fontSize:16,fontWeight:700,color:'#444',marginBottom:8 }}>New Password</label>
-                                <input type="password" value={password} onChange={e => setPassword(e.target.value)}
+                                <label style={{ display:'block',fontSize:16,fontWeight:700,color:'#444',marginBottom:8 }}>
+                                    New Password
+                                </label>
+                                <input
+                                    type="password" value={password}
+                                    onChange={e => setPassword(e.target.value)}
                                     placeholder="Min. 6 characters" style={inputStyle}
                                     onFocus={e => { e.target.style.borderColor='#FC2779'; e.target.style.boxShadow='0 0 0 4px rgba(252,39,121,0.1)'; }}
                                     onBlur={e => { e.target.style.borderColor='#e5e7eb'; e.target.style.boxShadow='none'; }}
                                 />
                             </div>
                             <div>
-                                <label style={{ display:'block',fontSize:16,fontWeight:700,color:'#444',marginBottom:8 }}>Confirm Password</label>
-                                <input type="password" value={confirm} onChange={e => setConfirm(e.target.value)}
+                                <label style={{ display:'block',fontSize:16,fontWeight:700,color:'#444',marginBottom:8 }}>
+                                    Confirm Password
+                                </label>
+                                <input
+                                    type="password" value={confirm}
+                                    onChange={e => setConfirm(e.target.value)}
                                     placeholder="Repeat your password" style={inputStyle}
                                     onFocus={e => { e.target.style.borderColor='#FC2779'; e.target.style.boxShadow='0 0 0 4px rgba(252,39,121,0.1)'; }}
                                     onBlur={e => { e.target.style.borderColor='#e5e7eb'; e.target.style.boxShadow='none'; }}
@@ -284,13 +318,15 @@ export default function ForgotPassword() {
                             <div style={{ fontSize:64 }}>🎉</div>
                             <div>
                                 <h3 style={{ fontSize:22,fontWeight:800,color:'#1a1a1a',marginBottom:8 }}>Password Reset!</h3>
-                                <p style={{ fontSize:15,color:'#6b7280' }}>Your password has been updated. You can now sign in.</p>
+                                <p style={{ fontSize:15,color:'#6b7280' }}>
+                                    Your password has been updated. You can now sign in.
+                                </p>
                             </div>
                             <Link to="/" onClick={openLogin} style={{
-                                display:'flex',alignItems:'center',justifyContent:'center',
-                                height:56,borderRadius:16,textDecoration:'none',
+                                display:'flex', alignItems:'center', justifyContent:'center',
+                                height:56, borderRadius:16, textDecoration:'none',
                                 background:'linear-gradient(135deg,#B5006B,#FC2779)',
-                                color:'white',fontSize:18,fontWeight:800,
+                                color:'white', fontSize:18, fontWeight:800,
                                 boxShadow:'0 8px 28px rgba(181,0,107,0.38)',
                             }}>
                                 Sign In →

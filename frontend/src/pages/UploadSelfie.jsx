@@ -19,14 +19,14 @@ function StepBadge({ number, label, active }) {
       <div style={{
         width: 38, height: 38, borderRadius: "50%",
         display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 20, fontWeight: 800, flexShrink: 0,
+        fontSize: 14, fontWeight: 800, flexShrink: 0,
         background: active ? "linear-gradient(135deg,#FC2779,#F43F5E)" : "#fff",
         color: active ? "#fff" : "#9CA3AF",
         border: active ? "none" : "2px solid #E5E7EB",
         boxShadow: active ? "0 4px 14px rgba(252,39,121,.35)" : "none",
         transition: "all .3s",
       }}>{number}</div>
-      <span style={{ fontSize: 18, fontWeight: 700, color: active ? "#FC2779" : "#9CA3AF" }}>
+      <span style={{ fontSize: 14, fontWeight: 700, color: active ? "#FC2779" : "#9CA3AF" }}>
         {label}
       </span>
     </div>
@@ -263,19 +263,19 @@ export default function UploadSelfie() {
           background: "#FFF0F7", border: "1.5px solid #FCE7F3",
           boxShadow: "0 2px 12px rgba(252,39,121,.08)",
         }}>
-          <span style={{ fontSize: 16, fontWeight: 700, color: "#FC2779", letterSpacing: ".06em" }}>
+          <span style={{ fontSize: 13, fontWeight: 700, color: "#FC2779", letterSpacing: ".06em" }}>
             ✨ AI-Powered Skincare
           </span>
         </div>
 
         <h1 style={{
-          fontSize: "clamp(34px,5vw,54px)", fontWeight: 900, marginBottom: 6,
+          fontSize: "clamp(28px,4vw,40px)", fontWeight: 900, marginBottom: 6,
           background: "linear-gradient(135deg,#FC2779,#F43F5E,#A855F7)",
           WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
           letterSpacing: "-.03em", lineHeight: 1.1,
         }}>GlowBot</h1>
 
-        <p style={{ fontSize: 20, color: "#6B7280", marginBottom: 20 }}>
+        <p style={{ fontSize: 15, color: "#6B7280", marginBottom: 20 }}>
           Your personalised skincare recommendation system
         </p>
 
@@ -295,7 +295,7 @@ export default function UploadSelfie() {
               borderRadius: 99, transition: "width .5s ease",
             }} />
           </div>
-          <p style={{ fontSize: 16, color: "#9CA3AF", marginTop: 6 }}>Step 2 of 3</p>
+          <p style={{ fontSize: 13, color: "#9CA3AF", marginTop: 6 }}>Step 2 of 3</p>
         </div>
       </div>
       {/* HEADER END */}
@@ -316,13 +316,13 @@ export default function UploadSelfie() {
 
           <div>
             <h2 style={{
-              fontSize:32, fontWeight:900, marginBottom:6,
+              fontSize:24, fontWeight:900, marginBottom:6,
               background:"linear-gradient(135deg,#FC2779,#F43F5E)",
               WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent",
             }}>
               Capture Your Selfie ✨
             </h2>
-            <p style={{ fontSize:18, color:"#6B7280" }}>
+            <p style={{ fontSize:14, color:"#6B7280" }}>
               Our AI analyzes your skin deeply for accurate results.
             </p>
           </div>
@@ -336,7 +336,7 @@ export default function UploadSelfie() {
                 border:`2px solid ${cameraOn ? "#FC2779" : "#F0E0EA"}`,
                 background:cameraOn ? "#FFF0F7" : "#fff",
                 color:cameraOn ? "#FC2779" : "#2D2D2D",
-                fontSize:18, fontWeight:700, cursor:"pointer",
+                fontSize:14, fontWeight:700, cursor:"pointer",
                 display:"flex", alignItems:"center", justifyContent:"center", gap:8, transition:"all 0.2s",
               }}
             >
@@ -349,7 +349,7 @@ export default function UploadSelfie() {
               style={{
                 flex:1, height:52, borderRadius:14, border:"none",
                 background:"linear-gradient(135deg,#FC2779,#F43F5E)",
-                color:"#fff", fontSize:18, fontWeight:700, cursor:"pointer",
+                color:"#fff", fontSize:14, fontWeight:700, cursor:"pointer",
                 boxShadow:"0 6px 18px rgba(252,39,121,0.3)",
                 display:"flex", alignItems:"center", justifyContent:"center", gap:8,
                 transition:"all 0.2s", opacity:validating ? 0.7 : 1,
@@ -366,7 +366,7 @@ export default function UploadSelfie() {
 
           {/* Model loading */}
           {modelsLoading && (
-            <div style={{ display:"flex", alignItems:"center", gap:10, color:"#9CA3AF", fontSize:18 }}>
+            <div style={{ display:"flex", alignItems:"center", gap:10, color:"#9CA3AF", fontSize:14 }}>
               <span style={{ width:16,height:16,border:"2px solid #E5E7EB",borderTopColor:"#FC2779",borderRadius:"50%",animation:"spin 0.7s linear infinite",display:"inline-block" }} />
               Loading face detection models…
             </div>
@@ -393,13 +393,13 @@ export default function UploadSelfie() {
                 borderBottomLeftRadius:20, borderBottomRightRadius:20,
                 display:"flex", alignItems:"center", justifyContent:"space-between",
               }}>
-                <span style={{ color:"#fff",fontSize:18,fontWeight:600 }}>{faceLabel}</span>
+                <span style={{ color:"#fff",fontSize:14,fontWeight:600 }}>{faceLabel}</span>
                 {faceDetected && (
                   <div style={{ display:"flex",alignItems:"center",gap:8 }}>
                     <div style={{ width:100,height:6,borderRadius:99,background:"rgba(255,255,255,0.2)" }}>
                       <div style={{ width:`${faceScore}%`,height:"100%",borderRadius:99,background:faceColor,transition:"width 0.3s" }} />
                     </div>
-                    <span style={{ color:faceColor,fontSize:16,fontWeight:700 }}>{faceScore}%</span>
+                    <span style={{ color:faceColor,fontSize:13,fontWeight:700 }}>{faceScore}%</span>
                   </div>
                 )}
               </div>
@@ -423,8 +423,8 @@ export default function UploadSelfie() {
                 background:"linear-gradient(transparent,rgba(0,0,0,0.65))",
                 display:"flex",alignItems:"center",gap:10,
               }}>
-                <span style={{ fontSize:28 }}>✅</span>
-                <span style={{ color:"#fff",fontWeight:700,fontSize:20 }}>Face validated, ready to analyze!</span>
+                <span style={{ fontSize:20 }}>✅</span>
+                <span style={{ color:"#fff",fontWeight:700,fontSize:15 }}>Face validated, ready to analyze!</span>
                 <button
                   onClick={() => { setPreview(null); setImageFile(null); setRejectMsg(""); }}
                   style={{ marginLeft:"auto",background:"rgba(255,255,255,0.2)",border:"none",color:"#fff",borderRadius:99,padding:"6px 14px",fontSize:13,fontWeight:600,cursor:"pointer" }}
@@ -450,9 +450,9 @@ export default function UploadSelfie() {
                 cursor:"pointer", transition:"all 0.2s", minHeight:200, padding:32,
               }}
             >
-              <span style={{ fontSize:54 }}>🤳</span>
-              <p style={{ fontSize:24,fontWeight:700,color:"#D91A66" }}>Drag & drop your selfie here</p>
-              <p style={{ fontSize:20,color:"#9CA3AF" }}>or click to browse · JPG, PNG · max 10MB</p>
+              <span style={{ fontSize:36 }}>🤳</span>
+              <p style={{ fontSize:17,fontWeight:700,color:"#D91A66" }}>Drag & drop your selfie here</p>
+              <p style={{ fontSize:14,color:"#9CA3AF" }}>or click to browse · JPG, PNG · max 10MB</p>
             </div>
           )}
 
@@ -464,7 +464,7 @@ export default function UploadSelfie() {
               style={{
                 height:56, borderRadius:14, border:"none",
                 background: faceDetected && faceScore >= 45 ? "linear-gradient(135deg,#22C55E,#16A34A)" : "rgba(156,163,175,0.4)",
-                color:"#fff", fontSize:20, fontWeight:800,
+                color:"#fff", fontSize:15, fontWeight:800,
                 cursor: faceDetected && faceScore >= 45 ? "pointer" : "not-allowed",
                 display:"flex", alignItems:"center", justifyContent:"center", gap:10,
                 transition:"all 0.3s",
@@ -479,7 +479,7 @@ export default function UploadSelfie() {
           {rejectMsg && (
             <div style={{
               background:"#FFF5F5", border:"1.5px solid #FCA5A5", borderRadius:12,
-              padding:"14px 18px", color:"#DC2626", fontSize:18, fontWeight:500,
+              padding:"14px 18px", color:"#DC2626", fontSize:14, fontWeight:500,
               lineHeight:1.5, animation:"fadeIn 0.3s ease",
             }}>
               {rejectMsg}
@@ -495,7 +495,7 @@ export default function UploadSelfie() {
           boxShadow:"0 20px 60px rgba(252,39,121,0.13)", padding:36,
           display:"flex", flexDirection:"column", gap:8, animation:"fadeIn 0.4s ease 0.1s both",
         }}>
-          <h2 style={{ fontSize:30,fontWeight:900,marginBottom:16,color:"#1a1a1a" }}>
+          <h2 style={{ fontSize:22,fontWeight:900,marginBottom:16,color:"#1a1a1a" }}>
             Tips for best results
           </h2>
 
@@ -510,13 +510,13 @@ export default function UploadSelfie() {
                 width:54, height:54, borderRadius:"50%", flexShrink:0,
                 background:"linear-gradient(135deg,#FFF0F7,#FFE0EF)",
                 display:"flex", alignItems:"center", justifyContent:"center",
-                fontSize:26, border:"1.5px solid #F9A8D4",
+                fontSize:20, border:"1.5px solid #F9A8D4",
               }}>
                 {tip.icon}
               </div>
               <div>
-                <p style={{ fontSize:24,fontWeight:800,color:"#1a1a1a",marginBottom:5 }}>{tip.title}</p>
-                <p style={{ fontSize:22,color:"#6B7280",lineHeight:1.6 }}>{tip.desc}</p>
+                <p style={{ fontSize:17,fontWeight:800,color:"#1a1a1a",marginBottom:5 }}>{tip.title}</p>
+                <p style={{ fontSize:15,color:"#6B7280",lineHeight:1.6 }}>{tip.desc}</p>
               </div>
             </div>
           ))}
@@ -526,7 +526,7 @@ export default function UploadSelfie() {
             background:"linear-gradient(135deg,#FFF0F7,#F5F0FF)",
             borderRadius:16, border:"1px solid #F9A8D4",
           }}>
-            <p style={{ fontSize:16,fontWeight:800,color:"#9CA3AF",letterSpacing:"0.08em",marginBottom:10,textTransform:"uppercase" }}>
+            <p style={{ fontSize:12,fontWeight:800,color:"#9CA3AF",letterSpacing:"0.08em",marginBottom:10,textTransform:"uppercase" }}>
               Face Detection Guide
             </p>
             {[
@@ -536,8 +536,8 @@ export default function UploadSelfie() {
             ].map(item => (
               <div key={item.label} style={{ display:"flex",alignItems:"center",gap:10,marginBottom:7 }}>
                 <div style={{ width:12,height:12,borderRadius:"50%",background:item.color,flexShrink:0 }} />
-                <span style={{ fontSize:15,fontWeight:700,color:"#374151",minWidth:60 }}>{item.label}</span>
-                <span style={{ fontSize:15,color:"#6B7280" }}>{item.desc}</span>
+                <span style={{ fontSize:12,fontWeight:700,color:"#374151",minWidth:60 }}>{item.label}</span>
+                <span style={{ fontSize:12,color:"#6B7280" }}>{item.desc}</span>
               </div>
             ))}
           </div>
@@ -554,7 +554,7 @@ export default function UploadSelfie() {
           disabled={!imageFile}
           style={{
             width:"100%", height:68, borderRadius:999,
-            fontSize:22, fontWeight:900, border:"none",
+            fontSize:16, fontWeight:900, border:"none",
             background: imageFile ? "linear-gradient(135deg,#FC2779,#F43F5E)" : "rgba(156,163,175,0.35)",
             color: imageFile ? "#fff" : "#9CA3AF",
             cursor: imageFile ? "pointer" : "not-allowed",

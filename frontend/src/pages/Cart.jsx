@@ -3,7 +3,7 @@ import { useGlobalContext } from '../context/Context';
 
 const Cart = () => {
     const navigate = useNavigate();
-    const { state, dispatch } = useGlobalContext();
+    const { state, dispatch, openLogin } = useGlobalContext();
     const { cartItems, userInfo } = state;
 
     const getEffectivePrice = (item) =>
@@ -29,13 +29,13 @@ const Cart = () => {
     /* Empty state */
     if (cartItems.length === 0) return (
         <div style={{ padding: `60px ${PAD}`, textAlign: 'center', background: '#FFFBF8', minHeight: '60vh' }}>
-            <div style={{ fontSize: 100, marginBottom: 20 }}>🛍️</div>
-            <h2 style={{ fontSize: 32, fontWeight: 900, color: '#1C1C1E', marginBottom: 10 }}>Your bag is empty</h2>
-            <p style={{ fontSize: 26, color: '#6E6E73', marginBottom: 36 }}>Looks like you haven't added anything yet.</p>
+            <div style={{ fontSize: 86, marginBottom: 20 }}>🛍️</div>
+            <h2 style={{ fontSize: 28, fontWeight: 900, color: '#1C1C1E', marginBottom: 10 }}>Your bag is empty</h2>
+            <p style={{ fontSize: 22, color: '#6E6E73', marginBottom: 36 }}>Looks like you haven't added anything yet.</p>
             <Link to="/products" style={{
                 display: 'inline-block',
                 background: 'linear-gradient(135deg, #B5006B, #FC2779)',
-                color: '#fff', fontWeight: 800, fontSize: 20,
+                color: '#fff', fontWeight: 800, fontSize: 18,
                 padding: '14px 36px', borderRadius: 99,
                 textDecoration: 'none',
                 boxShadow: '0 6px 20px rgba(252,39,121,.35)',
@@ -51,7 +51,7 @@ const Cart = () => {
             {/* Page title */}
             <h1 style={{ fontSize: 'clamp(24px,3vw,36px)', fontWeight: 900, color: '#1C1C1E', marginBottom: 32, letterSpacing: '-.02em' }}>
                 My Cart
-                <span style={{ fontSize: 20, fontWeight: 600, color: '#9CA3AF', marginLeft: 12 }}>
+                <span style={{ fontSize: 18, fontWeight: 600, color: '#9CA3AF', marginLeft: 12 }}>
                     ({totalQty} {totalQty === 1 ? 'item' : 'items'})
                 </span>
             </h1>
@@ -97,22 +97,22 @@ const Cart = () => {
 
                                 {/* Info */}
                                 <div style={{ flex: 1, minWidth: 0 }}>
-                                    <div style={{ fontSize: 20, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '.1em', marginBottom: 6 }}>
+                                    <div style={{ fontSize: 18, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '.1em', marginBottom: 6 }}>
                                         {item.brand}
                                     </div>
                                     <Link to={`/product/${item._id}`} style={{ textDecoration: 'none' }}>
-                                        <div style={{ fontSize: 20, fontWeight: 700, color: '#1C1C1E', lineHeight: 1.4, marginBottom: 10 }}>
+                                        <div style={{ fontSize: 18, fontWeight: 700, color: '#1C1C1E', lineHeight: 1.4, marginBottom: 10 }}>
                                             {item.name}
                                         </div>
                                     </Link>
 
                                     {/* Price row */}
                                     <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 16 }}>
-                                        <span style={{ fontSize: 24, fontWeight: 900, color: '#1C1C1E' }}>₹{ep.toLocaleString('en-IN')}</span>
+                                        <span style={{ fontSize: 22, fontWeight: 900, color: '#1C1C1E' }}>₹{ep.toLocaleString('en-IN')}</span>
                                         {hasDisc && (
                                             <>
-                                                <span style={{ fontSize: 18, color: '#B0B0B0', textDecoration: 'line-through' }}>₹{item.price.toLocaleString('en-IN')}</span>
-                                                <span style={{ fontSize: 17, fontWeight: 800, color: '#16A34A' }}>{discPct}% off</span>
+                                                <span style={{ fontSize: 16, color: '#B0B0B0', textDecoration: 'line-through' }}>₹{item.price.toLocaleString('en-IN')}</span>
+                                                <span style={{ fontSize: 14, fontWeight: 800, color: '#16A34A' }}>{discPct}% off</span>
                                             </>
                                         )}
                                     </div>
@@ -130,7 +130,7 @@ const Cart = () => {
                                                     width: 40, height: 40,
                                                     border: 'none', background: item.qty <= 1 ? '#fafafa' : '#fff',
                                                     color: item.qty <= 1 ? '#D1D5DB' : '#FC2779',
-                                                    fontSize: 20, fontWeight: 700,
+                                                    fontSize: 18, fontWeight: 700,
                                                     cursor: item.qty <= 1 ? 'not-allowed' : 'pointer',
                                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                     transition: 'background .15s',
@@ -139,7 +139,7 @@ const Cart = () => {
                                                 onMouseLeave={e => e.currentTarget.style.background = '#fff'}
                                             >−</button>
 
-                                            <span style={{ padding: '0 18px', fontSize: 16, fontWeight: 800, color: '#1C1C1E', userSelect: 'none', minWidth: 20, textAlign: 'center' }}>
+                                            <span style={{ padding: '0 18px', fontSize: 14, fontWeight: 800, color: '#1C1C1E', userSelect: 'none', minWidth: 20, textAlign: 'center' }}>
                                                 {item.qty}
                                             </span>
 
@@ -150,7 +150,7 @@ const Cart = () => {
                                                     width: 40, height: 40,
                                                     border: 'none', background: '#fff',
                                                     color: item.qty >= (item.countInStock || 10) ? '#D1D5DB' : '#FC2779',
-                                                    fontSize: 24, fontWeight: 700,
+                                                    fontSize: 20, fontWeight: 700,
                                                     cursor: item.qty >= (item.countInStock || 10) ? 'not-allowed' : 'pointer',
                                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                     transition: 'background .15s',
@@ -160,7 +160,7 @@ const Cart = () => {
                                             >+</button>
                                         </div>
 
-                                        <span style={{ fontSize: 20, fontWeight: 700, color: '#6E6E73' }}>
+                                        <span style={{ fontSize: 18, fontWeight: 700, color: '#6E6E73' }}>
                                             Subtotal: <span style={{ color: '#1C1C1E' }}>₹{(ep * item.qty).toLocaleString('en-IN')}</span>
                                         </span>
                                     </div>
@@ -175,7 +175,7 @@ const Cart = () => {
                                         border: '1.5px solid #F0E0EA', borderRadius: 10,
                                         width: 38, height: 38,
                                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                        cursor: 'pointer', color: '#FC2779', fontSize: 22,
+                                        cursor: 'pointer', color: '#FC2779', fontSize: 20,
                                         transition: 'all .2s',
                                     }}
                                     onMouseEnter={e => { e.currentTarget.style.background = '#FC2779'; e.currentTarget.style.color = '#fff'; }}
@@ -190,7 +190,7 @@ const Cart = () => {
                     {/* Continue shopping */}
                     <Link to="/products" style={{
                         display: 'inline-flex', alignItems: 'center', gap: 8,
-                        fontSize: 22, fontWeight: 700, color: '#FC2779',
+                        fontSize: 20, fontWeight: 700, color: '#FC2779',
                         textDecoration: 'none', marginTop: 4,
                         transition: 'opacity .2s',
                     }}
@@ -210,7 +210,7 @@ const Cart = () => {
                         padding: '28px 28px 32px',
                         boxShadow: '0 4px 24px rgba(252,39,121,.07)',
                     }}>
-                        <h2 style={{ fontSize: 24, fontWeight: 900, color: '#1C1C1E', marginBottom: 24, paddingBottom: 16, borderBottom: '1.5px solid #F0E0EA', letterSpacing: '-.01em' }}>
+                        <h2 style={{ fontSize: 22, fontWeight: 900, color: '#1C1C1E', marginBottom: 24, paddingBottom: 16, borderBottom: '1.5px solid #F0E0EA', letterSpacing: '-.01em' }}>
                             Price Details
                         </h2>
 
@@ -221,8 +221,8 @@ const Cart = () => {
                                 { label: 'Delivery', value: shipping === 0 ? 'FREE' : `₹${shipping}`, color: '#16A34A' },
                             ].map((row, i) => (
                                 <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <span style={{ fontSize: 20, color: '#555', fontWeight: 500 }}>{row.label}</span>
-                                    <span style={{ fontSize: 20, fontWeight: 700, color: row.color }}>{row.value}</span>
+                                    <span style={{ fontSize: 18, color: '#555', fontWeight: 500 }}>{row.label}</span>
+                                    <span style={{ fontSize: 18, fontWeight: 700, color: row.color }}>{row.value}</span>
                                 </div>
                             ))}
 
@@ -230,15 +230,15 @@ const Cart = () => {
                                 display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                                 borderTop: '1.5px solid #F0E0EA', paddingTop: 16, marginTop: 4,
                             }}>
-                                <span style={{ fontSize: 20, fontWeight: 900, color: '#1C1C1E' }}>Total Amount</span>
-                                <span style={{ fontSize: 24, fontWeight: 900, color: '#1C1C1E' }}>₹{finalTotal.toLocaleString('en-IN')}</span>
+                                <span style={{ fontSize: 18, fontWeight: 900, color: '#1C1C1E' }}>Total Amount</span>
+                                <span style={{ fontSize: 22, fontWeight: 900, color: '#1C1C1E' }}>₹{finalTotal.toLocaleString('en-IN')}</span>
                             </div>
                         </div>
 
                         {totalDiscount > 0 && (
                             <div style={{
                                 background: '#F0FDF4', color: '#16A34A',
-                                fontSize: 18, fontWeight: 700,
+                                fontSize: 16, fontWeight: 700,
                                 textAlign: 'center', padding: '12px',
                                 borderRadius: 12, marginBottom: 20,
                                 border: '1px solid #BBF7D0',
@@ -250,7 +250,7 @@ const Cart = () => {
                         {shipping === 0 && (
                             <div style={{
                                 background: '#FFF0F7', color: '#FC2779',
-                                fontSize: 18, fontWeight: 600,
+                                fontSize: 16, fontWeight: 600,
                                 textAlign: 'center', padding: '10px',
                                 borderRadius: 12, marginBottom: 20,
                                 border: '1px solid #FCCDE3',
@@ -263,7 +263,7 @@ const Cart = () => {
                         <button
                             onClick={() => {
                                 if (!userInfo) {
-                                    navigate('/login?redirect=checkout');
+                                    openLogin();
                                 } else {
                                     navigate('/checkout');
                                 }
@@ -272,7 +272,7 @@ const Cart = () => {
                                 width: '100%', height: 54,
                                 background: 'linear-gradient(135deg, #B5006B, #FC2779)',
                                 color: '#fff', border: 'none', borderRadius: 14,
-                                fontSize: 18, fontWeight: 800, cursor: 'pointer',
+                                fontSize: 16, fontWeight: 800, cursor: 'pointer',
                                 letterSpacing: '.04em',
                                 boxShadow: '0 6px 24px rgba(252,39,121,.35)',
                                 transition: 'all .2s',
@@ -283,7 +283,7 @@ const Cart = () => {
                             {userInfo ? 'Proceed to Checkout →' : 'Login to Checkout →'}
                         </button>
 
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 14, color: '#9CA3AF', fontSize: 16, fontWeight: 500 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 14, color: '#9CA3AF', fontSize: 14, fontWeight: 500 }}>
                             🔒 Safe & Secure Payments
                         </div>
 
@@ -291,7 +291,7 @@ const Cart = () => {
                         <div style={{ display: 'flex', justifyContent: 'center', gap: 10, marginTop: 16, flexWrap: 'wrap' }}>
                             {['UPI', 'Cards', 'Wallets', 'COD'].map(m => (
                                 <span key={m} style={{
-                                    fontSize: 16, fontWeight: 700, color: '#6E6E73',
+                                    fontSize: 14, fontWeight: 700, color: '#6E6E73',
                                     background: '#F9F9F9', border: '1px solid #EBEBEB',
                                     padding: '4px 10px', borderRadius: 6,
                                 }}>
@@ -315,8 +315,8 @@ const Cart = () => {
                             { icon: '💳', text: '5% cashback on Razorpay payments' },
                         ].map((offer, i) => (
                             <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginBottom: i < 2 ? 12 : 0 }}>
-                                <span style={{ fontSize: 18, flexShrink: 0, marginTop: 1 }}>{offer.icon}</span>
-                                <span style={{ fontSize: 16, color: '#555', lineHeight: 1.5 }}>{offer.text}</span>
+                                <span style={{ fontSize: 16, flexShrink: 0, marginTop: 1 }}>{offer.icon}</span>
+                                <span style={{ fontSize: 14, color: '#555', lineHeight: 1.5 }}>{offer.text}</span>
                             </div>
                         ))}
                     </div>

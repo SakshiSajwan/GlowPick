@@ -14,7 +14,7 @@ const SECTIONS = [
     title: '2. Your Account',
     content: [
       { sub: 'Registration', text: 'To access certain features — including order history, saved addresses, and AI Skin Analysis — you must create an account. You agree to provide accurate, current, and complete information during registration.' },
-      { sub: 'Account Security', text: 'You are responsible for maintaining the confidentiality of your password and for all activities that occur under your account. Notify us immediately at support@glowpick.in if you suspect any unauthorised access.' },
+      { sub: 'Account Security', text: 'You are responsible for maintaining the confidentiality of your password and for all activities that occur under your account. Notify us immediately at glowpick04@gmail.com if you suspect any unauthorised access.' },
       { sub: 'Termination', text: 'GlowPick reserves the right to suspend or terminate your account at any time if you violate these Terms, engage in fraudulent activity, or conduct yourself in a manner that harms GlowPick or other users.' },
     ],
   },
@@ -68,14 +68,14 @@ const SECTIONS = [
     title: '8. Governing Law & Disputes',
     content: [
       { sub: 'Governing Law', text: 'These Terms are governed by and construed in accordance with the laws of India. Any disputes arising from or related to these Terms or your use of the Platform shall be subject to the exclusive jurisdiction of the courts in New Delhi, India.' },
-      { sub: 'Informal Resolution', text: 'Before initiating formal legal proceedings, both parties agree to attempt to resolve disputes informally by contacting GlowPick at legal@glowpick.in. We will make good-faith efforts to resolve the issue within 30 days.' },
+      { sub: 'Informal Resolution', text: 'Before initiating formal legal proceedings, both parties agree to attempt to resolve disputes informally by contacting GlowPick at glowpick04@gmail.com. We will make good-faith efforts to resolve the issue within 30 days.' },
     ],
   },
   {
     id: 'contact',
     title: '9. Contact',
     content: [
-      { sub: 'Legal Queries', text: 'For legal questions about these Terms, please write to legal@glowpick.in or GlowPick Beauty Technologies Pvt. Ltd., New Delhi, India.' },
+      { sub: 'Legal Queries', text: 'For legal questions about these Terms, please write to glowpick04@gmail.com or GlowPick Beauty Technologies Pvt. Ltd., New Delhi, India.' },
     ],
   },
 ];
@@ -141,12 +141,12 @@ export default function TermsOfUse() {
           overflowY: 'auto',
           padding: '36px 0 40px',
         }}>
-          <p style={{ fontSize: 32, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', padding: '0 28px', marginBottom: 16 }}>Contents</p>
+          <p style={{ fontSize: 16, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', padding: '0 28px', marginBottom: 16 }}>Contents</p>
           {SECTIONS.map(s => (
             <a key={s.id} href={`#${s.id}`} style={{
               display: 'block',
               padding: '11px 28px',
-              fontSize: 20, fontWeight: 500,
+              fontSize: 15, fontWeight: 500,
               color: '#444',
               textDecoration: 'none',
               borderLeft: '3px solid transparent',
@@ -172,7 +172,7 @@ export default function TermsOfUse() {
             display: 'flex', gap: 16, alignItems: 'flex-start',
           }}>
             <span style={{ fontSize: 26, flexShrink: 0, marginTop: 2 }}>⚠️</span>
-            <p style={{ fontSize: 24, color: '#333', lineHeight: 1.85, margin: 0 }}>
+            <p style={{ fontSize: 17, color: '#333', lineHeight: 1.85, margin: 0 }}>
               <strong style={{ color: '#1C1C1E' }}>Please read carefully.</strong> These Terms of Use constitute a legally binding agreement between you and GlowPick Beauty Technologies Pvt. Ltd. If you do not agree to any part of these Terms, you must not use the Platform.
             </p>
           </div>
@@ -203,7 +203,7 @@ export default function TermsOfUse() {
                     <p style={{ fontSize: 16, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
                       {item.sub}
                     </p>
-                    <p style={{ fontSize: 20, color: '#333', lineHeight: 1.85, margin: 0 }}>
+                    <p style={{ fontSize: 16, color: '#333', lineHeight: 1.85, margin: 0 }}>
                       {item.text}
                     </p>
                   </div>
@@ -220,8 +220,8 @@ export default function TermsOfUse() {
             flexWrap: 'wrap', gap: 20,
           }}>
             <div>
-              <p style={{ color: '#fff', fontWeight: 700, fontSize: 24, marginBottom: 5 }}>Related Policies</p>
-              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 18 }}>Other legal documents you should know about</p>
+              <p style={{ color: '#fff', fontWeight: 700, fontSize: 20, marginBottom: 5 }}>Related Policies</p>
+              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15 }}>Other legal documents you should know about</p>
             </div>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               {[{ label: 'Privacy Policy', to: '/privacy' }, { label: 'Refund Policy', to: '/refund-policy' }].map(l => (
@@ -229,7 +229,7 @@ export default function TermsOfUse() {
                   background: 'rgba(252,39,121,0.15)', color: '#FF6BAD',
                   border: '1px solid rgba(252,39,121,0.3)',
                   borderRadius: 99, padding: '10px 22px',
-                  fontSize: 18, fontWeight: 700, textDecoration: 'none', transition: 'all 0.2s',
+                  fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'all 0.2s',
                 }}
                   onMouseEnter={e => { e.currentTarget.style.background = '#FC2779'; e.currentTarget.style.color = '#fff'; }}
                   onMouseLeave={e => { e.currentTarget.style.background = 'rgba(252,39,121,0.15)'; e.currentTarget.style.color = '#FF6BAD'; }}
