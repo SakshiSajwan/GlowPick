@@ -38,7 +38,7 @@ const styles = {
         margin: '40px 0',
     },
     errorTitle: {
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: 700,
         marginBottom: 8,
     },
@@ -112,7 +112,7 @@ const styles = {
         justifyContent: 'center',
     },
     breadcrumb: {
-        fontSize: 14,
+        fontSize: 12,
         color: '#6B7280',
         marginBottom: 16,
     },
@@ -121,7 +121,7 @@ const styles = {
         textDecoration: 'none',
     },
     title: {
-        fontSize: 24,
+        fontSize: 18,
         fontWeight: 700,
         color: '#1F2937',
         marginBottom: 8,
@@ -139,13 +139,13 @@ const styles = {
         color: '#fff',
         padding: '2px 8px',
         borderRadius: 4,
-        fontSize: 14,
+        fontSize: 12,
         fontWeight: 700,
         gap: 4,
     },
     reviewCount: {
         color: '#6B7280',
-        fontSize: 14,
+        fontSize: 12,
     },
     priceBox: {
         borderTop: '1px solid #F3F4F6',
@@ -161,21 +161,21 @@ const styles = {
         gap: 12,
     },
     currentPrice: {
-        fontSize: 30,
+        fontSize: 20,
         fontWeight: 700,
         color: '#111827',
     },
     oldPrice: {
         color: '#9CA3AF',
         textDecoration: 'line-through',
-        fontSize: 18,
+        fontSize: 13,
     },
     discount: {
         color: '#DB2777',
         fontWeight: 700,
     },
     taxText: {
-        fontSize: 14,
+        fontSize: 12,
         color: '#16A34A',
         fontWeight: 500,
     },
@@ -196,7 +196,7 @@ const styles = {
         background: '#F3F4F6',
         border: 'none',
         cursor: 'pointer',
-        fontSize: 16,
+        fontSize: 13,
     },
     qtyText: {
         padding: '4px 16px',
@@ -218,7 +218,7 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         gap: 12,
-        fontSize: 14,
+        fontSize: 12,
         color: '#4B5563',
     },
     serviceItem: {
@@ -234,7 +234,7 @@ const styles = {
         marginTop: 32,
     },
     sectionTitle: {
-        fontSize: 18,
+        fontSize: 14,
         fontWeight: 700,
         marginBottom: 8,
     },
@@ -268,7 +268,7 @@ const styles = {
     smallRating: {
         background: '#16A34A',
         color: '#fff',
-        fontSize: 12,
+        fontSize: 11,
         padding: '2px 6px',
         borderRadius: 4,
         display: 'flex',
@@ -451,7 +451,7 @@ const ProductDetail = () => {
 
             {/* Reviews Section */}
             <div style={styles.reviewsWrap}>
-                <h3 style={{ ...styles.sectionTitle, fontSize: 20, marginBottom: 16 }}>Ratings &amp; Reviews</h3>
+                <h3 style={{ ...styles.sectionTitle, fontSize: 16, marginBottom: 16 }}>Ratings &amp; Reviews</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                     {product.reviews && product.reviews.length > 0 ? (
                         product.reviews.map((review) => (

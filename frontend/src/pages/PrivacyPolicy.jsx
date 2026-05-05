@@ -107,25 +107,25 @@ export default function PrivacyPolicy() {
         <div style={{ position: 'relative', maxWidth: 860 }}>
           {/* Breadcrumb */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}>
-            <Link to="/" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 19, textDecoration: 'none', fontWeight: 500, transition: 'color .2s' }}
+            <Link to="/" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, textDecoration: 'none', fontWeight: 500, transition: 'color .2s' }}
               onMouseEnter={e => e.target.style.color = '#FC2779'}
               onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.5)'}
             >Home</Link>
-            <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 19 }}>›</span>
-            <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: 19, fontWeight: 600 }}>Privacy Policy</span>
+            <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 13 }}>›</span>
+            <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: 13, fontWeight: 600 }}>Privacy Policy</span>
           </div>
 
           <h1 style={{
-            fontSize: 'clamp(40px,5.5vw,68px)',
+            fontSize: 'clamp(30px,4.5vw,48px)',
             fontWeight: 900, color: '#fff', lineHeight: 1.0,
             marginBottom: 18, letterSpacing: '-0.03em',
           }}>
             Privacy Policy
           </h1>
-          <p style={{ fontSize: 'clamp(15px,1.6vw,20px)', color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, maxWidth: 580, fontWeight: 400 }}>
+          <p style={{ fontSize: 'clamp(13px,1.3vw,16px)', color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, maxWidth: 580, fontWeight: 400 }}>
             At GlowPick, we believe in complete transparency about how we collect, use, and protect your personal information.
           </p>
-          <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.35)', marginTop: 28, fontWeight: 500 }}>
+          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.35)', marginTop: 28, fontWeight: 500 }}>
             Last updated: April 30, 2026 · Effective: April 30, 2026
           </p>
         </div>
@@ -149,12 +149,12 @@ export default function PrivacyPolicy() {
           overflowY: 'auto',
           padding: '36px 0 40px',
         }}>
-          <p style={{ fontSize: 16, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', padding: '0 28px', marginBottom: 16 }}>Contents</p>
+          <p style={{ fontSize: 13, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', padding: '0 28px', marginBottom: 16 }}>Contents</p>
           {SECTIONS.map(s => (
             <a key={s.id} href={`#${s.id}`} style={{
               display: 'block',
               padding: '11px 28px',
-              fontSize: 15, fontWeight: 500,
+              fontSize: 13, fontWeight: 500,
               color: '#444',
               textDecoration: 'none',
               borderLeft: '3px solid transparent',
@@ -178,7 +178,7 @@ export default function PrivacyPolicy() {
             border: '1.5px solid #F0E0EA',
             borderRadius: 16, padding: '28px 36px',
           }}>
-            <p style={{ fontSize: 17, color: '#333', lineHeight: 1.85, margin: 0 }}>
+            <p style={{ fontSize: 14, color: '#333', lineHeight: 1.85, margin: 0 }}>
               This Privacy Policy describes how <strong style={{ color: '#FC2779' }}>GlowPick Beauty Technologies Pvt. Ltd.</strong> ("GlowPick", "we", "us", or "our") collects, uses, and shares information when you use our website, mobile applications, and services. By using GlowPick, you agree to the practices described in this policy.
             </p>
           </div>
@@ -186,7 +186,7 @@ export default function PrivacyPolicy() {
           {SECTIONS.map(sec => (
             <section key={sec.id} id={sec.id} style={{ scrollMarginTop: 32 }}>
               <h2 style={{
-                fontSize: 'clamp(22px,2.2vw,28px)',
+                fontSize: 'clamp(18px,1.8vw,22px)',
                 fontWeight: 800, color: '#1C1C1E',
                 marginBottom: 24,
                 paddingBottom: 14,
@@ -209,10 +209,10 @@ export default function PrivacyPolicy() {
                     onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 4px 24px rgba(252,39,121,0.09)'; e.currentTarget.style.borderColor = '#FCCDE3'; }}
                     onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = '#F5EAF0'; }}
                   >
-                    <p style={{ fontSize: 16, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
+                    <p style={{ fontSize: 13, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
                       {item.sub}
                     </p>
-                    <p style={{ fontSize: 16, color: '#333', lineHeight: 1.85, margin: 0 }}>
+                    <p style={{ fontSize: 13, color: '#333', lineHeight: 1.85, margin: 0 }}>
                       {item.text}
                     </p>
                   </div>
@@ -229,8 +229,8 @@ export default function PrivacyPolicy() {
             flexWrap: 'wrap', gap: 20,
           }}>
             <div>
-              <p style={{ color: '#fff', fontWeight: 700, fontSize: 20, marginBottom: 5 }}>Related Policies</p>
-              <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 15 }}>Read our other legal documents</p>
+              <p style={{ color: '#fff', fontWeight: 700, fontSize: 13, marginBottom: 5 }}>Related Policies</p>
+              <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 13 }}>Read our other legal documents</p>
             </div>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               {[{ label: 'Terms of Use', to: '/terms' }, { label: 'Refund Policy', to: '/refund-policy' }].map(l => (
@@ -238,7 +238,7 @@ export default function PrivacyPolicy() {
                   background: 'rgba(252,39,121,0.15)', color: '#FF6BAD',
                   border: '1px solid rgba(252,39,121,0.3)',
                   borderRadius: 99, padding: '10px 22px',
-                  fontSize: 15, fontWeight: 700, textDecoration: 'none',
+                  fontSize: 13, fontWeight: 700, textDecoration: 'none',
                   transition: 'all 0.2s',
                 }}
                   onMouseEnter={e => { e.currentTarget.style.background = '#FC2779'; e.currentTarget.style.color = '#fff'; }}
@@ -254,3 +254,4 @@ export default function PrivacyPolicy() {
     </div>
   );
 }
+

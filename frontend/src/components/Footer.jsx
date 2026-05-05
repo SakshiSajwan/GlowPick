@@ -45,11 +45,11 @@ const Footer = () => {
                 {/* Brand col */}
                 <div style={{ gridColumn: 'span 1' }}>
                     <div style={{ marginBottom: 16 }}>
-                        <span style={{ fontSize: 28, fontWeight: 900, color: '#F472B6', letterSpacing: '-0.02em' }}>GLOW</span>
-                        <span style={{ fontSize: 28, fontWeight: 900, color: '#FDA4AF', letterSpacing: '-0.02em' }}>PICK</span>
+                        <span style={{ fontSize: 22, fontWeight: 900, color: '#F472B6', letterSpacing: '-0.02em' }}>GLOW</span>
+                        <span style={{ fontSize: 22, fontWeight: 900, color: '#FDA4AF', letterSpacing: '-0.02em' }}>PICK</span>
                     </div>
                     <p style={{ 
-                        fontSize: 14, 
+                        fontSize: 12, 
                         color: '#94A3B8', 
                         lineHeight: 1.7, 
                         marginBottom: 20, 
@@ -72,7 +72,7 @@ const Footer = () => {
                                     background: '#1E293B',
                                     border: '1px solid #334155',
                                     borderRadius: 10,
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     textDecoration: 'none',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                     transition,
@@ -94,7 +94,7 @@ const Footer = () => {
 
                 {/* Shop col */}
                 <div>
-                    <h4 style={{ color: '#F472B6', fontWeight: 800, fontSize: 13, marginBottom: 18, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Shop</h4>
+                    <h4 style={{ color: '#F472B6', fontWeight: 800, fontSize: 11, marginBottom: 18, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Shop</h4>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
                         {[
                             { label: 'Makeup',       path: '/products?category=Makeup' },
@@ -107,7 +107,7 @@ const Footer = () => {
                                 <Link to={item.path} style={{
                                     color: '#E2E8F0', 
                                     textDecoration: 'none',
-                                    fontSize: 14, 
+                                    fontSize: 12, 
                                     fontWeight: 500,
                                     transition,
                                 }}
@@ -123,7 +123,7 @@ const Footer = () => {
 
                 {/* Features col */}
                 <div>
-                    <h4 style={{ color: '#F472B6', fontWeight: 800, fontSize: 13, marginBottom: 18, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Features</h4>
+                    <h4 style={{ color: '#F472B6', fontWeight: 800, fontSize: 11, marginBottom: 18, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Features</h4>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
                         {[
                             { label: '✨ AI Skin Analysis', path: '/recommend' },
@@ -135,7 +135,7 @@ const Footer = () => {
                                 <Link to={item.path} style={{
                                     color: '#E2E8F0',
                                     textDecoration: 'none',
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     fontWeight: 500,
                                     transition,
                                 }}
@@ -151,19 +151,19 @@ const Footer = () => {
 
                 {/* Support col */}
                 <div>
-                    <h4 style={{ color: '#F472B6', fontWeight: 800, fontSize: 13, marginBottom: 18, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Support</h4>
+                    <h4 style={{ color: '#F472B6', fontWeight: 800, fontSize: 11, marginBottom: 18, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Support</h4>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 24 }}>
-                        <li style={{ fontSize: 14, color: '#E2E8F0', display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <span style={{ fontSize: 14 }}>📧</span> glowpick04@gmail.com
+                        <li style={{ fontSize: 12, color: '#E2E8F0', display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <span style={{ fontSize: 12 }}>📧</span> glowpick04@gmail.com
                         </li>
-                        <li style={{ fontSize: 14, color: '#E2E8F0', display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <span style={{ fontSize: 14 }}>📞</span> 1800-XXX-XXXX
+                        <li style={{ fontSize: 12, color: '#E2E8F0', display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <span style={{ fontSize: 12 }}>📞</span> 1800-XXX-XXXX
                         </li>
                     </ul>
 
                     {/* Newsletter */}
                     <div style={{ background: '#1E293B', borderRadius: 14, padding: 18, border: '1px solid #334155' }}>
-                        <p style={{ fontSize: 13, color: 'white', fontWeight: 700, marginBottom: 12 }}>
+                        <p style={{ fontSize: 11, color: 'white', fontWeight: 700, marginBottom: 12 }}>
                             {isSubscribed ? "🎉 You're on the list!" : "Get deals in your inbox"}
                         </p>
                         <div style={{ display: 'flex', gap: 8 }}>
@@ -174,7 +174,7 @@ const Footer = () => {
                                 placeholder="Email address"
                                 style={{
                                     flex: 1,
-                                    fontSize: 13,
+                                    fontSize: 11,
                                     background: '#0F172A',
                                     color: 'white',
                                     border: '1px solid #475569',
@@ -191,7 +191,7 @@ const Footer = () => {
                                     border: 'none',
                                     borderRadius: 8,
                                     padding: '0 14px',
-                                    fontSize: 13,
+                                    fontSize: 11,
                                     fontWeight: 800,
                                     cursor: 'pointer',
                                     transition,
@@ -217,7 +217,7 @@ const Footer = () => {
                     justifyContent: 'space-between',
                     gap: 16,
                 }}>
-                    <p style={{ fontSize: 13, color: '#94A3B8' }}>
+                    <p style={{ fontSize: 11, color: '#94A3B8' }}>
                         © {new Date().getFullYear()}{' '}
                         <span style={{ color: '#F472B6', fontWeight: 700 }}>GlowPick</span>
                         . All rights reserved.
@@ -229,7 +229,7 @@ const Footer = () => {
                             { label: 'Refund Policy',  to: '/refund-policy' },
                         ].map(item => (
                             <Link key={item.label} to={item.to} style={{
-                                fontSize: 13, color: '#94A3B8',
+                                fontSize: 11, color: '#94A3B8',
                                 textDecoration: 'none',
                                 transition, fontWeight: 500
                             }}

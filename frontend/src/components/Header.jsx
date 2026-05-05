@@ -159,7 +159,7 @@ export default function Header() {
                 }}>
                     {/* Logo */}
                     <Link to="/" style={{ textDecoration: 'none', flexShrink: 0 }}>
-                        <span style={{ fontFamily: 'var(--font-head)', fontSize: 28, fontWeight: 700, color: '#FC2779', letterSpacing: '-0.01em', lineHeight: 1 }}>
+                        <span style={{ fontFamily: 'var(--font-head)', fontSize: 22, fontWeight: 700, color: '#FC2779', letterSpacing: '-0.01em', lineHeight: 1 }}>
                             GLOW<span style={{ fontStyle: 'italic', color: '#B5006B' }}>PICK</span>
                         </span>
                     </Link>
@@ -177,7 +177,7 @@ export default function Header() {
                                 width: '100%', height: 42,
                                 border: '2px solid #F0E0EA', borderRadius: 99,
                                 padding: '0 16px 0 46px',
-                                fontFamily: 'var(--font-body)', fontSize: 14,
+                                fontFamily: 'var(--font-body)', fontSize: 12,
                                 color: '#2D2D2D', background: '#FFF5FA', outline: 'none',
                                 transition: 'all 0.2s',
                             }}
@@ -192,7 +192,7 @@ export default function Header() {
                             display: 'flex', alignItems: 'center', gap: 6,
                             background: 'linear-gradient(135deg, #B5006B, #FC2779)',
                             color: 'white', borderRadius: 99, padding: '9px 18px',
-                            fontSize: 13, fontWeight: 700,
+                            fontSize: 11, fontWeight: 700,
                             textDecoration: 'none', whiteSpace: 'nowrap',
                             boxShadow: '0 4px 18px rgba(252,39,121,0.32)', transition: 'all .2s',
                         }}
@@ -208,7 +208,7 @@ export default function Header() {
                                         display: 'flex', alignItems: 'center', gap: 6,
                                         background: 'none', border: 'none', cursor: 'pointer',
                                         padding: '6px 10px', borderRadius: 99,
-                                        color: '#2D2D2D', fontSize: 13, fontWeight: 600,
+                                        color: '#2D2D2D', fontSize: 11, fontWeight: 600,
                                         transition: 'background .2s',
                                     }}
                                         onMouseEnter={e => e.currentTarget.style.background = '#FFF5FA'}
@@ -218,12 +218,12 @@ export default function Header() {
                                             width: 34, height: 34, borderRadius: '50%',
                                             background: 'linear-gradient(135deg, #FFF0F7, #FFE4F0)',
                                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                            fontSize: 14, fontWeight: 800, color: '#FC2779',
+                                            fontSize: 12, fontWeight: 800, color: '#FC2779',
                                             border: '2px solid #FC2779', flexShrink: 0,
                                         }}>
                                             {userInfo.name?.[0]?.toUpperCase()}
                                         </span>
-                                        <span className="hide-mobile" style={{ fontSize: 13 }}>
+                                        <span className="hide-mobile" style={{ fontSize: 11 }}>
                                             {userInfo.name?.split(' ')[0]}
                                         </span>
                                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 3.5l3 3 3-3"/></svg>
@@ -239,7 +239,7 @@ export default function Header() {
                                         }}>
                                             <Link to="/cart" style={{
                                                 display: 'flex', alignItems: 'center', gap: 10,
-                                                padding: '10px 14px', fontSize: 14, color: '#2D2D2D',
+                                                padding: '10px 14px', fontSize: 12, color: '#2D2D2D',
                                                 textDecoration: 'none', borderRadius: 10,
                                                 fontWeight: 600, transition: 'background .15s',
                                             }}
@@ -250,14 +250,14 @@ export default function Header() {
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
                                                 My Cart
                                                 {cartCount > 0 && (
-                                                    <span style={{ marginLeft: 'auto', background: '#FC2779', color: 'white', fontSize: 10, fontWeight: 800, minWidth: 18, height: 18, borderRadius: 99, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{cartCount > 9 ? '9+' : cartCount}</span>
+                                                    <span style={{ marginLeft: 'auto', background: '#FC2779', color: 'white', fontSize: 12, fontWeight: 800, minWidth: 18, height: 18, borderRadius: 99, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{cartCount > 9 ? '9+' : cartCount}</span>
                                                 )}
                                             </Link>
                                             <hr style={{ border: 'none', borderTop: '1px solid #F0E0EA', margin: '6px 8px' }} />
                                             <button onClick={logoutHandler} style={{
                                                 display: 'flex', alignItems: 'center', gap: 10,
                                                 width: '100%', textAlign: 'left',
-                                                padding: '10px 14px', fontSize: 14, color: '#E53E3E',
+                                                padding: '10px 14px', fontSize: 12, color: '#E53E3E',
                                                 background: 'none', border: 'none', cursor: 'pointer',
                                                 borderRadius: 10, fontWeight: 600,
                                             }}
@@ -275,7 +275,7 @@ export default function Header() {
                                     display: 'flex', alignItems: 'center', gap: 7,
                                     background: 'none', border: '2px solid #F0E0EA',
                                     borderRadius: 99, padding: '8px 16px',
-                                    fontSize: 13, fontWeight: 600, color: '#2D2D2D',
+                                    fontSize: 11, fontWeight: 600, color: '#2D2D2D',
                                     cursor: 'pointer', whiteSpace: 'nowrap',
                                 }}>
                                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
@@ -289,7 +289,7 @@ export default function Header() {
                             position: 'relative', display: 'flex', alignItems: 'center',
                             gap: 6, textDecoration: 'none', color: '#2D2D2D',
                             padding: '8px 12px', borderRadius: 99,
-                            fontSize: 14, fontWeight: 600,
+                            fontSize: 12, fontWeight: 600,
                             whiteSpace: 'nowrap', border: '2px solid transparent',
                         }}>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
@@ -298,7 +298,7 @@ export default function Header() {
                                 <span style={{
                                     position: 'absolute', top: 2, right: 2,
                                     background: 'linear-gradient(135deg, #FC2779, #B5006B)',
-                                    color: 'white', fontSize: 10, fontWeight: 800,
+                                    color: 'white', fontSize: 12, fontWeight: 800,
                                     minWidth: 18, height: 18, borderRadius: 99,
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                     border: '2px solid white', lineHeight: 1,
@@ -331,7 +331,7 @@ export default function Header() {
                             <Link key={link.to} to={link.to} className="gp-nav-link" style={{
                                 flex: 1,
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                padding: '13px 12px', fontSize: 14,
+                                padding: '13px 12px', fontSize: 12,
                                 textDecoration: 'none', whiteSpace: 'nowrap',
                                 ...(active ? activeStyle : inactiveStyle),
                             }}>{link.label}</Link>
@@ -341,7 +341,7 @@ export default function Header() {
                         flex: 1,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         gap: 5, padding: '13px 12px',
-                        fontSize: 14, fontWeight: 700,
+                        fontSize: 12, fontWeight: 700,
                         color: '#FC2779', textDecoration: 'none', whiteSpace: 'nowrap',
                         borderBottom: location.pathname === '/recommend' ? '3px solid #FC2779' : '3px solid transparent',
                         background: location.pathname === '/recommend' ? 'linear-gradient(to bottom, #fff, #FFF5FA)' : 'transparent',
@@ -356,21 +356,21 @@ export default function Header() {
                             <svg style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: '#FC2779', pointerEvents: 'none' }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                             <input type="text" placeholder="Search products..."
                                 value={keyword} onChange={e => setKeyword(e.target.value)}
-                                style={{ width: '100%', height: 44, boxSizing: 'border-box', border: '2px solid #F0E0EA', borderRadius: 99, padding: '0 16px 0 44px', fontSize: 14, fontFamily: 'var(--font-body)', outline: 'none', background: '#FFF5FA' }}
+                                style={{ width: '100%', height: 44, boxSizing: 'border-box', border: '2px solid #F0E0EA', borderRadius: 99, padding: '0 16px 0 44px', fontSize: 12, fontFamily: 'var(--font-body)', outline: 'none', background: '#FFF5FA' }}
                             />
                         </form>
                         <nav style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                             {NAV_LINKS.map(link => {
                                 const active = isLinkActive(link);
                                 return (
-                                    <Link key={link.to} to={link.to} style={{ padding: '11px 14px', fontSize: 14, fontWeight: active ? 700 : 500, color: active ? '#FC2779' : '#2D2D2D', borderRadius: 10, textDecoration: 'none', background: active ? '#FFF5FA' : 'transparent', transition: 'background .15s' }}>
+                                    <Link key={link.to} to={link.to} style={{ padding: '11px 14px', fontSize: 12, fontWeight: active ? 700 : 500, color: active ? '#FC2779' : '#2D2D2D', borderRadius: 10, textDecoration: 'none', background: active ? '#FFF5FA' : 'transparent', transition: 'background .15s' }}>
                                         {link.label}
                                     </Link>
                                 );
                             })}
-                            <Link to="/recommend" style={{ padding: '11px 14px', fontSize: 14, fontWeight: 700, color: '#FC2779', borderRadius: 10, textDecoration: 'none', background: '#FFF5FA' }}>✨ AI Skin Analysis</Link>
+                            <Link to="/recommend" style={{ padding: '11px 14px', fontSize: 12, fontWeight: 700, color: '#FC2779', borderRadius: 10, textDecoration: 'none', background: '#FFF5FA' }}>✨ AI Skin Analysis</Link>
                             {!userInfo && (
-                                <button onClick={() => { setMobileOpen(false); openLogin(); }} style={{ padding: '11px 14px', textAlign: 'center', fontSize: 14, fontWeight: 700, color: 'white', borderRadius: 10, marginTop: 8, background: 'linear-gradient(135deg, #B5006B, #FC2779)', border: 'none', cursor: 'pointer', boxShadow: '0 4px 14px rgba(252,39,121,0.3)' }}>
+                                <button onClick={() => { setMobileOpen(false); openLogin(); }} style={{ padding: '11px 14px', textAlign: 'center', fontSize: 12, fontWeight: 700, color: 'white', borderRadius: 10, marginTop: 8, background: 'linear-gradient(135deg, #B5006B, #FC2779)', border: 'none', cursor: 'pointer', boxShadow: '0 4px 14px rgba(252,39,121,0.3)' }}>
                                     Sign in / Create account
                                 </button>
                             )}
@@ -381,3 +381,4 @@ export default function Header() {
         </>
     );
 }
+

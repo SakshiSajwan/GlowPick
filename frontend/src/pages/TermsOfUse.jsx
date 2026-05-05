@@ -99,25 +99,25 @@ export default function TermsOfUse() {
 
         <div style={{ position: 'relative', maxWidth: 860 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}>
-            <Link to="/" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 19, textDecoration: 'none', fontWeight: 500 }}
+            <Link to="/" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, textDecoration: 'none', fontWeight: 500 }}
               onMouseEnter={e => e.target.style.color = '#FC2779'}
               onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.5)'}
             >Home</Link>
-            <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 19 }}>›</span>
-            <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: 19, fontWeight: 600 }}>Terms of Use</span>
+            <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 15 }}>›</span>
+            <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: 15, fontWeight: 600 }}>Terms of Use</span>
           </div>
 
           <h1 style={{
-            fontSize: 'clamp(40px,5.5vw,68px)',
+            fontSize: 'clamp(30px,4.5vw,48px)',
             fontWeight: 900, color: '#fff', lineHeight: 1.0,
             marginBottom: 18, letterSpacing: '-0.03em',
           }}>
             Terms of Use
           </h1>
-          <p style={{ fontSize: 'clamp(15px,1.6vw,20px)', color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, maxWidth: 580, fontWeight: 400 }}>
+          <p style={{ fontSize: 'clamp(13px,1.3vw,16px)', color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, maxWidth: 580, fontWeight: 400 }}>
             Please read these Terms carefully before using GlowPick. They govern your use of our platform, products, and services.
           </p>
-          <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.35)', marginTop: 28, fontWeight: 500 }}>
+          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.35)', marginTop: 28, fontWeight: 500 }}>
             Last updated: April 30, 2026 · Effective: April 30, 2026
           </p>
         </div>
@@ -141,12 +141,12 @@ export default function TermsOfUse() {
           overflowY: 'auto',
           padding: '36px 0 40px',
         }}>
-          <p style={{ fontSize: 16, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', padding: '0 28px', marginBottom: 16 }}>Contents</p>
+          <p style={{ fontSize: 13, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', padding: '0 28px', marginBottom: 16 }}>Contents</p>
           {SECTIONS.map(s => (
             <a key={s.id} href={`#${s.id}`} style={{
               display: 'block',
               padding: '11px 28px',
-              fontSize: 15, fontWeight: 500,
+              fontSize: 13, fontWeight: 500,
               color: '#444',
               textDecoration: 'none',
               borderLeft: '3px solid transparent',
@@ -171,8 +171,8 @@ export default function TermsOfUse() {
             borderRadius: 16, padding: '24px 28px',
             display: 'flex', gap: 16, alignItems: 'flex-start',
           }}>
-            <span style={{ fontSize: 26, flexShrink: 0, marginTop: 2 }}>⚠️</span>
-            <p style={{ fontSize: 17, color: '#333', lineHeight: 1.85, margin: 0 }}>
+            <span style={{ fontSize: 20, flexShrink: 0, marginTop: 2 }}>⚠️</span>
+            <p style={{ fontSize: 14, color: '#333', lineHeight: 1.85, margin: 0 }}>
               <strong style={{ color: '#1C1C1E' }}>Please read carefully.</strong> These Terms of Use constitute a legally binding agreement between you and GlowPick Beauty Technologies Pvt. Ltd. If you do not agree to any part of these Terms, you must not use the Platform.
             </p>
           </div>
@@ -180,7 +180,7 @@ export default function TermsOfUse() {
           {SECTIONS.map(sec => (
             <section key={sec.id} id={sec.id} style={{ scrollMarginTop: 32 }}>
               <h2 style={{
-                fontSize: 'clamp(22px,2.2vw,28px)',
+                fontSize: 'clamp(18px,1.8vw,22px)',
                 fontWeight: 800, color: '#1C1C1E',
                 marginBottom: 24, paddingBottom: 14,
                 borderBottom: '2px solid #F0E0EA',
@@ -200,10 +200,10 @@ export default function TermsOfUse() {
                     onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 4px 24px rgba(252,39,121,0.09)'; e.currentTarget.style.borderColor = '#FCCDE3'; }}
                     onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = '#F5EAF0'; }}
                   >
-                    <p style={{ fontSize: 16, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
+                    <p style={{ fontSize: 13, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
                       {item.sub}
                     </p>
-                    <p style={{ fontSize: 16, color: '#333', lineHeight: 1.85, margin: 0 }}>
+                    <p style={{ fontSize: 13, color: '#333', lineHeight: 1.85, margin: 0 }}>
                       {item.text}
                     </p>
                   </div>
@@ -220,8 +220,8 @@ export default function TermsOfUse() {
             flexWrap: 'wrap', gap: 20,
           }}>
             <div>
-              <p style={{ color: '#fff', fontWeight: 700, fontSize: 20, marginBottom: 5 }}>Related Policies</p>
-              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15 }}>Other legal documents you should know about</p>
+              <p style={{ color: '#fff', fontWeight: 700, fontSize: 16, marginBottom: 5 }}>Related Policies</p>
+              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>Other legal documents you should know about</p>
             </div>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               {[{ label: 'Privacy Policy', to: '/privacy' }, { label: 'Refund Policy', to: '/refund-policy' }].map(l => (
@@ -229,7 +229,7 @@ export default function TermsOfUse() {
                   background: 'rgba(252,39,121,0.15)', color: '#FF6BAD',
                   border: '1px solid rgba(252,39,121,0.3)',
                   borderRadius: 99, padding: '10px 22px',
-                  fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'all 0.2s',
+                  fontSize: 13, fontWeight: 700, textDecoration: 'none', transition: 'all 0.2s',
                 }}
                   onMouseEnter={e => { e.currentTarget.style.background = '#FC2779'; e.currentTarget.style.color = '#fff'; }}
                   onMouseLeave={e => { e.currentTarget.style.background = 'rgba(252,39,121,0.15)'; e.currentTarget.style.color = '#FF6BAD'; }}

@@ -144,14 +144,14 @@ function StepBadge({ number, label, active }) {
       <div style={{
         width: 38, height: 38, borderRadius: "50%",
         display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 14, fontWeight: 800, flexShrink: 0,
+        fontSize: 12, fontWeight: 800, flexShrink: 0,
         background: active ? "linear-gradient(135deg,#FC2779,#F43F5E)" : "#fff",
         color: active ? "#fff" : "#9CA3AF",
         border: active ? "none" : "2px solid #E5E7EB",
         boxShadow: active ? "0 4px 14px rgba(252,39,121,.35)" : "none",
         transition: "all .3s",
       }}>{number}</div>
-      <span style={{ fontSize: 14, fontWeight: 700, color: active ? "#FC2779" : "#9CA3AF" }}>
+      <span style={{ fontSize: 12, fontWeight: 700, color: active ? "#FC2779" : "#9CA3AF" }}>
         {label}
       </span>
     </div>
@@ -256,19 +256,19 @@ export default function SkinProfile() {
           background: "#FFF0F7", border: "1.5px solid #FCE7F3",
           boxShadow: "0 2px 12px rgba(252,39,121,.08)",
         }}>
-          <span style={{ fontSize: 13, fontWeight: 700, color: "#FC2779", letterSpacing: ".06em" }}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: "#FC2779", letterSpacing: ".06em" }}>
             ✨ AI-Powered Skincare
           </span>
         </div>
 
         <h1 style={{
-          fontSize: "clamp(28px,4vw,40px)", fontWeight: 900, marginBottom: 6,
+          fontSize: "clamp(24px,3.4vw,34px)", fontWeight: 900, marginBottom: 6,
           background: "linear-gradient(135deg,#FC2779,#F43F5E,#A855F7)",
           WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
           letterSpacing: "-.03em", lineHeight: 1.1,
         }}>GlowBot</h1>
 
-        <p style={{ fontSize: 15, color: "#6B7280", marginBottom: 20 }}>
+        <p style={{ fontSize: 13, color: "#6B7280", marginBottom: 20 }}>
           Your personalised skincare recommendation system
         </p>
 
@@ -288,7 +288,7 @@ export default function SkinProfile() {
               borderRadius: 99, transition: "width .5s ease",
             }} />
           </div>
-          <p style={{ fontSize: 13, color: "#9CA3AF", marginTop: 6 }}>Step 1 of 3</p>
+          <p style={{ fontSize: 11, color: "#9CA3AF", marginTop: 6 }}>Step 1 of 3</p>
         </div>
       </div>
 
@@ -303,10 +303,10 @@ export default function SkinProfile() {
           backdropFilter: "blur(8px)",
         }}>
           <h2 style={{
-            fontSize: 26, fontWeight: 900, color: "#1F2937",
+            fontSize: 22, fontWeight: 900, color: "#1F2937",
             marginBottom: 4, letterSpacing: "-.02em",
           }}>Tell us about your skin 💖</h2>
-          <p style={{ fontSize: 15, color: "#6B7280", marginBottom: 28 }}>
+          <p style={{ fontSize: 13, color: "#6B7280", marginBottom: 28 }}>
             Select all that apply — we'll craft recommendations just for you.
           </p>
 
@@ -316,8 +316,8 @@ export default function SkinProfile() {
                 width: 5, height: 28, borderRadius: 99, display: "inline-block",
                 background: "linear-gradient(to bottom,#FC2779,#F43F5E)",
               }} />
-              <span style={{ fontSize: 18, fontWeight: 900, color: "#1F2937" }}>Skin Concerns</span>
-              <span style={{ color: "#F87171", fontSize: 18 }}>*</span>
+              <span style={{ fontSize: 16, fontWeight: 900, color: "#1F2937" }}>Skin Concerns</span>
+              <span style={{ color: "#F87171", fontSize: 16 }}>*</span>
             </div>
             {concerns.length > 0 && (
               <span className="selected-pop" style={{
@@ -382,7 +382,7 @@ export default function SkinProfile() {
                     {item.icon}
                   </div>
                   <span style={{
-                    fontSize: 15, fontWeight: 700,
+                    fontSize: 13, fontWeight: 700,
                     color: sel ? "#BE185D" : "#1F2937",
                     lineHeight: 1.3,
                   }}>{item.name}</span>
@@ -397,7 +397,7 @@ export default function SkinProfile() {
                 width: "100%", marginTop: 14, boxSizing: "border-box",
                 borderRadius: 16, border: "2px solid #F9A8D4",
                 background: "#fff", padding: "16px 20px",
-                fontSize: 15, fontFamily: "inherit", outline: "none",
+                fontSize: 13, fontFamily: "inherit", outline: "none",
                 boxShadow: "0 2px 12px rgba(252,39,121,.08)",
                 transition: "border-color .2s",
               }}
@@ -417,8 +417,8 @@ export default function SkinProfile() {
         }}>
 
           <div style={{ marginBottom: 28 }}>
-            <h2 style={{ fontSize: 26, fontWeight: 900, opacity: 0, userSelect: "none", marginBottom: 4 }}>·</h2>
-            <p style={{ fontSize: 15, opacity: 0, userSelect: "none" }}>·</p>
+            <h2 style={{ fontSize: 22, fontWeight: 900, opacity: 0, userSelect: "none", marginBottom: 4 }}>·</h2>
+            <p style={{ fontSize: 13, opacity: 0, userSelect: "none" }}>·</p>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
@@ -427,7 +427,7 @@ export default function SkinProfile() {
                 width: 5, height: 28, borderRadius: 99, display: "inline-block",
                 background: "linear-gradient(to bottom,#C084FC,#FC2779)",
               }} />
-              <span style={{ fontSize: 18, fontWeight: 900, color: "#1F2937" }}>Allergies & Sensitivities</span>
+              <span style={{ fontSize: 16, fontWeight: 900, color: "#1F2937" }}>Allergies & Sensitivities</span>
               <span style={{ fontSize: 12, color: "#9CA3AF", fontWeight: 500 }}>(optional)</span>
             </div>
             {allergies.length > 0 && (
@@ -481,7 +481,7 @@ export default function SkinProfile() {
                       {item.icon}
                     </div>
                     <span style={{
-                      fontSize: 15, fontWeight: 700,
+                      fontSize: 13, fontWeight: 700,
                       color: sel ? "#BE185D" : "#1F2937",
                     }}>{item.name}</span>
                   </div>
@@ -506,7 +506,7 @@ export default function SkinProfile() {
                 width: "100%", marginTop: 14, boxSizing: "border-box",
                 borderRadius: 16, border: "2px solid #D8B4FE",
                 background: "#fff", padding: "16px 20px",
-                fontSize: 15, fontFamily: "inherit", outline: "none",
+                fontSize: 13, fontFamily: "inherit", outline: "none",
                 boxShadow: "0 2px 12px rgba(168,85,247,.08)",
               }}
               placeholder="Describe your specific allergy..."
@@ -523,12 +523,12 @@ export default function SkinProfile() {
             borderRadius: 16, border: "1.5px solid #FCE7F3",
             boxShadow: "0 2px 10px rgba(252,39,121,.06)",
           }}>
-            <span style={{ fontSize: 20, flexShrink: 0 }}>🔒</span>
+            <span style={{ fontSize: 17, flexShrink: 0 }}>🔒</span>
             <div>
-              <p style={{ fontSize: 14, fontWeight: 800, color: "#1F2937", marginBottom: 3 }}>
+              <p style={{ fontSize: 12, fontWeight: 800, color: "#1F2937", marginBottom: 3 }}>
                 Your data is safe with us
               </p>
-              <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
+              <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.6 }}>
                 We use this only to personalize your skincare recommendations.
               </p>
             </div>
@@ -560,7 +560,7 @@ export default function SkinProfile() {
           style={{
             width: "100%", padding: "22px 24px",
             borderRadius: 99, border: "none",
-            fontSize: 15, fontWeight: 900, letterSpacing: ".05em",
+            fontSize: 13, fontWeight: 900, letterSpacing: ".05em",
             cursor: canProceed ? "pointer" : "not-allowed",
             transition: "all .28s cubic-bezier(.34,1.56,.64,1)",
             display: "flex", alignItems: "center", justifyContent: "center", gap: 14,
@@ -579,7 +579,7 @@ export default function SkinProfile() {
                 width: 36, height: 36, borderRadius: "50%",
                 background: "rgba(255,255,255,.25)",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 15, fontWeight: 900,
+                fontSize: 13, fontWeight: 900,
               }}>→</span>
             </>
           ) : (
@@ -588,7 +588,7 @@ export default function SkinProfile() {
         </button>
 
         {!canProceed && concerns.length === 0 && (
-          <p style={{ textAlign: "center", fontSize: 13, color: "#9CA3AF", marginTop: 10 }}>
+          <p style={{ textAlign: "center", fontSize: 11, color: "#9CA3AF", marginTop: 10 }}>
             👆 Pick what you'd like to improve on the left
           </p>
         )}
@@ -597,7 +597,7 @@ export default function SkinProfile() {
       {/* Footer */}
       <div style={{
         textAlign: "center", padding: "14px",
-        fontSize: 14, color: "#9CA3AF",
+        fontSize: 12, color: "#9CA3AF",
         borderTop: "1px solid #FCE7F3",
         background: "rgba(255,255,255,.6)",
         flexShrink: 0,

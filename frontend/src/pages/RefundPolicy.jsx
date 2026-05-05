@@ -73,22 +73,22 @@ export default function RefundPolicy() {
 
         <div style={{ position: 'relative', maxWidth: 860 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}>
-            <Link to="/" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 19, textDecoration: 'none', fontWeight: 500 }}
+            <Link to="/" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, textDecoration: 'none', fontWeight: 500 }}
               onMouseEnter={e => e.target.style.color = '#34d399'}
               onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.5)'}
             >Home</Link>
-            <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 19 }}>›</span>
-            <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: 19, fontWeight: 600 }}>Refund Policy</span>
+            <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 13 }}>›</span>
+            <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: 13, fontWeight: 600 }}>Refund Policy</span>
           </div>
 
           <h1 style={{
-            fontSize: 'clamp(40px,5.5vw,68px)',
+            fontSize: 'clamp(30px,4.5vw,48px)',
             fontWeight: 900, color: '#fff', lineHeight: 1.0,
             marginBottom: 18, letterSpacing: '-0.03em',
           }}>
             Refund & Returns Policy
           </h1>
-          <p style={{ fontSize: 'clamp(15px,1.6vw,20px)', color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, maxWidth: 580, fontWeight: 400 }}>
+          <p style={{ fontSize: 'clamp(13px,1.3vw,16px)', color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, maxWidth: 580, fontWeight: 400 }}>
             We want every GlowPick purchase to bring you joy. If something isn't right, we've got you — with a simple, transparent returns process.
           </p>
 
@@ -104,13 +104,13 @@ export default function RefundPolicy() {
                 border: '1px solid rgba(255,255,255,0.12)',
                 borderRadius: 12, padding: '16px 24px',
               }}>
-                <p style={{ color: '#FC2779', fontSize: 20, fontWeight: 900, marginBottom: 4, letterSpacing: '-0.02em' }}>{stat.value}</p>
-                <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, fontWeight: 500 }}>{stat.label}</p>
+                <p style={{ color: '#FC2779', fontSize: 13, fontWeight: 900, marginBottom: 4, letterSpacing: '-0.02em' }}>{stat.value}</p>
+                <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontWeight: 500 }}>{stat.label}</p>
               </div>
             ))}
           </div>
 
-          <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.3)', marginTop: 32, fontWeight: 500 }}>
+          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)', marginTop: 32, fontWeight: 500 }}>
             Last updated: April 30, 2026
           </p>
         </div>
@@ -122,8 +122,8 @@ export default function RefundPolicy() {
         {/* Timeline */}
         <section>
           <div style={{ marginBottom: 36 }}>
-            <p style={{ fontSize: 16, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 10 }}>Step by Step</p>
-            <h2 style={{ fontSize: 'clamp(24px,2.8vw,36px)', fontWeight: 900, color: '#1C1C1E', letterSpacing: '-0.02em' }}>Return Process Timeline</h2>
+            <p style={{ fontSize: 13, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 10 }}>Step by Step</p>
+            <h2 style={{ fontSize: 'clamp(20px,2.2vw,28px)', fontWeight: 900, color: '#1C1C1E', letterSpacing: '-0.02em' }}>Return Process Timeline</h2>
           </div>
           <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
             <div style={{
@@ -137,14 +137,14 @@ export default function RefundPolicy() {
                   width: 88, height: 88, borderRadius: '50%',
                   background: '#fff', border: `3px solid ${step.color}`,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 32, marginBottom: 16,
+                  fontSize: 24, marginBottom: 16,
                   boxShadow: `0 4px 24px ${step.color}35`,
                 }}>
                   {step.icon}
                 </div>
-                <p style={{ fontSize: 16, fontWeight: 800, color: step.color, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 5 }}>{step.day}</p>
-                <p style={{ fontSize: 16, fontWeight: 700, color: '#1C1C1E', marginBottom: 5 }}>{step.label}</p>
-                <p style={{ fontSize: 15, color: '#777', lineHeight: 1.55 }}>{step.desc}</p>
+                <p style={{ fontSize: 13, fontWeight: 800, color: step.color, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 5 }}>{step.day}</p>
+                <p style={{ fontSize: 13, fontWeight: 700, color: '#1C1C1E', marginBottom: 5 }}>{step.label}</p>
+                <p style={{ fontSize: 13, color: '#777', lineHeight: 1.55 }}>{step.desc}</p>
               </div>
             ))}
           </div>
@@ -154,8 +154,8 @@ export default function RefundPolicy() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32 }}>
           <section>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-              <div style={{ width: 40, height: 40, borderRadius: '50%', background: '#dcfce7', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>✅</div>
-              <h2 style={{ fontSize: 'clamp(20px,2vw,26px)', fontWeight: 800, color: '#1C1C1E', letterSpacing: '-0.01em' }}>Eligible for Return</h2>
+              <div style={{ width: 40, height: 40, borderRadius: '50%', background: '#dcfce7', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13 }}>✅</div>
+              <h2 style={{ fontSize: 'clamp(17px,1.7vw,21px)', fontWeight: 800, color: '#1C1C1E', letterSpacing: '-0.01em' }}>Eligible for Return</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               {ELIGIBLE.map((item, i) => (
@@ -168,10 +168,10 @@ export default function RefundPolicy() {
                   onMouseEnter={e => e.currentTarget.style.boxShadow = '0 4px 20px rgba(16,185,129,0.14)'}
                   onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}
                 >
-                  <span style={{ fontSize: 26, flexShrink: 0, marginTop: 2 }}>{item.icon}</span>
+                  <span style={{ fontSize: 13, flexShrink: 0, marginTop: 2 }}>{item.icon}</span>
                   <div>
-                    <p style={{ fontSize: 17, fontWeight: 700, color: '#065f46', marginBottom: 5 }}>{item.title}</p>
-                    <p style={{ fontSize: 15, color: '#444', lineHeight: 1.7 }}>{item.desc}</p>
+                    <p style={{ fontSize: 14, fontWeight: 700, color: '#065f46', marginBottom: 5 }}>{item.title}</p>
+                    <p style={{ fontSize: 13, color: '#444', lineHeight: 1.7 }}>{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -180,8 +180,8 @@ export default function RefundPolicy() {
 
           <section>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-              <div style={{ width: 40, height: 40, borderRadius: '50%', background: '#fee2e2', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>❌</div>
-              <h2 style={{ fontSize: 'clamp(20px,2vw,26px)', fontWeight: 800, color: '#1C1C1E', letterSpacing: '-0.01em' }}>Not Eligible for Return</h2>
+              <div style={{ width: 40, height: 40, borderRadius: '50%', background: '#fee2e2', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13 }}>❌</div>
+              <h2 style={{ fontSize: 'clamp(17px,1.7vw,21px)', fontWeight: 800, color: '#1C1C1E', letterSpacing: '-0.01em' }}>Not Eligible for Return</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               {NOT_ELIGIBLE.map((item, i) => (
@@ -194,10 +194,10 @@ export default function RefundPolicy() {
                   onMouseEnter={e => e.currentTarget.style.boxShadow = '0 4px 20px rgba(239,68,68,0.12)'}
                   onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}
                 >
-                  <span style={{ fontSize: 26, flexShrink: 0, marginTop: 2 }}>{item.icon}</span>
+                  <span style={{ fontSize: 13, flexShrink: 0, marginTop: 2 }}>{item.icon}</span>
                   <div>
-                    <p style={{ fontSize: 17, fontWeight: 700, color: '#991b1b', marginBottom: 5 }}>{item.title}</p>
-                    <p style={{ fontSize: 15, color: '#444', lineHeight: 1.7 }}>{item.desc}</p>
+                    <p style={{ fontSize: 14, fontWeight: 700, color: '#991b1b', marginBottom: 5 }}>{item.title}</p>
+                    <p style={{ fontSize: 13, color: '#444', lineHeight: 1.7 }}>{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -208,8 +208,8 @@ export default function RefundPolicy() {
         {/* Refund Methods */}
         <section>
           <div style={{ marginBottom: 32 }}>
-            <p style={{ fontSize: 16, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 10 }}>Where Does the Money Go?</p>
-            <h2 style={{ fontSize: 'clamp(24px,2.8vw,36px)', fontWeight: 900, color: '#1C1C1E', letterSpacing: '-0.02em' }}>Refund Methods</h2>
+            <p style={{ fontSize: 13, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 10 }}>Where Does the Money Go?</p>
+            <h2 style={{ fontSize: 'clamp(20px,2.2vw,28px)', fontWeight: 900, color: '#1C1C1E', letterSpacing: '-0.02em' }}>Refund Methods</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 18 }}>
             {[
@@ -228,16 +228,16 @@ export default function RefundPolicy() {
                 onMouseEnter={e => { e.currentTarget.style.borderColor = item.color; e.currentTarget.style.boxShadow = `0 6px 24px ${item.color}20`; e.currentTarget.style.transform = 'translateY(-4px)'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = '#F0E0EA'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'none'; }}
               >
-                <div style={{ width: 52, height: 52, borderRadius: 14, background: `${item.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28 }}>{item.icon}</div>
-                <p style={{ fontSize: 16, fontWeight: 700, color: '#1C1C1E', lineHeight: 1.3 }}>{item.method}</p>
+                <div style={{ width: 52, height: 52, borderRadius: 14, background: `${item.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>{item.icon}</div>
+                <p style={{ fontSize: 13, fontWeight: 700, color: '#1C1C1E', lineHeight: 1.3 }}>{item.method}</p>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                   <div style={{ width: 7, height: 7, borderRadius: '50%', background: item.color, flexShrink: 0 }} />
-                  <p style={{ fontSize: 15, color: item.color, fontWeight: 700 }}>{item.time}</p>
+                  <p style={{ fontSize: 13, color: item.color, fontWeight: 700 }}>{item.time}</p>
                 </div>
               </div>
             ))}
           </div>
-          <p style={{ fontSize: 15, color: '#888', marginTop: 18, lineHeight: 1.7 }}>
+          <p style={{ fontSize: 13, color: '#888', marginTop: 18, lineHeight: 1.7 }}>
             * Refund timelines begin from the date GlowPick approves your return after quality inspection. Delays due to banking processes or bank holidays are outside GlowPick's control.
           </p>
         </section>
@@ -245,8 +245,8 @@ export default function RefundPolicy() {
         {/* FAQ */}
         <section>
           <div style={{ marginBottom: 32 }}>
-            <p style={{ fontSize: 16, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 10 }}>Got Questions?</p>
-            <h2 style={{ fontSize: 'clamp(24px,2.8vw,36px)', fontWeight: 900, color: '#1C1C1E', letterSpacing: '-0.02em' }}>Frequently Asked Questions</h2>
+            <p style={{ fontSize: 13, fontWeight: 800, color: '#FC2779', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 10 }}>Got Questions?</p>
+            <h2 style={{ fontSize: 'clamp(20px,2.2vw,28px)', fontWeight: 900, color: '#1C1C1E', letterSpacing: '-0.02em' }}>Frequently Asked Questions</h2>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             {FAQS.map((faq, i) => (
@@ -266,12 +266,12 @@ export default function RefundPolicy() {
                     cursor: 'pointer', textAlign: 'left',
                   }}
                 >
-                  <span style={{ fontSize: 17, fontWeight: 700, color: '#1C1C1E', lineHeight: 1.4 }}>{faq.q}</span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: '#1C1C1E', lineHeight: 1.4 }}>{faq.q}</span>
                   <span style={{
                     width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
                     background: openFaq === i ? '#FC2779' : '#FFF0F7',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 32, color: openFaq === i ? '#fff' : '#FC2779',
+                    fontSize: 24, color: openFaq === i ? '#fff' : '#FC2779',
                     fontWeight: 700, transition: 'all 0.2s',
                   }}>
                     {openFaq === i ? '−' : '+'}
@@ -279,7 +279,7 @@ export default function RefundPolicy() {
                 </button>
                 {openFaq === i && (
                   <div style={{ padding: '0 28px 24px' }}>
-                    <p style={{ fontSize: 15, color: '#444', lineHeight: 1.85, borderTop: '1px solid #F5EAF0', paddingTop: 16, margin: 0 }}>
+                    <p style={{ fontSize: 13, color: '#444', lineHeight: 1.85, borderTop: '1px solid #F5EAF0', paddingTop: 16, margin: 0 }}>
                       {faq.a}
                     </p>
                   </div>
@@ -297,14 +297,14 @@ export default function RefundPolicy() {
           gap: 28, flexWrap: 'wrap',
         }}>
           <div>
-            <h3 style={{ color: '#fff', fontSize: 'clamp(20px,2.5vw,30px)', fontWeight: 900, marginBottom: 8, letterSpacing: '-0.01em' }}>Still need help?</h3>
-            <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 15, lineHeight: 1.6 }}>Our customer support team is available Mon–Sat, 9 AM – 6 PM IST.</p>
+            <h3 style={{ color: '#fff', fontSize: 'clamp(17px,2vw,24px)', fontWeight: 900, marginBottom: 8, letterSpacing: '-0.01em' }}>Still need help?</h3>
+            <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 13, lineHeight: 1.6 }}>Our customer support team is available Mon–Sat, 9 AM – 6 PM IST.</p>
           </div>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <a href="mailto:support@glowpick.in" style={{
               background: '#fff', color: '#FC2779',
               borderRadius: 99, padding: '13px 26px',
-              fontSize: 15, fontWeight: 800, textDecoration: 'none',
+              fontSize: 13, fontWeight: 800, textDecoration: 'none',
               display: 'flex', alignItems: 'center', gap: 8, transition: 'transform 0.2s',
             }}
               onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
@@ -315,7 +315,7 @@ export default function RefundPolicy() {
             <div style={{
               background: 'rgba(255,255,255,0.18)', color: '#fff',
               borderRadius: 99, padding: '13px 26px',
-              fontSize: 15, fontWeight: 700,
+              fontSize: 13, fontWeight: 700,
               border: '1.5px solid rgba(255,255,255,0.35)',
               display: 'flex', alignItems: 'center', gap: 8,
             }}>
@@ -331,8 +331,8 @@ export default function RefundPolicy() {
           flexWrap: 'wrap', gap: 20,
         }}>
           <div>
-            <p style={{ color: '#fff', fontWeight: 700, fontSize: 20, marginBottom: 5 }}>Related Policies</p>
-            <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15 }}>Read our other legal documents</p>
+            <p style={{ color: '#fff', fontWeight: 700, fontSize: 13, marginBottom: 5 }}>Related Policies</p>
+            <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>Read our other legal documents</p>
           </div>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             {[{ label: 'Privacy Policy', to: '/privacy' }, { label: 'Terms of Use', to: '/terms' }].map(l => (
@@ -340,7 +340,7 @@ export default function RefundPolicy() {
                 background: 'rgba(252,39,121,0.15)', color: '#FF6BAD',
                 border: '1px solid rgba(252,39,121,0.3)',
                 borderRadius: 99, padding: '10px 22px',
-                fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'all 0.2s',
+                fontSize: 13, fontWeight: 700, textDecoration: 'none', transition: 'all 0.2s',
               }}
                 onMouseEnter={e => { e.currentTarget.style.background = '#FC2779'; e.currentTarget.style.color = '#fff'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(252,39,121,0.15)'; e.currentTarget.style.color = '#FF6BAD'; }}
@@ -352,3 +352,4 @@ export default function RefundPolicy() {
     </div>
   );
 }
+
