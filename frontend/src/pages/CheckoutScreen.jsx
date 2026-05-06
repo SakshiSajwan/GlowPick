@@ -241,62 +241,76 @@ export default function CheckoutScreen() {
   };
 
   // Razorpay Payment
-  const handleRazorpay = async () => {
+  const API = "https://glowpick-1a6y.onrender.com";
+
+    const handleRazorpay = async () => {
     if (!validate()) return;
     setLoading(true);
+
     try {
-      const res = await fetch('http://localhost:5000/api/payment/create-order', {
+        // 🔥 Wake up Render backend (VERY IMPORTANT)
+        await fetch(`${API}/`);
+
+        const res = await fetch(`${API}/api/payment/create-order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: totalPrice }),
-      });
-      const { order } = await res.json();
+        });
 
-      const options = {
+        const { order } = await res.json();
+
+        const options = {
         key: 'rzp_test_SkbGx5tt5k6tpd',
         amount: order.amount,
         currency: 'INR',
         name: 'GlowPick',
         description: 'Skincare & Beauty Order',
         order_id: order.id,
+
         handler: async function (response) {
-          const verifyRes = await fetch('http://localhost:5000/api/payment/verify', {
+            const verifyRes = await fetch(`${API}/api/payment/verify`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
             }),
-          });
-          const verifyData = await verifyRes.json();
-          if (verifyData.success) {
+            });
+
+            const verifyData = await verifyRes.json();
+
+            if (verifyData.success) {
             dispatch({ type: 'CLEAR_CART' });
             setPlacedOrderId(response.razorpay_order_id);
             setModalOpen(true);
-          } else {
-            alert('Payment verification failed. Please contact support.');
-          }
+            } else {
+            alert('Payment verification failed.');
+            }
         },
-        prefill: {
-          name: address.fullName,
-          contact: address.phone,
-        },
-        theme: { color: '#ec4899' },
-        modal: {
-          ondismiss: () => setLoading(false),
-        },
-      };
 
-      const rzp = new window.Razorpay(options);
-      rzp.open();
+        prefill: {
+            name: address.fullName,
+            contact: address.phone,
+        },
+
+        theme: { color: '#ec4899' },
+
+        modal: {
+            ondismiss: () => setLoading(false),
+        },
+        };
+
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+
     } catch (err) {
-      console.error(err);
-      alert('Payment server not reachable. Please start your Node backend (npm start in your backend folder) and try again.');
+        console.error(err);
+        alert('Payment failed. Try again.');
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+    };
 
   // Cash on Delivery
   const handleCOD = () => {

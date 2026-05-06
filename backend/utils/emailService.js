@@ -1,33 +1,29 @@
-const nodemailer = require('nodemailer');
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.GMAIL_USER,         
-    pass: process.env.GMAIL_APP_PASSWORD, 
-  },
-});
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 /**
  * Send an email
- * @param {string} to      - recipient email
- * @param {string} subject - email subject
- * @param {string} html    - HTML body
+ * @param {string} to
+ * @param {string} subject
+ * @param {string} html
  */
 const sendEmail = async (to, subject, html) => {
-  console.log(`📧 Attempting to send email to: ${to}`);
-  const mailOptions = {
-    from: `"GlowPick 💄" <${process.env.GMAIL_USER}>`,
-    to,
-    subject,
-    html,
-  };
+  console.log(`📧 Sending email to: ${to}`);
 
   try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log(`✉️  Email sent to ${to} — MessageId: ${info.messageId}`);
-    return { success: true, messageId: info.messageId };
+    const response = await resend.emails.send({
+      from: "GlowPick <onboarding@resend.dev>", // works instantly
+      to,
+      subject,
+      html,
+    });
+
+    console.log("✉️ Email sent:", response.id);
+    return { success: true, id: response.id };
+
   } catch (err) {
-    console.error('❌ Email send error:', err.message);
+    console.error("❌ Email send error:", err.message);
     throw err;
   }
 };

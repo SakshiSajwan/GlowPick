@@ -6,8 +6,8 @@ const { forgotPassword, verifyOtp, resetPasswordOtp } = require('../controllers/
 
 router.post('/login',                authUser);
 router.post('/register',             registerUser);
-router.post('/forgot-password',      forgotPassword);
-router.post('/verify-otp',           verifyOtp);
-router.post('/reset-password-otp',   resetPasswordOtp);
+router.post('/forgot-password', forgotPassword);
+router.post('/verify-otp', verifyOtp);
+router.post('/reset-password-otp', resetPasswordOtp);
 
 module.exports = router;
