@@ -13,16 +13,13 @@ const app = express();
 // Middleware 
 app.use(express.json());
 app.use(cookieParser());
+const cors = require('cors');
+
 app.use(cors({
-    origin: [
-        'http://localhost:5173',
-        'http://localhost:5174',
-        'http://127.0.0.1:5173',
-        'https://glow-pick.vercel.app',
-        'https://glowpick.vercel.app', 
-    ],
-    credentials: true,
+  origin: true,
+  credentials: true,
 }));
+app.options('*', cors());
 
 // Health check
 app.get('/', (req, res) => res.send('API is running...'));
