@@ -241,7 +241,7 @@ export default function CheckoutScreen() {
   };
 
   // Razorpay Payment
-  const API = "https://glowpick-1a6y.onrender.com";
+  const API = "";
 
     const handleRazorpay = async () => {
     if (!validate()) return;
