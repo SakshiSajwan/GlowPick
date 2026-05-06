@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
 });
 
 api.interceptors.request.use((config) => {
@@ -33,7 +33,9 @@ export async function getRecommendations(profile, imageFile) {
         formData.append('selfie', new Blob([pixel], { type: 'image/png' }), 'placeholder.png');
     }
 
-    const response = await fetch('http://127.0.0.1:8000/recommend', {
+    const AI_URL = import.meta.env.VITE_AI_URL || 'http://127.0.0.1:8000';
+
+    const response = await fetch(`${AI_URL}/recommend`, {
         method: 'POST', body: formData,
     });
     if (!response.ok) throw new Error('Recommendation failed');
