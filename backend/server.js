@@ -13,13 +13,7 @@ const app = express();
 // Middleware 
 app.use(express.json());
 app.use(cookieParser());
-const cors = require('cors');
-
-app.use(cors({
-  origin: true,
-  credentials: true,
-}));
-app.options('*', cors());
+app.use(cors());
 
 // Health check
 app.get('/', (req, res) => res.send('API is running...'));
