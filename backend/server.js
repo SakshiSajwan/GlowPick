@@ -3,6 +3,7 @@ const dotenv       = require('dotenv');
 const cors         = require('cors');
 const cookieParser = require('cookie-parser');
 const connectDB    = require('./config/db');
+console.log("🔥 NEW DEPLOY ACTIVE");
 
 dotenv.config();
 console.log("ENV CHECK:", process.env.MONGO_URI);
