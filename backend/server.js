@@ -17,6 +17,8 @@ app.use(cors({
         'http://localhost:5173',
         'http://localhost:5174',
         'http://127.0.0.1:5173',
+        'https://glow-pick.vercel.app',
+        'https://glowpick.vercel.app', 
     ],
     credentials: true,
 }));
