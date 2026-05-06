@@ -1,8 +1,8 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "https://glowpick-1a6y.onrender.com/api/$1"
+      "src": "/api/(.*)",
+      "dest": "https://glowpick-1a6y.onrender.com/api/$1"
     }
   ]
 }
