@@ -248,8 +248,6 @@ export default function CheckoutScreen() {
     setLoading(true);
 
     try {
-        // 🔥 Wake up Render backend (VERY IMPORTANT)
-        await fetch(`${API}/`);
 
         const res = await fetch(`${API}/api/payment/create-order`, {
         method: 'POST',
