@@ -1,9 +1,4 @@
-/* ══════════════════════════════════════════════════════════════════
-   GlowPick — Beautiful HTML Email Templates
-   Pink theme, flower emojis, responsive design
-   ══════════════════════════════════════════════════════════════════*/
-
-/* ── Shared wrapper ── */
+/* Shared wrapper */
 const wrap = (content) => `
 <!DOCTYPE html>
 <html lang="en">
@@ -53,9 +48,7 @@ const wrap = (content) => `
 </body>
 </html>`;
 
-/* ══════════════════════════════════════════════════════════════════
-   1. NEWSLETTER SUBSCRIPTION WELCOME EMAIL
-   ══════════════════════════════════════════════════════════════════*/
+/*1. NEWSLETTER SUBSCRIPTION WELCOME EMAIL*/
 const newsletterWelcomeTemplate = (email) => wrap(`
   <tr>
     <td style="padding:44px 40px 36px;text-align:center;">
@@ -108,9 +101,7 @@ const newsletterWelcomeTemplate = (email) => wrap(`
   </tr>
 `);
 
-/* ══════════════════════════════════════════════════════════════════
-   2. FORGOT PASSWORD OTP EMAIL
-   ══════════════════════════════════════════════════════════════════*/
+/*2. FORGOT PASSWORD OTP EMAIL*/
 const forgotPasswordOtpTemplate = (name, otp) => wrap(`
   <tr>
     <td style="padding:44px 40px 36px;text-align:center;">
@@ -172,9 +163,7 @@ const forgotPasswordOtpTemplate = (name, otp) => wrap(`
   </tr>
 `);
 
-/* ══════════════════════════════════════════════════════════════════
-   3. ORDER CONFIRMATION EMAIL
-   ══════════════════════════════════════════════════════════════════*/
+/*3. ORDER CONFIRMATION EMAIL*/
 const orderConfirmationTemplate = (name, order) => {
   const orderId = order._id?.toString().slice(-8).toUpperCase() || 'XXXXXXXX';
 

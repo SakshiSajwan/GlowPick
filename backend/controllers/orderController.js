@@ -34,7 +34,6 @@ const addOrderItems = async (req, res) => {
 
     const createdOrder = await order.save();
 
-    // Respond to frontend immediately
     res.status(201).json(createdOrder);
 
     // Send email in background after response

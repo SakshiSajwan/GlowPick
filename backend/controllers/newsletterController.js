@@ -1,10 +1,6 @@
 const { sendEmail } = require('../utils/emailService');
 const { newsletterWelcomeTemplate } = require('../utils/emailTemplates');
 
-/**
- * POST /api/newsletter/subscribe
- * Body: { email }
- */
 const subscribe = async (req, res) => {
   console.log('📬 Subscribe endpoint hit, email:', req.body.email);
   const { email } = req.body;
@@ -16,7 +12,7 @@ const subscribe = async (req, res) => {
   try {
     await sendEmail(
       email,
-      '🌸 Welcome to GlowPick — You\'re In the Glow Club!',
+      '🌸 Welcome to GlowPick, You\'re In the Glow Club!',
       newsletterWelcomeTemplate(email)
     );
 

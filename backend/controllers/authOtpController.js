@@ -3,22 +3,14 @@ const User = require('../models/User');
 const { sendEmail } = require('../utils/emailService');
 const { forgotPasswordOtpTemplate } = require('../utils/emailTemplates');
 
-/* ── In-memory OTP store (works for single-server dev/demo)
-      For production, use Redis or store in MongoDB with TTL index ── */
 const otpStore = new Map();
-// shape: { otp: string, expiresAt: number, resetToken: string }
 
-/* ── Generate a 6-digit OTP ── */
+/* Generate a 6-digit OTP */
 const generateOtp = () => String(Math.floor(100000 + Math.random() * 900000));
 
-/* ── Generate a secure reset token ── */
+/* Generate a secure reset token */
 const generateToken = () => crypto.randomBytes(32).toString('hex');
 
-/**
- * POST /api/auth/forgot-password
- * Body: { email }
- * Generates OTP, stores it, sends email
- */
 const forgotPassword = async (req, res) => {
   const { email } = req.body;
 
@@ -27,7 +19,6 @@ const forgotPassword = async (req, res) => {
   try {
     const user = await User.findOne({ email: email.toLowerCase().trim() });
 
-    // Always return success to prevent email enumeration attacks
     if (!user) {
       return res.status(200).json({
         success: true,
@@ -59,11 +50,6 @@ const forgotPassword = async (req, res) => {
   }
 };
 
-/**
- * POST /api/auth/verify-otp
- * Body: { email, otp }
- * Verifies the OTP and returns a short-lived reset token
- */
 const verifyOtp = async (req, res) => {
   const { email, otp } = req.body;
 
@@ -84,7 +70,7 @@ const verifyOtp = async (req, res) => {
     return res.status(400).json({ message: 'Incorrect OTP. Please try again.' });
   }
 
-  // OTP is valid — return reset token (don't delete yet, needed for reset step)
+  // OTP is valid
   res.status(200).json({
     success: true,
     message: 'OTP verified successfully.',
@@ -92,11 +78,6 @@ const verifyOtp = async (req, res) => {
   });
 };
 
-/**
- * POST /api/auth/reset-password-otp
- * Body: { email, otp, resetToken, password }
- * Resets the password after verifying OTP + token match
- */
 const resetPasswordOtp = async (req, res) => {
   const { email, otp, resetToken, password } = req.body;
 
