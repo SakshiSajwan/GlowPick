@@ -666,7 +666,9 @@ export default function LoginModal() {
                         {authTab === 'register' && (
                             <form onSubmit={handleRegister} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                                 <InputField label="Full Name" value={regForm.name}
-                                    onChange={e => { setRegForm({...regForm, name: e.target.value}); setErrors({}); }}
+                                    onChange={e => { 
+                                        const value = e.target.value.replace(/[^A-Za-z\s]/g, '');
+                                        setRegForm({...regForm, name: e.target.value}); setErrors({}); }}
                                     placeholder="Your full name" autoComplete="name" error={errors.name} />
 
                                 <InputField label="Email Address" type="email" value={regForm.email}
